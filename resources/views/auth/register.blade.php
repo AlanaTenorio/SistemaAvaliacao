@@ -9,6 +9,7 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
+                      {{ csrf_field() }}
                         @csrf
 
                         <div class="form-group row">
@@ -63,18 +64,16 @@
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
-                              <form>
                                 <input type="radio" name="perfil" value="aluno"> Sou aluno
                                 <input type="radio" name="perfil" value="professor"> Sou professor
-                              </form>
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
+                              <button type="submit" class="btn btn-primary">
+                                  Cadastrar
+                              </button>
                             </div>
                         </div>
                     </form>
