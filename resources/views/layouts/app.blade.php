@@ -37,7 +37,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                      
+
+                      @if (Auth::guard()->check() && Auth::user()->isProfessor)
+                      <li class="nav-item dropdown">
+                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                              Turmas <span class="caret"></span>
+                          </a>
+
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{{ route('/turma/cadastrar') }}">
+                                  Inserir Turma
+                              </a>
+                              <a class="dropdown-item" href="">
+                                  Gerenciar Turmas
+                              </a>
+                          </div>
+                      </li>
+                      @endif
 
                     </ul>
 

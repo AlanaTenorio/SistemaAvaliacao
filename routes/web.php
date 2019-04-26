@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Rotas de professor
+Route::get('/turma/cadastrar', function(Request $request) {
+    return view('professor/CadastrarTurma');
+})->name('/turma/cadastrar');
+Route::post('/turma/cadastrar', 'TurmaController@inserir');
