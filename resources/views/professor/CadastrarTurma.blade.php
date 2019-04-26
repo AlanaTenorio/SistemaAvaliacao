@@ -13,34 +13,60 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome da Turma') }}</label>
+                            <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome da turma') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nome" name="nome">
+                              <input name="nome" id="nome" type="text" class="form-control" required value= {{ old('nome')}}> {{ $errors->first('nome')}}
+
+                                @error('nome')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="descricao" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
+                            <label for="descricao" class="col-md-4 col-form-label text-md-right">{{ __('Descricao') }}</label>
 
                             <div class="col-md-6">
-                                <input id="descricao" name="descricao">
+                              <input name="descricao" id="descricao" type="text" class="form-control" required value= {{ old('descricao')}}> {{ $errors->first('descricao')}}
+
+                                @error('descricao')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
+
 
                         <div class="form-group row">
                             <label for="ano" class="col-md-4 col-form-label text-md-right">{{ __('Ano') }}</label>
 
                             <div class="col-md-6">
-                                <input id="ano" name="ano">
+                              <input name="ano" id="ano" type="text" class="form-control" required value= {{ old('ano')}}> {{ $errors->first('ano')}}
+
+                                @error('ano')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
+
 
                         <div class="form-group row">
                             <label for="carga_horaria" class="col-md-4 col-form-label text-md-right">{{ __('Carga Horária') }}</label>
 
                             <div class="col-md-6">
-                                <input id="carga_horaria" name="carga_horaria">
+                              <input name="carga_horaria" id="carga_horaria" type="text" class="form-control" required value= {{ old('carga_horaria')}}> {{ $errors->first('carga_horaria')}}
+
+                                @error('carga_horaria')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
