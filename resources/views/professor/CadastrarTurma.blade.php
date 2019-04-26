@@ -5,20 +5,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Cadastro') }}</div>
+                <div class="card-header">{{ __('Cadastrar Turma') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('/turma/cadastrar') }}">
                       {{ csrf_field() }}
                         @csrf
 
                         <div class="form-group row">
-                            <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                            <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome da turma') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nome" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                              <input name="nome" id="nome" type="text" class="form-control" required value= {{ old('nome')}}> {{ $errors->first('nome')}}
 
-                                @error('name')
+                                @error('nome')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -27,12 +27,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+                            <label for="descricao" class="col-md-4 col-form-label text-md-right">{{ __('Descricao') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                              <input name="descricao" id="descricao" type="text" class="form-control" required value= {{ old('descricao')}}> {{ $errors->first('descricao')}}
 
-                                @error('email')
+                                @error('descricao')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -40,13 +40,14 @@
                             </div>
                         </div>
 
+
                         <div class="form-group row">
-                            <label for="senha" class="col-md-4 col-form-label text-md-right">{{ __('Senha') }}</label>
+                            <label for="ano" class="col-md-4 col-form-label text-md-right">{{ __('Ano') }}</label>
 
                             <div class="col-md-6">
-                                <input id="senha" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                              <input name="ano" id="ano" type="text" class="form-control" required value= {{ old('ano')}}> {{ $errors->first('ano')}}
 
-                                @error('password')
+                                @error('ano')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -54,18 +55,18 @@
                             </div>
                         </div>
 
+
                         <div class="form-group row">
-                            <label for="confirmacao-senha" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar senha') }}</label>
+                            <label for="carga_horaria" class="col-md-4 col-form-label text-md-right">{{ __('Carga Horária') }}</label>
 
                             <div class="col-md-6">
-                                <input id="confirmacao-senha" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
+                              <input name="carga_horaria" id="carga_horaria" type="text" class="form-control" required value= {{ old('carga_horaria')}}> {{ $errors->first('carga_horaria')}}
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <input type="radio" name="perfil" value="aluno"> Sou aluno
-                                <input type="radio" name="perfil" value="professor"> Sou professor
+                                @error('carga_horaria')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
