@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/perfil', function(Request $request) {
+    return view('ExibirPerfil');
+})->name('/perfil');
+
 //Rotas de professor
 Route::get('/turma/cadastrar', function(Request $request) {
     return view('professor/CadastrarTurma');
