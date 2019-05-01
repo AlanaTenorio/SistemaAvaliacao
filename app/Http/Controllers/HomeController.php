@@ -25,4 +25,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function buscarUser(Request $request) {
+
+			$user = \App\User::find($request->id);
+
+      return view("ExibirPerfil", [
+          "user" => $user,
+      ]);
+    	}
 }

@@ -47,6 +47,22 @@ function avisoDeletar(){
                     @if (Auth::guard()->check() && Auth::user()->isProfessor == true && $professor->id == Auth::user()->id)
                     <a class="btn btn-primary" href="/turma/editar/{{$turma->id}}">Editar</a>
                     <a class="btn btn-primary" onClick="avisoDeletar({{$turma->id}});">Excluir</a>
+                    <a class="btn btn-primary" href="/turma/listarSolicitacoes/{{$turma->id}}">Solicitações</a>
+                    @endif
+
+                    @if (Auth::guard()->check() && Auth::user()->isAluno == true)
+                    <?php
+                    $turma_participa = \App\Turma_aluno::where('aluno_id', '=', Auth::user()->id)
+                                                      ->where('turma_id', '=', $turma->id)
+                                                      ->first();
+
+                    if($turma_participa == null){ ?>
+                      <a class="btn btn-primary" href="/turma/participar/{{$turma->id}}">Soliciar Participação</a>
+                    <?php } else if ($turma_participa->ativo == false) { ?>
+                    Solitação já enviada
+                  <?php } else { ?>
+                    <a class="btn btn-primary" href="">Sair da turma</a>
+                  <?php } ?>
                     @endif
                     </div>
                   </div>

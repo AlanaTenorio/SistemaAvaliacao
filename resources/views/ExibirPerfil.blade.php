@@ -7,16 +7,16 @@
         <div class="col-md-8">
             <div class="card">
               <div class="panel-heading">
-                  <strong>Meu perfil</strong>
+                  <strong>Perfil do usuário</strong>
                 </div>
 
                 <div class="panel-body">
                     <div style="width: 100%; margin-left: 0%" class="row">
                         <div style="width: 100%; float: left" class="column col-md-8">
                             <strong>Nome</strong>
-                            <p>{{Auth::user()->name}}</p>
+                            <p>{{$user->name}}</p>
                             <strong>Email</strong>
-                            <p>{{Auth::user()->email}}</p>
+                            <p>{{$user->email}}</p>
                         </div>
 
                     </div>

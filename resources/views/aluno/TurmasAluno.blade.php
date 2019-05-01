@@ -1,12 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<script language= 'javascript'>
 
-function compartilharTurma($id){
-  alert("Código de compartilhamento para esta Turma: \nCódigo: " + $id);
-}
-</script>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -25,7 +20,7 @@ function compartilharTurma($id){
                   <div class="panel-body">
                       @if(count($turmas) == 0 and count($turmas) == 0)
                       <div class="alert alert-danger">
-                              Você ainda não cadastrou nenhuma turma.
+                              Você ainda não participa de nenhuma turma.
                       </div>
                       @else
                         <div id="tabela" class="table-responsive">
@@ -48,13 +43,13 @@ function compartilharTurma($id){
                                     <td data-title="Carga Horária">{{ $turma->carga_horaria }}</td>
 
                                     <td>
-                                      <a class="btn btn-primary" style="width:103px" href="{{ route("/turma/exibir", ['id' => $turma->id]) }}">
-                                        Gerenciar
+                                      <a class="btn btn-primary" style="width:103px" href="">
+                                        Ver Plano
                                       </a>
                                     </td>
                                     <td>
-                                      <a class="btn btn-primary" style="width:103px" onClick="compartilharTurma({{$turma->id}});">
-                                        Compartilhar
+                                      <a class="btn btn-primary" style="width:103px" href="">
+                                        Ver Listas
                                       </a>
                                     </td>
                                     <td></td>
@@ -68,8 +63,6 @@ function compartilharTurma($id){
                   </div>
                   <div class="panel-footer">
                       <a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a>
-
-                      <a class="btn btn-primary" href="{{ route("/turma/cadastrar") }}">Nova</a>
                   </div>
                 </div>
             </div>

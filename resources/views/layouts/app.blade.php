@@ -55,6 +55,23 @@
                       </li>
                       @endif
 
+                      @if (Auth::guard()->check() && Auth::user()->isAluno)
+                      <li class="nav-item dropdown">
+                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                              Turmas <span class="caret"></span>
+                          </a>
+
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{{ route('/turma/buscar') }}">
+                                  Buscar Turma
+                              </a>
+                              <a class="dropdown-item" href="{{ route('/turma/alunoListar') }}">
+                                  Minhas Turmas
+                              </a>
+                          </div>
+                      </li>
+                      @endif
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -78,7 +95,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  <a class="dropdown-item" href="{{route('/perfil')}}">
+                                  <a class="dropdown-item" href="/perfil/{{Auth::user()->id}}">
                                       {{ __('Meu Perfil') }}
                                   </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

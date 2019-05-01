@@ -80,4 +80,50 @@ class TurmaController extends Controller
  			return redirect()->route('/turma/listarUser');
 
 		}
+
+		public function participar(Request $request) {
+
+			$turma_aluno = new \App\Turma_aluno();
+
+			if($user = Auth::user()) {
+				$turma_aluno->aluno_id = Auth::user()->id;
+			 }
+
+			 $turma = \App\Turma::find($request->id);
+
+			 $turma_aluno->turma_id = $turma->id;
+
+ 			$turma_aluno->save();
+
+			session()->flash('success', 'Sua solicitação foi enviada.');
+ 			return redirect()->route('/turma/alunoListar');
+    	}
+
+			public function listarTurmasAluno(){
+				$usuarioId = Auth::user()->id;
+				$turmas_aluno = \App\Turma_aluno::where('aluno_id', '=', $usuarioId)
+																					->where('ativo', '=', true)
+																					->get();
+
+				$turmas = array();
+				foreach ($turmas_aluno as $turma_aluno) {
+					$turma = \App\Turma::find($turma_aluno->turma_id);
+
+					array_push($turmas, $turma);
+				}
+
+
+				return view("aluno/TurmasAluno", ["turmas" => $turmas]);
+		}
+
+		public function alunoParticipaTurma($id_aluno, $id_turma){
+
+				$turma_aluno = \App\Turma_aluno::where('aluno_id', '=', $id_aluno)->where('turma_id', '=', $id_turma)->get();
+
+				if(count($turmas) == 0){
+					return false;
+				}
+				return true;
+			}
+
 }

@@ -19,9 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/perfil', function(Request $request) {
-    return view('ExibirPerfil');
-})->name('/perfil');
+Route::get('perfil/{id}', 'HomeController@buscarUser')->name('/perfil');
+
 
 //Rotas de professor
 Route::get('/turma/cadastrar', function(Request $request) {
@@ -34,3 +33,15 @@ Route::get('/turma/exibir/{id}', 'TurmaController@exibir')->name('/turma/exibir'
 Route::get('/turma/remover/{id}', 'TurmaController@remover')->name('/turma/remover')->middleware('auth');
 Route::get('/turma/editar/{id}', 'TurmaController@editar')->name('/turma/editar')->middleware('auth');
 Route::post('/turma/salvar', 'TurmaController@salvar')->name('/turma/salvar')->middleware('auth');
+Route::get('/turma/listarSolicitacoes/{id}', 'ProfessorController@listarSolicitacoes')->name('/turma/listarSolicitacoes')->middleware('auth');
+Route::get('/turma/aceitarSolicitacao/{id}', 'ProfessorController@aceitarSolicitacao')->name('/turma/aceitarSolicitacao')->middleware('auth');
+
+
+//Rotas de aluno
+Route::get('/turma/buscar', function(Request $request) {
+    return view('aluno/BuscarTurma');
+})->name('/turma/buscar');
+
+Route::post('/turma/buscar', 'TurmaController@exibir');
+Route::get('/turma/participar/{id}', 'TurmaController@participar')->name('/turma/participar')->middleware('auth');
+Route::get('/turma/alunoListar/', 'TurmaController@listarTurmasAluno')->name('/turma/alunoListar')->middleware('auth');
