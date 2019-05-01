@@ -24,4 +24,7 @@ class Turma extends Model
       return $this->belongsTo('User');
     }
 
+    public function alunos(){
+      return $this->hasMany('User');
+    }
 }
