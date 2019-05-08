@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Turma extends Model
 {
-    protected $filleable = ['nome', 'ano', 'descricao', 'carga_horaria', 'professor_id'];
+    protected $filleable = ['ano', 'descricao', 'professor_id'];
 
     public static $rules = [
       'nome'=>'required',
@@ -26,5 +26,9 @@ class Turma extends Model
 
     public function alunos(){
       return $this->hasMany('User');
+    }
+
+    public function disciplina(){
+      return $this->hasOne(\App\Disciplina::class);
     }
 }
