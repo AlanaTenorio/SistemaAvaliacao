@@ -48,9 +48,9 @@ function avisoDeletar(){
                     <a class="btn btn-primary" href="/turma/editar/{{$turma->id}}">Editar</a>
                     <a class="btn btn-primary" onClick="avisoDeletar({{$turma->id}});">Excluir</a>
                     <a class="btn btn-primary" href="/turma/listarSolicitacoes/{{$turma->id}}">Solicitações</a>
-                    <a class="btn btn-primary" href="/turma/listarConteudos/{{$turma->id}}">Conteúdos</a>
-                    @endif
 
+                    @endif
+                    <a class="btn btn-primary" href="/turma/listarConteudos/{{$turma->id}}">Conteúdos</a>
                     @if (Auth::guard()->check() && Auth::user()->isAluno == true)
                     <?php
                     $turma_participa = \App\Turma_aluno::where('aluno_id', '=', Auth::user()->id)

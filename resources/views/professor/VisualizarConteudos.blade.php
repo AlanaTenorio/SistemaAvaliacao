@@ -40,14 +40,16 @@ function avisoDeletar($id){
                             <thead>
                               <tr>
                                   <th>Nome</th>
+                                  @if (Auth::guard()->check() && Auth::user()->isProfessor == true && $turma->professor_id == Auth::user()->id)
                                   <th colspan="2">Ações</th>
+                                  @endif
                               </tr>
                             </thead>
                             <tbody>
                               @foreach ($conteudos as $conteudo)
                                 <tr>
                                     <td data-title="Nome">{{ $conteudo->nome }}</td>
-
+                                    @if (Auth::guard()->check() && Auth::user()->isProfessor == true && $turma->professor_id == Auth::user()->id)
                                     <td>
                                       <a class="btn btn-primary" style="width:103px" href="{{ route("/conteudo/editar", ['id' => $conteudo->id]) }}">
                                         Editar
@@ -58,6 +60,7 @@ function avisoDeletar($id){
                                         Remover
                                       </a>
                                     </td>
+                                    @endif
                                 </tr>
                               @endforeach
 
