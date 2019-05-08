@@ -18,12 +18,20 @@ class TurmaController extends Controller
 			if($user = Auth::user()) {
 				$turma->professor_id = Auth::user()->id;
 			 }
-			 $turma->nome = $request->nome;
+			 //turma
 			 $turma->descricao = $request->descricao;
 			 $turma->ano = $request->ano;
-			 $turma->carga_horaria = $request->carga_horaria;
 
- 			$turma->save();
+			 $turma->save();
+
+			 //disciplina
+			 $disciplina = new \App\Disciplina();
+
+			 $disciplina->carga_horaria = $request->carga_horaria;
+			 $disciplina->nome = $request->nome_disciplina;
+			 //$disciplina->turma_id = $turma->id;
+
+ 			$turma->disciplina()->save($disciplina);
 
 			session()->flash('success', 'Turma cadastrada com sucesso.');
  			return redirect()->route('/turma/listarUser');
@@ -33,16 +41,19 @@ class TurmaController extends Controller
 				$usuarioId = Auth::user()->id;
 				$turmas = \App\Turma::where('professor_id', '=', $usuarioId)->paginate(10);
 
+
 				return view("professor/VisualizarTurmas", ["turmas" => $turmas]);
 		}
 
 			public function exibir(Request $request) {
 			$turma = \App\Turma::find($request->id);
+			$disciplina = \App\Disciplina::where('turma_id', '=', $turma->id)->get();
 			$professor = \App\User::find($turma->professor_id);
 
 			return view("professor/ExibirTurma", [
 					"turma" => $turma,
 					"professor" => $professor,
+					"disciplina" => $disciplina,
 				]);
 	    }
 
@@ -69,12 +80,20 @@ class TurmaController extends Controller
 			if($user = Auth::user()) {
 				$turma->professor_id = Auth::user()->id;
 			 }
-			 $turma->nome = $request->nome;
-			 $turma->descricao = $request->descricao;
-			 $turma->ano = $request->ano;
-			 $turma->carga_horaria = $request->carga_horaria;
+			$turma->descricao = $request->descricao;
+ 			$turma->ano = $request->ano;
 
  			$turma->save();
+
+ 			//disciplina
+ 			$disciplina = \App\Disciplina::where('turma_id', '=', $request->id)->first();
+
+ 			$disciplina->carga_horaria = $request->carga_horaria;
+ 			$disciplina->nome = $request->nome;
+
+			$disciplina->save();
+			//$turma->find($disciplina->id)->save($disciplina);
+ 		 	//$turma->disciplina()->save($disciplina);
 
 			session()->flash('success', 'Turma modificada com sucesso.');
  			return redirect()->route('/turma/listarUser');
@@ -112,7 +131,6 @@ class TurmaController extends Controller
 					array_push($turmas, $turma);
 				}
 
-
 				return view("aluno/TurmasAluno", ["turmas" => $turmas]);
 		}
 
@@ -125,5 +143,10 @@ class TurmaController extends Controller
 				}
 				return true;
 			}
+
+		public function compartilhar(Request $request){
+        $turma = \App\Turma::find($request->id);
+        return view("professor/CompartilharTurma", ['turma' => $turma]);
+    }
 
 }

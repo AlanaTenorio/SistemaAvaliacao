@@ -17,7 +17,7 @@
                             <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome da turma') }}</label>
 
                             <div class="col-md-6">
-                              <input name="nome" id="nome" type="text" class="form-control" value="{{ $turma->nome}}" required value= {{ old('nome')}} > {{ $errors->first('nome')}}
+                              <input name="nome" id="nome" type="text" class="form-control" value="{{ $turma->disciplina->nome}}" required value= {{ old('nome')}} > {{ $errors->first('nome')}}
 
                                 @error('nome')
                                     <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
                             <label for="carga_horaria" class="col-md-4 col-form-label text-md-right">{{ __('Carga Horária') }}</label>
 
                             <div class="col-md-6">
-                              <input name="carga_horaria" id="carga_horaria" type="text" class="form-control" value="{{ $turma->carga_horaria}}" required value= {{ old('carga_horaria')}}> {{ $errors->first('carga_horaria')}}
+                              <input name="carga_horaria" id="carga_horaria" type="text" class="form-control" value="{{ $turma->disciplina->carga_horaria}}" required value= {{ old('carga_horaria')}}> {{ $errors->first('carga_horaria')}}
 
                                 @error('carga_horaria')
                                     <span class="invalid-feedback" role="alert">
