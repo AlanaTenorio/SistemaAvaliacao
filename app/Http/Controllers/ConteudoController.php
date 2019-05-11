@@ -11,7 +11,7 @@ class ConteudoController extends Controller
 
   public function listarConteudosTurma(Request $request) {
 
-  $conteudos = \App\Conteudo::where('turma_id', '=', $request->id)->paginate(10);
+  $conteudos = \App\Conteudo::where('turma_id', '=', $request->id)->get();
   $turma = \App\Turma::find($request->id);
   return view("professor/VisualizarConteudos", [
       "conteudos" => $conteudos,

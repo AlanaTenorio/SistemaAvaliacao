@@ -45,7 +45,7 @@
                             <label for="ano" class="col-md-4 col-form-label text-md-right">{{ __('Ano') }}</label>
 
                             <div class="col-md-6">
-                              <input name="ano" id="ano" type="text" class="form-control" required value= {{ old('ano')}}> {{ $errors->first('ano')}}
+                              <input name="ano" id="ano" type="text" pattern = "\d*" placeholder="ex: 2019" class="form-control" required value= {{ old('ano')}}> {{ $errors->first('ano')}}
 
                                 @error('ano')
                                     <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
                             <label for="carga_horaria" class="col-md-4 col-form-label text-md-right">{{ __('Carga Horária') }}</label>
 
                             <div class="col-md-6">
-                              <input name="carga_horaria" id="carga_horaria" type="text" class="form-control"> {{ $errors->first('carga_horaria')}}
+                              <input name="carga_horaria" id="carga_horaria" type="text" pattern = "\d*" placeholder="ex: 120" class="form-control"> {{ $errors->first('carga_horaria')}}
 
                                 @error('carga_horaria')
                                     <span class="invalid-feedback" role="alert">

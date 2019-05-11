@@ -40,7 +40,7 @@ class TurmaController extends Controller
 
 			public function listarUser(){
 				$usuarioId = Auth::user()->id;
-				$turmas = \App\Turma::where('professor_id', '=', $usuarioId)->paginate(10);
+				$turmas = \App\Turma::where('professor_id', '=', $usuarioId)->get();
 
 
 				return view("professor/VisualizarTurmas", ["turmas" => $turmas]);

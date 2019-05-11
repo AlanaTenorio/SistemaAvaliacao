@@ -13,7 +13,7 @@ class ProfessorController extends Controller
 
     public function listarSolicitacoes(Request $request) {
 
-    $solicitacoes = \App\Turma_aluno::where('turma_id', '=', $request->id)->where('ativo', '=', false)->paginate(10);
+    $solicitacoes = \App\Turma_aluno::where('turma_id', '=', $request->id)->where('ativo', '=', false)->get();
 
     $alunos = array();
     foreach ($solicitacoes as $solicitacao) {

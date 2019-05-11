@@ -37,14 +37,14 @@
                             <tbody>
                               @foreach ($turmas as $turma)
                                 <tr>
-                                    <td data-title="Nome">{{ $turma->nome }}</td>
-                                    <td data-title="Descrição">{{ $turma->descricao }}</td>
+                                    <td data-title="Nome">{{ $turma->disciplina->nome }}</td>
+                                    <td data-title="Descrição">{{ $turma->disciplina->descricao }}</td>
                                     <td data-title="Ano">{{ $turma->ano }}</td>
-                                    <td data-title="Carga Horária">{{ $turma->carga_horaria }}</td>
+                                    <td data-title="Carga Horária">{{ $turma->disciplina->carga_horaria }}</td>
 
                                     <td>
-                                      <a class="btn btn-primary" style="width:103px" href="">
-                                        Ver Plano
+                                      <a class="btn btn-primary" style="width:103px" href="{{ route("/turma/exibir", ['id' => $turma->id]) }}">
+                                        Ver
                                       </a>
                                     </td>
                                     <td>
