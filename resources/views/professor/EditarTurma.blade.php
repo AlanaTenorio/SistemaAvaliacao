@@ -31,7 +31,7 @@
                             <label for="descricao" class="col-md-4 col-form-label text-md-right">{{ __('Descricao') }}</label>
 
                             <div class="col-md-6">
-                              <input name="descricao" id="descricao" type="text" class="form-control" value="{{ $turma->descricao}}" required value= {{ old('descricao')}}> {{ $errors->first('descricao')}}
+                              <input name="descricao" id="descricao" type="text" class="form-control"  value="{{ $turma->disciplina->descricao}}" > {{ $errors->first('descricao')}}
 
                                 @error('descricao')
                                     <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
                             <label for="carga_horaria" class="col-md-4 col-form-label text-md-right">{{ __('Carga Horária') }}</label>
 
                             <div class="col-md-6">
-                              <input name="carga_horaria" id="carga_horaria" type="text" class="form-control" value="{{ $turma->disciplina->carga_horaria}}" required value= {{ old('carga_horaria')}}> {{ $errors->first('carga_horaria')}}
+                              <input name="carga_horaria" id="carga_horaria" type="text" class="form-control" value="{{ $turma->disciplina->carga_horaria}}"> {{ $errors->first('carga_horaria')}}
 
                                 @error('carga_horaria')
                                     <span class="invalid-feedback" role="alert">

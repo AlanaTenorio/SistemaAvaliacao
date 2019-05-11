@@ -19,4 +19,8 @@ class Conteudo extends Model
     public function disciplina(){
       return $this->belongsTo('Disciplina');
     }
+
+    public function dependencias(){
+      return $this->hasMany('Conteudo');
+    }
 }

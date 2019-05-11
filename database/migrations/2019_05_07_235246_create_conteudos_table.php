@@ -16,6 +16,7 @@ class CreateConteudosTable extends Migration
         Schema::create('conteudos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
+            $table->string('descricao')->nullable();
             $table->integer('turma_id')->unsigned();
             $table->foreign('turma_id')->references('id')
                 		->on('turmas');

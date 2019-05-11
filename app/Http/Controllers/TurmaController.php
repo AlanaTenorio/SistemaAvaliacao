@@ -19,7 +19,6 @@ class TurmaController extends Controller
 				$turma->professor_id = Auth::user()->id;
 			 }
 			 //turma
-			 $turma->descricao = $request->descricao;
 			 $turma->ano = $request->ano;
 
 			 $turma->save();
@@ -29,6 +28,8 @@ class TurmaController extends Controller
 
 			 $disciplina->carga_horaria = $request->carga_horaria;
 			 $disciplina->nome = $request->nome_disciplina;
+			 $disciplina->descricao = $request->descricao;
+
 			 //$disciplina->turma_id = $turma->id;
 
  			$turma->disciplina()->save($disciplina);
@@ -80,7 +81,6 @@ class TurmaController extends Controller
 			if($user = Auth::user()) {
 				$turma->professor_id = Auth::user()->id;
 			 }
-			$turma->descricao = $request->descricao;
  			$turma->ano = $request->ano;
 
  			$turma->save();
@@ -90,6 +90,8 @@ class TurmaController extends Controller
 
  			$disciplina->carga_horaria = $request->carga_horaria;
  			$disciplina->nome = $request->nome;
+			$disciplina->descricao = $request->descricao;
+
 
 			$disciplina->save();
 			//$turma->find($disciplina->id)->save($disciplina);

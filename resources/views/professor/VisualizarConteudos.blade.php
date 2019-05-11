@@ -72,8 +72,9 @@ function avisoDeletar($id){
                   <div class="panel-footer">
                       <a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a>
 
+                      @if (Auth::guard()->check() && Auth::user()->isProfessor == true && $turma->professor_id == Auth::user()->id)
                       <a class="btn btn-primary" href="{{ route("/conteudo/inserirConteudo/", ['id' => $turma->id]) }}">Novo</a>
-
+                      @endif
                   </div>
                 </div>
             </div>

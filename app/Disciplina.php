@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Disciplina extends Model
 {
-  protected $filleable = ['nome', 'carga_horaria'];
+  protected $filleable = ['nome', 'descricao', 'carga_horaria'];
 
   public static $rules = [
     'nome'=>'required',

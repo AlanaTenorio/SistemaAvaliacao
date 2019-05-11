@@ -29,7 +29,7 @@ function avisoDeletar(){
                             <strong>Nome</strong>
                             <p>{{$turma->disciplina->nome}}</p>
                             <strong>Descrição</strong>
-                            <p>{{$turma->descricao}}</p>
+                            <p>{{$turma->disciplina->descricao}}</p>
                             <strong>Ano</strong>
                             <p>{{$turma->ano}}</p>
                             <strong>Carga horária</strong>

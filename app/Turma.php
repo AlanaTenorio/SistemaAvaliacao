@@ -6,13 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Turma extends Model
 {
-    protected $filleable = ['ano', 'descricao', 'professor_id'];
+    protected $filleable = ['ano', 'professor_id'];
 
     public static $rules = [
       'nome'=>'required',
-      'descricao'=>'required',
       'ano'=>'required|numeric',
-      'carga_horaria'=>'required|numeric',
     ];
 
     public static $messages = [
