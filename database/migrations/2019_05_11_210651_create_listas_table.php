@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDisciplinasTable extends Migration
+class CreateListasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateDisciplinasTable extends Migration
      */
     public function up()
     {
-        Schema::create('disciplinas', function (Blueprint $table) {
+        Schema::create('listas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
             $table->string('descricao')->nullable();
-            $table->integer('carga_horaria')->unsigned()->nullable();
-            $table->integer('turma_id')->unsigned();
-            $table->foreign('turma_id')->references('id')
-                		->on('turmas')
-                    ->onDelete('cascade');
-
+            $table->boolean('is_ativo')->default(false);
+            $table->dateTime('data_inicio');
+            $table->dateTime('data_fim');
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ class CreateDisciplinasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('disciplinas');
+        Schema::dropIfExists('listas');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConteudoDependenciasTable extends Migration
+class CreateListaConteudosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateConteudoDependenciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('conteudo_dependencias', function (Blueprint $table) {
+        Schema::create('lista_conteudos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('lista_id')->unsigned();
+            $table->foreign('lista_id')->references('id')
+                    ->on('listas')
+                    ->onDelete('cascade');
             $table->integer('conteudo_id')->unsigned();
             $table->foreign('conteudo_id')->references('id')
-                		->on('conteudos')
-                    ->onDelete('cascade');
-            $table->integer('dependencia_id')->unsigned();
-            $table->foreign('dependencia_id')->references('id')
                     ->on('conteudos')
                     ->onDelete('cascade');
             $table->timestamps();
@@ -34,6 +34,6 @@ class CreateConteudoDependenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('conteudo_dependencias');
+        Schema::dropIfExists('lista_conteudos');
     }
 }

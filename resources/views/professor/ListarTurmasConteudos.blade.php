@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -20,7 +19,7 @@
                   <div class="panel-body">
                       @if(count($turmas) == 0 and count($turmas) == 0)
                       <div class="alert alert-danger">
-                              Você ainda não participa de nenhuma turma.
+                              Você ainda não cadastrou nenhuma turma.
                       </div>
                       @else
                         <div id="tabela" class="table-responsive">
@@ -28,9 +27,8 @@
                             <thead>
                               <tr>
                                   <th>Nome</th>
-                                  <th>Descrição</th>
                                   <th>Ano</th>
-                                  <th>Carga Horária</th>
+                                  <th>Conteúdos</th>
                                   <th colspan="2">Ações</th>
                               </tr>
                             </thead>
@@ -38,21 +36,26 @@
                               @foreach ($turmas as $turma)
                                 <tr>
                                     <td data-title="Nome">{{ $turma->disciplina->nome }}</td>
-                                    <td data-title="Descrição">{{ $turma->disciplina->descricao }}</td>
                                     <td data-title="Ano">{{ $turma->ano }}</td>
-                                    <td data-title="Carga Horária">{{ $turma->disciplina->carga_horaria }}</td>
-
+                                    <?php
+                                    $conteudos = \App\Conteudo::where('turma_id', '=', $turma->id)->get();
+                                    $conteudosNomes = "";
+                                    foreach ($conteudos as $conteudo) {
+                                      $conteudosNomes .= $conteudo->nome;
+                                      $conteudosNomes .= ", ";
+                                    }
+                                    ?>
+                                    <td data-title="Conteudos">{{ $conteudosNomes }}</td>
                                     <td>
-                                      <a class="btn btn-primary" style="width:103px" href="{{ route("/turma/exibir", ['id' => $turma->id]) }}">
-                                        Ver
+                                      <a class="btn btn-primary" href="{{ route("/lista/inserirLista", ['id' => $turma->id]) }}">
+                                        Add Lista
                                       </a>
                                     </td>
                                     <td>
-                                      <a class="btn btn-primary" style="width:103px" href="">
+                                      <a class="btn btn-primary"  href="">
                                         Ver Listas
                                       </a>
                                     </td>
-                                    <td></td>
                                 </tr>
                               @endforeach
 

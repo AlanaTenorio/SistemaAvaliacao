@@ -64,8 +64,8 @@
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
-                                <input type="radio" name="perfil" value="aluno"> Sou aluno
-                                <input type="radio" name="perfil" value="professor"> Sou professor
+                                <input type="radio" name="perfil" value="aluno" required> Sou aluno
+                                <input type="radio" name="perfil" value="professor" required> Sou professor
                             </div>
                         </div>
 
