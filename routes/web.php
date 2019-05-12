@@ -23,6 +23,7 @@ Route::get('perfil/{id}', 'HomeController@buscarUser')->name('/perfil');
 
 
 //Rotas de professor
+//Turma
 Route::get('/turma/cadastrar', function(Request $request) {
     return view('professor/CadastrarTurma');
 })->name('/turma/cadastrar')->middleware('auth');
@@ -36,12 +37,19 @@ Route::get('/turma/listarSolicitacoes/{id}', 'ProfessorController@listarSolicita
 Route::get('/turma/aceitarSolicitacao/{id}', 'ProfessorController@aceitarSolicitacao')->name('/turma/aceitarSolicitacao')->middleware('auth');
 Route::get('/turma/compartilhar/{id}', 'TurmaController@compartilhar')->name('/turma/compartilhar')->middleware('auth');
 Route::get('/turma/listarConteudos/{id}', 'ConteudoController@listarConteudosTurma')->name('/turma/listarConteudos')->middleware('auth');
+//Conteudo
 Route::get('/conteudo/inserirConteudo/{id}', 'ConteudoController@inserirConteudo')->name('/conteudo/inserirConteudo/')->middleware('auth');
 Route::post('/conteudo/cadastrar', 'ConteudoController@cadastrar')->name('/conteudo/cadastrar')->middleware('auth');
 Route::get('/conteudo/remover/{id}', 'ConteudoController@remover')->name('/conteudo/remover')->middleware('auth');
 Route::get('/conteudo/editar/{id}', 'ConteudoController@editar')->name('/conteudo/editar')->middleware('auth');
 Route::post('/conteudo/salvar', 'ConteudoController@salvar')->name('/conteudo/salvar')->middleware('auth');
-
+//Lista Atividade
+Route::get('/lista/listarTurmasConteudos', 'ListaController@listarTurmasConteudos')->name('/lista/listarTurmasConteudos')->middleware('auth');
+Route::get('/lista/inserirLista/{id}', 'ListaController@inserirLista')->name('/lista/inserirLista')->middleware('auth');
+Route::post('/lista/cadastrar', 'ListaController@cadastrar')->name('/lista/cadastrar')->middleware('auth');
+Route::get('/atividade/cadastrar', function(Request $request) {
+    return view('professor/CadastrarQuestaoMultipla');
+})->name('/atividade/cadastrar')->middleware('auth');
 
 //Rotas para emails
 Route::post('/share/mail','MailController@compartilharEmail')->name('/turma/compartilhar.post');
