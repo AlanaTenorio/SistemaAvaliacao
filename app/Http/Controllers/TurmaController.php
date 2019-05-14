@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
+require_once('ProfessorController.php');
 
 class TurmaController extends Controller
 {
@@ -50,11 +51,17 @@ class TurmaController extends Controller
 			$turma = \App\Turma::find($request->id);
 			$disciplina = \App\Disciplina::where('turma_id', '=', $turma->id)->get();
 			$professor = \App\User::find($turma->professor_id);
+			$notificacoes = \App\Turma_aluno::where('turma_id', '=', $request->id)->where('ativo', '=', false)->get();
+			$flag = false;
+			if(count($notificacoes) != 0 and count($notificacoes) != 0){
+				$flag = true;
+			}
 
 			return view("professor/ExibirTurma", [
 					"turma" => $turma,
 					"professor" => $professor,
 					"disciplina" => $disciplina,
+					"flag" => $flag,
 				]);
 	    }
 

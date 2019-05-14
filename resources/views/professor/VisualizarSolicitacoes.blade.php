@@ -5,7 +5,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Solicitacoes') }}</div>
 
@@ -39,13 +39,11 @@
                                     <td data-title="Nome">{{ $aluno->name }}</td>
                                     <td data-title="Email">{{ $aluno->email }}</td>
                                     <td>
-                                      <a class="btn btn-primary" style="width:103px" href="/perfil/{{$solicitacao->aluno_id}}">
-                                        Ver Perfil
+                                      <a class="btn btn-primary ni ni-circle-08" href="/perfil/{{$solicitacao->aluno_id}}">
                                       </a>
                                     </td>
                                     <td>
-                                      <a class="btn btn-primary" style="width:103px" href="/turma/aceitarSolicitacao/{{$solicitacao->id}}">
-                                        Aceitar
+                                      <a class="btn btn-primary ni ni-check-bold" href="/turma/aceitarSolicitacao/{{$solicitacao->id}}">
                                       </a>
                                     </td>
                                     <td></td>

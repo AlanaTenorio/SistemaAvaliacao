@@ -1,138 +1,220 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<html>
+
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <title>Gestão de Avaliação</title>
+  <!-- Favicon -->
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="{{asset('assets/vendor/nucleo/css/nucleo.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="{{asset('assets/css/argon.css?v=1.0.0')}}" rel="stylesheet">
+</head>
 
-    <title>Gestão de Avaliação</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  </head>
 <body>
-    <div id="app">
-      <!-- Barra de Logo -->
-    <div id="barra-logos" style="background:#FFFFFF; margin-top: 1px; height: 75px; padding: 10px 0 10px 0">
-        <ul id="logos" style="list-style:none;">
-            <li style="margin-right:140px; margin-left:110px; border-right:1px; color:#7a99b8">
-              <center><h1>Gestão de Avaliação</h1></center>
-            </li>
-        </ul>
-    </div>
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: #7a99b8; border-color: #7a99b8" role="navigation">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">Início</a>
+  <!-- Sidenav -->
+  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+    <div class="container-fluid">
+      <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Brand -->
+      <a class="navbar-brand pt-0" href="{{ url('/') }}">
+        Gestão de Avaliação
+      </a>
 
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+        <!-- Collapse header -->
+        <div class="navbar-collapse-header d-md-none">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a href="">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                      @if (Auth::guard()->check() && Auth::user()->isProfessor)
-                      <li class="nav-item dropdown">
-                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                              Turmas <span class="caret"></span>
-                          </a>
-
-                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="{{ route('/turma/cadastrar') }}">
-                                  Inserir Turma
-                              </a>
-                              <a class="dropdown-item" href="{{ route('/turma/listarUser') }}">
-                                  Gerenciar Turmas
-                              </a>
-                          </div>
-                      </li>
-
-                      <li class="nav-item dropdown">
-                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                              Listas <span class="caret"></span>
-                          </a>
-
-                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="{{ route('/lista/listarTurmasConteudos') }}">
-                                  Criar Lista
-                              </a>
-                          </div>
-                      </li>
-                      @endif
-
-                      @if (Auth::guard()->check() && Auth::user()->isAluno)
-                      <li class="nav-item dropdown">
-                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                              Turmas <span class="caret"></span>
-                          </a>
-
-                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="{{ route('/turma/buscar') }}">
-                                  Buscar Turma
-                              </a>
-                              <a class="dropdown-item" href="{{ route('/turma/alunoListar') }}">
-                                  Minhas Turmas
-                              </a>
-                          </div>
-                      </li>
-                      @endif
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Authentication Links -->
-                        @guest
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Cadastro') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  <a class="dropdown-item" href="/perfil/{{Auth::user()->id}}">
-                                      {{ __('Meu Perfil') }}
-                                  </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+              </a>
             </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
 
-        </nav>
+            <a class="nav-link" href="{{ url('/') }}">
+                <i class="ni ni-tv-2 text-primary"></i> Início
+              </a>
+            </li>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+            @if (Auth::guard()->check() && Auth::user()->isProfessor)
+            <li class="nav-item dropdown">
+
+              <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <i class="ni ni-hat-3 text-yellow"></i> Turmas <span class="caret"></span>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item " href="{{ route('/turma/cadastrar') }}">
+                  Inserir Turma
+                </a>
+              <a class="dropdown-item" href="{{ route('/turma/listarUser') }}">
+                  Gerenciar Turmas
+              </a>
+            </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  <i class="ni ni-single-copy-04 text-red"></i> Listas <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('/lista/listarTurmasConteudos') }}">
+                      Criar Lista
+                    </a>
+                </div>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  <i class="ni ni-ruler-pencil text-blue"></i> Questões <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="">
+                      Criar Nova
+                    </a>
+                </div>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('/lista/listarTurmasConteudos') }}">
+                      Buscar Questões
+                    </a>
+                </div>
+            </li>
+
+
+            @endif
+            @if (Auth::guard()->check() && Auth::user()->isAluno)
+                  <li class="nav-item dropdown">
+                      <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                          <i class="ni ni-hat-3 text-yellow"></i> Turmas <span class="caret"></span>
+                      </a>
+
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{{ route('/turma/buscar') }}">
+                              Buscar Turma
+                          </a>
+                          <a class="dropdown-item" href="{{ route('/turma/alunoListar') }}">
+                              Minhas Turmas
+                          </a>
+                      </div>
+                  </li>
+            @endif
+
+          <hr class="my-3">
+
+          @guest
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">
+              <i class="ni ni-key-25 text-info"></i> Login
+            </a>
+          </li>
+          @if (Route::has('register'))
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">
+              <i class="ni ni-circle-08 text-pink"></i> Cadastro
+            </a>
+          </li>
+          @endif
+          @endguest
+
+        </ul>
+        <!-- Divider -->
+        <hr class="my-3">
+
+      </div>
     </div>
+  </nav>
+  <!-- Main content -->
+  <div class="main-content">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" ></a>
+
+        <!-- User -->
+        @guest
+
+        @else
+
+        <ul class="navbar-nav align-items-center d-none d-md-flex">
+          <li class="nav-item dropdown">
+            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="media align-items-center">
+                <div class="media-body ml-2 d-none d-lg-block">
+                  <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->name }}</span>
+                </div>
+              </div>
+            </a>
+              <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+
+                <a href="/perfil/{{Auth::user()->id}}" class="dropdown-item">
+                  <i class="ni ni-single-02"></i>
+                  <span>Meu Perfil</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();" class="dropdown-item">
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+                  <i class="ni ni-user-run"></i>
+                  <span>Logout</span>
+                </a>
+
+              </div>
+          </li>
+          @endguest
+        </ul>
+      </div>
+    </nav>
+
+
+    <!-- Header -->
+    <div class=" pb-8 pt-2 pt-md-1" style="background: linear-gradient(87deg, #65A5D1  0, #5DBCD2 100%);">
+
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7" style="padding-top: 7px">
+      <main class="py-4">
+          @yield('content')
+      </main>
+    </div>
+
+
+  </div>
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  <script src="{{asset('assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <!-- Optional JS -->
+  <!-- Argon JS -->
+  <script src="{{asset('assets/js/argon.js?v=1.0.0')}}"></script>
 </body>
+
 </html>

@@ -3,14 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Turma: <strong>{{$turma->disciplina->nome}}</strong></div>
 
                 <div class="card-body">
                   <div class="panel-body">
 
-                              Envie o seguinte link para compartilhar esta turma:<br>
+                              Envie o seguinte link para compartilhar esta turma:<br><br>
                               <div style="text-align: center">
                                   <input type="text" style="text-align: center" size="40" value="{{ route('/turma/exibir',$turma->id) }}" readonly></input>
                               </div>
