@@ -11,7 +11,6 @@
                     <form method="POST" action="">
                       {{ csrf_field() }}
                         @csrf
-                        <input type="hidden" name="lista_id" value="{{ $lista->id}}" />
 
                         <div class="form-group row">
 
