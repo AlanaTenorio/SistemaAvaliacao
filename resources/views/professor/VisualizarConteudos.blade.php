@@ -17,7 +17,7 @@ function avisoDeletar($id){
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Conteúdos da disciplina <b>{{$turma->disciplina->nome}}</b></div>
 
@@ -51,13 +51,13 @@ function avisoDeletar($id){
                                     <td data-title="Nome">{{ $conteudo->nome }}</td>
                                     @if (Auth::guard()->check() && Auth::user()->isProfessor == true && $turma->professor_id == Auth::user()->id)
                                     <td>
-                                      <a class="btn btn-primary" style="width:103px" href="{{ route("/conteudo/editar", ['id' => $conteudo->id]) }}">
-                                        Editar
+                                      <a class="btn btn-primary" href="{{ route("/conteudo/editar", ['id' => $conteudo->id]) }}">
+                                      <img src="{{asset('assets/images/edit.png')}}" height="21" width="20" align = "right">
                                       </a>
                                     </td>
                                     <td>
-                                      <a class="btn btn-primary" style="width:103px" onClick="avisoDeletar({{$conteudo->id}});">
-                                        Remover
+                                      <a class="btn btn-primary" onClick="avisoDeletar({{$conteudo->id}});">
+                                      <img src="{{asset('assets/images/delete.png')}}" height="21" width="20" align = "right">
                                       </a>
                                     </td>
                                     @endif

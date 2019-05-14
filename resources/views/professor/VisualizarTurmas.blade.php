@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Turmas') }}</div>
 
@@ -42,13 +42,13 @@
                                     <td data-title="Carga Horária">{{ $turma->disciplina->carga_horaria }}</td>
 
                                     <td>
-                                      <a class="btn btn-primary" style="width:103px" href="{{ route("/turma/exibir", ['id' => $turma->id]) }}">
-                                        Gerenciar
+                                      <a class="btn btn-primary" href="{{ route("/turma/exibir", ['id' => $turma->id]) }}">
+                                        <i class="ni ni-settings"></i>
                                       </a>
                                     </td>
                                     <td>
-                                      <a class="btn btn-primary" style="width:103px" href="{{ route("/turma/compartilhar", ['id' => $turma->id]) }}">
-                                        Compartilhar
+                                      <a class="btn btn-primary"  href="{{ route("/turma/compartilhar", ['id' => $turma->id]) }}">
+                                        <img src="{{asset('assets/images/share.png')}}" height="21" width="17" align = "right">
                                       </a>
                                     </td>
                                     <td></td>

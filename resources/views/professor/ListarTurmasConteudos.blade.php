@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Turmas') }}</div>
 
@@ -48,7 +48,7 @@
                                     <td data-title="Conteudos">{{ $conteudosNomes }}</td>
                                     <td>
                                       <a class="btn btn-primary" href="{{ route("/lista/inserirLista", ['id' => $turma->id]) }}">
-                                        Add Lista
+                                        Criar Lista
                                       </a>
                                     </td>
                                     <td>

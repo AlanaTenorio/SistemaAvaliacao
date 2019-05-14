@@ -58,7 +58,7 @@ function selectAll() {
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Editar Conteúdo') }}</div>
 
@@ -101,7 +101,7 @@ function selectAll() {
 
                             <div class="container">
                               <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-5">
                                   <label>Dependências</label>
                                   <select id="dependencias" class="form-control" multiple>
                                     @foreach ($conteudos as $dependencia)
@@ -113,7 +113,13 @@ function selectAll() {
                                   </select>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-1" style="padding-top: 30px">
+                                  <a class="btn btn-primary ni ni-bold-right text-white" onClick="adicionar();"></a></br></br>
+                                  <a class="btn btn-primary ni ni-bold-left text-white" onClick="remover();"></a>
+                                </div>
+
+
+                                <div class="col-md-5" >
                                   <label>Dependências Selecionadas</label>
                                   <select id="dependenciasSelecionadas" name="dependenciasSelecionadas[]" class="form-control" multiple>
                                     @foreach ($dependencias as $dependencia)
@@ -123,8 +129,7 @@ function selectAll() {
                                 </div>
                               </div>
                               <br>
-                              <a class="btn btn-primary" onClick="adicionar();">+</a>
-                              <a class="btn btn-primary" onClick="remover();">-</a>
+
 
                             </div>
 

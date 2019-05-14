@@ -17,11 +17,8 @@ function avisoDeletar(){
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-              <div class="panel-heading">
-                  Turma: <strong>{{$turma->nome}}</strong>
-                </div>
 
                 <div class="panel-body">
                     <div style="width: 100%; margin-left: 0%" class="row">
@@ -42,13 +39,22 @@ function avisoDeletar(){
                     <hr>
 
                     <div class="panel-footer">
-                      <a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a>
 
                     @if (Auth::guard()->check() && Auth::user()->isProfessor == true && $professor->id == Auth::user()->id)
-                    <a class="btn btn-primary" href="/turma/editar/{{$turma->id}}">Editar</a>
-                    <a class="btn btn-primary" onClick="avisoDeletar({{$turma->id}});">Excluir</a>
-                    <a class="btn btn-primary" href="/turma/listarSolicitacoes/{{$turma->id}}">Solicitações</a>
-
+                    <a class="btn btn-primary" href="/turma/editar/{{$turma->id}}">
+                    <img src="{{asset('assets/images/edit.png')}}" height="21" width="20" align = "right">
+                    </a>
+                    <a class="btn btn-primary" onClick="avisoDeletar({{$turma->id}});">
+                      <img src="{{asset('assets/images/delete.png')}}" height="21" width="20" align = "right">
+                    </a>
+                    @if ($flag == true)
+                    <a class="btn btn-primary " href="/turma/listarSolicitacoes/{{$turma->id}}">Solicitações
+                      <i class="ni ni-bell-55 text-red"></i>
+                    </a>
+                    @else
+                    <a class="btn btn-primary " href="/turma/listarSolicitacoes/{{$turma->id}}">Solicitações
+                    </a>
+                    @endif
                     @endif
                     <a class="btn btn-primary" href="/turma/listarConteudos/{{$turma->id}}">Conteúdos</a>
                     @if (Auth::guard()->check() && Auth::user()->isAluno == true)
