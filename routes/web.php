@@ -55,6 +55,8 @@ Route::get('/atividade/cadastrar', function(Request $request) {
 Route::get('/atividade/cadastrarMultipla', function(Request $request) {
     return view('professor/CadastrarQuestaoMultipla');
 })->name('/atividade/cadastrarMultipla')->middleware('auth');
+Route::post('/atividadeMultipla/cadastrar', 'AtividadeMultiplaEscolhaController@cadastrar')->name('/atividadeMultipla/cadastrar')->middleware('auth');
+
 //Questão Associar imagem-texto
 Route::get('/atividade/cadastrarImagem', function(Request $request) {
     return view('professor/CadastrarQuestaoImagemTexto');
