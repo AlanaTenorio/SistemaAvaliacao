@@ -15,6 +15,7 @@ class CreateTurmasTable extends Migration
     {
         Schema::create('turmas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nome');
             $table->integer('ano')->unsigned();
             $table->integer('professor_id')->unsigned();
 

@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Turmas') }}</div>
+                <div class="card-header">{{ __('Atividades') }}</div>
 
                 <div class="card-body">
 
@@ -17,45 +17,31 @@
                       </div>
                   @endif
                   <div class="panel-body">
-                      @if(count($turmas) == 0 and count($turmas) == 0)
+                      @if(count($atividades) == 0 and count($atividades) == 0)
                       <div class="alert alert-danger">
-                              Você ainda não cadastrou nenhuma turma.
+                              Você ainda não cadastrou nenhuma atividade.
                       </div>
                       @else
                         <div id="tabela" class="table-responsive">
                           <table class="table table-hover">
                             <thead>
                               <tr>
-                                  <th>Nome</th>
-                                  <th>Ano</th>
-                                  <th>Conteúdos</th>
+                                  <th>Título</th>
+                                  <th>Pontuação</th>
                                   <th colspan="2">Ações</th>
                               </tr>
                             </thead>
                             <tbody>
-                              @foreach ($turmas as $turma)
+                              @foreach ($atividades as $atividade)
                                 <tr>
-                                    <td data-title="Nome">{{ $turma->nome }}</td>
-                                    <td data-title="Ano">{{ $turma->ano }}</td>
-                                    <?php
-                                    $conteudos = \App\Conteudo::where('turma_id', '=', $turma->id)->get();
-                                    $conteudosNomes = "";
-                                    foreach ($conteudos as $conteudo) {
-                                      $conteudosNomes .= $conteudo->nome;
-                                      $conteudosNomes .= ", ";
-                                    }
-                                    ?>
-                                    <td data-title="Conteudos">{{ $conteudosNomes }}</td>
+                                    <td data-title="Nome">{{ $atividade->titulo }}</td>
+                                    <td data-title="Ano">{{ $atividade->pontuacao }}</td>
                                     <td>
-                                      <a class="btn btn-primary" href="{{ route("/lista/inserirLista", ['id' => $turma->id]) }}">
-                                        Criar Lista
+                                      <a class="btn btn-primary" href="{{ route("/atividade/exibir", ['id' => $atividade->id]) }}">
+                                      <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
                                       </a>
                                     </td>
-                                    <td>
-                                      <a class="btn btn-primary"  href="">
-                                        Ver Listas
-                                      </a>
-                                    </td>
+
                                 </tr>
                               @endforeach
 

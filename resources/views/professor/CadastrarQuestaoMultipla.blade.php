@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Criar Questão') }}</div>
+                <div class="card-header">{{ __('Criar Questão - Múltipla Escolha') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="/atividadeMultipla/cadastrar">

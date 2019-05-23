@@ -102,7 +102,7 @@ function selectAll() {
                             <div class="container">
                               <div class="row">
                                 <div class="col-md-5">
-                                  <label>Dependências</label>
+                                  <label>Conteúdos</label>
                                   <select id="dependencias" class="form-control" multiple>
                                     @foreach ($conteudos as $dependencia)
                                     @if($dependencia->id != $conteudo->id)
@@ -120,7 +120,7 @@ function selectAll() {
 
 
                                 <div class="col-md-5" >
-                                  <label>Dependências Selecionadas</label>
+                                  <label>Dependências</label>
                                   <select id="dependenciasSelecionadas" name="dependenciasSelecionadas[]" class="form-control" multiple>
                                     @foreach ($dependencias as $dependencia)
                                       <option value="{{$dependencia->id}}">{{ $dependencia->nome }}</option>

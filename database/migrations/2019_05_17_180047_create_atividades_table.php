@@ -17,6 +17,10 @@ class CreateAtividadesTable extends Migration
             $table->bigIncrements('id');
             $table->string('titulo')->nullable();
             $table->decimal('pontuacao')->nullable();
+            $table->integer('professor_id')->unsigned();
+            $table->foreign('professor_id')->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }

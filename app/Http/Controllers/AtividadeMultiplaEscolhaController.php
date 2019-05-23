@@ -1,14 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 
 class AtividadeMultiplaEscolhaController extends Controller
 {
   public function cadastrar(Request $request){
     $atividade = new \App\Atividade();
-    $atividade->titulo = $request->titulo;
+    $atividade->titulo = $request->pergunta;
+    if($user = Auth::user()) {
+      $atividade->professor_id = Auth::user()->id;
+     }
     $atividade->pontuacao = $request->pontuacao;
     $atividade->save();
 
@@ -32,7 +35,7 @@ class AtividadeMultiplaEscolhaController extends Controller
     $atividadeMultiplaEscolha->save();
 
 
-    session()->flash('success', 'Atividade cadastrada com sucesso.');
-    return back();
+    session()->flash('success', 'Atividade inserida com sucesso.');
+    return redirect()->route('/atividade/listarUser');
   }
 }

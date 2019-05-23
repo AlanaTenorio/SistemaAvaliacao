@@ -30,6 +30,7 @@ Route::get('/turma/cadastrar', function(Request $request) {
 Route::post('/turma/cadastrar', 'TurmaController@inserir')->middleware('auth');
 Route::get('/turma/listarUser', 'TurmaController@listarUser')->name('/turma/listarUser')->middleware('auth');
 Route::get('/turma/exibir/{id}', 'TurmaController@exibir')->name('/turma/exibir');
+Route::get('/turma/gerenciar/{id}', 'TurmaController@gerenciar')->name('/turma/gerenciar');
 Route::get('/turma/remover/{id}', 'TurmaController@remover')->name('/turma/remover')->middleware('auth');
 Route::get('/turma/editar/{id}', 'TurmaController@editar')->name('/turma/editar')->middleware('auth');
 Route::post('/turma/salvar', 'TurmaController@salvar')->name('/turma/salvar')->middleware('auth');
@@ -37,6 +38,8 @@ Route::get('/turma/listarSolicitacoes/{id}', 'ProfessorController@listarSolicita
 Route::get('/turma/aceitarSolicitacao/{id}', 'ProfessorController@aceitarSolicitacao')->name('/turma/aceitarSolicitacao')->middleware('auth');
 Route::get('/turma/compartilhar/{id}', 'TurmaController@compartilhar')->name('/turma/compartilhar')->middleware('auth');
 Route::get('/turma/listarConteudos/{id}', 'ConteudoController@listarConteudosTurma')->name('/turma/listarConteudos')->middleware('auth');
+Route::get('/turma/listarAlunosMatriculados/{id}', 'TurmaController@listarAlunosMatriculados')->name('/turma/listarAlunosMatriculados')->middleware('auth');
+
 //Conteudo
 Route::get('/conteudo/inserirConteudo/{id}', 'ConteudoController@inserirConteudo')->name('/conteudo/inserirConteudo/')->middleware('auth');
 Route::post('/conteudo/cadastrar', 'ConteudoController@cadastrar')->name('/conteudo/cadastrar')->middleware('auth');
@@ -47,10 +50,13 @@ Route::post('/conteudo/salvar', 'ConteudoController@salvar')->name('/conteudo/sa
 Route::get('/lista/listarTurmasConteudos', 'ListaController@listarTurmasConteudos')->name('/lista/listarTurmasConteudos')->middleware('auth');
 Route::get('/lista/inserirLista/{id}', 'ListaController@inserirLista')->name('/lista/inserirLista')->middleware('auth');
 Route::post('/lista/cadastrar', 'ListaController@cadastrar')->name('/lista/cadastrar')->middleware('auth');
-//Atividades
+//Atividade
 Route::get('/atividade/cadastrar', function(Request $request) {
     return view('professor/CriarQuestao');
 })->name('/atividade/cadastrar')->middleware('auth');
+Route::get('/atividade/listarUser', 'AtividadeController@listarAtividadesUser')->name('/atividade/listarUser')->middleware('auth');
+Route::get('/atividade/exibir/{id}', 'AtividadeController@exibirAtividadeMultiplaEscolha')->name('/atividade/exibir');
+
 //Questão múltipla escola
 Route::get('/atividade/cadastrarMultipla', function(Request $request) {
     return view('professor/CadastrarQuestaoMultipla');

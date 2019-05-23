@@ -27,6 +27,7 @@
                             <thead>
                               <tr>
                                   <th>Nome</th>
+                                  <th>Disciplina</th>
                                   <th>Descrição</th>
                                   <th>Ano</th>
                                   <th>Carga Horária</th>
@@ -36,7 +37,8 @@
                             <tbody>
                               @foreach ($turmas as $turma)
                                 <tr>
-                                    <td data-title="Nome">{{ $turma->disciplina->nome }}</td>
+                                    <td data-title="Nome">{{ $turma->nome }}</td>
+                                    <td data-title="Disciplina">{{ $turma->disciplina->nome }}</td>
                                     <td data-title="Descrição">{{ $turma->disciplina->descricao }}</td>
                                     <td data-title="Ano">{{ $turma->ano }}</td>
                                     <td data-title="Carga Horária">{{ $turma->disciplina->carga_horaria }}</td>
