@@ -5,18 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Criar Questão') }}</div>
+                <div class="card-header">{{ __('Criar Questão - Múltipla Escolha') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="/atividadeMultipla/cadastrar">
                       {{ csrf_field() }}
                         @csrf
 
                         <div class="form-group row">
 
                             <div class="col-md-12">
-                              <textarea name="enunciado" id="enunciado" type="text" class="form-control" placeholder="Digite aqui o enunciado da questão" required value= {{ old('enunciado')}}> {{ $errors->first('enunciado')}} </textarea>
-                                @error('enunciado')
+                              <textarea name="pergunta" id="pergunta" type="text" class="form-control" placeholder="Digite aqui o pergunta da questão" required value= {{ old('pergunta')}}> {{ $errors->first('pergunta')}} </textarea>
+                                @error('pergunta')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -103,8 +103,8 @@
                         <div class="form-group row">
                             <label for="pontos" class="col-md-2 col-form-label text-md-right">{{ __('Pontos:') }}</label>
                             <div class="col-md-2">
-                              <input name="pontos" id="pontos" type="number" step="0.01" min="0" max="10" class="form-control" required value= {{ old('pontos')}}> {{ $errors->first('pontos')}}
-                                @error('pontos')
+                              <input name="pontuacao" id="pontuacao" type="number" step="0.01" min="0" max="10" class="form-control" required value= {{ old('pontuacao')}}> {{ $errors->first('pontuacao')}}
+                                @error('pontuacao')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

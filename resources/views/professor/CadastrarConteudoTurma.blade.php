@@ -107,7 +107,7 @@ function selectAll() {
                             <div class="container">
                               <div class="row">
                                 <div class="col-md-5">
-                                  <label>Dependências</label>
+                                  <label>Conteúdos</label>
                                   <select id="dependencias" class="form-control" multiple>
                                     @foreach ($conteudos as $conteudo)
                                       <option value="{{$conteudo->id}}">{{ $conteudo->nome }}</option>
@@ -122,7 +122,7 @@ function selectAll() {
                                 </div>
 
                                 <div class="col-md-5">
-                                  <label>Dependências Selecionadas</label>
+                                  <label>Dependências</label>
                                   <select id="dependenciasSelecionadas" name="dependenciasSelecionadas[]" class="form-control" multiple>
                                   </select>
                                 </div>

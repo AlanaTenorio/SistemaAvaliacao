@@ -15,8 +15,9 @@ class CreateTurmaAlunosTable extends Migration
     {
         Schema::create('turma_alunos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('ativo')->default('false');
             
+            $table->boolean('ativo')->default('false');
+
             $table->integer('turma_id')->unsigned();
             $table->foreign('turma_id')->references('id')
             		->on('users');

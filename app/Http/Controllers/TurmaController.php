@@ -21,6 +21,7 @@ class TurmaController extends Controller
 			 }
 			 //turma
 			 $turma->ano = $request->ano;
+			 $turma->nome = $request->nome_turma;
 
 			 $turma->save();
 
@@ -65,6 +66,18 @@ class TurmaController extends Controller
 				]);
 	    }
 
+			public function gerenciar(Request $request) {
+			$turma = \App\Turma::find($request->id);
+			$disciplina = \App\Disciplina::where('turma_id', '=', $turma->id)->get();
+			$professor = \App\User::find($turma->professor_id);
+
+			return view("professor/GerenciarTurma", [
+					"turma" => $turma,
+					"professor" => $professor,
+					"disciplina" => $disciplina,
+				]);
+	    }
+
 			public function remover(Request $request){
 			$turma = \App\Turma::find($request->id);
 			$turma->delete();
@@ -89,6 +102,7 @@ class TurmaController extends Controller
 				$turma->professor_id = Auth::user()->id;
 			 }
  			$turma->ano = $request->ano;
+			$turma->nome = $request->nome_turma;
 
  			$turma->save();
 
@@ -96,7 +110,7 @@ class TurmaController extends Controller
  			$disciplina = \App\Disciplina::where('turma_id', '=', $request->id)->first();
 
  			$disciplina->carga_horaria = $request->carga_horaria;
- 			$disciplina->nome = $request->nome;
+ 			$disciplina->nome = $request->nome_disciplina;
 			$disciplina->descricao = $request->descricao;
 
 
@@ -157,5 +171,20 @@ class TurmaController extends Controller
         $turma = \App\Turma::find($request->id);
         return view("professor/CompartilharTurma", ['turma' => $turma]);
     }
+
+		public function listarAlunosMatriculados(Request $request){
+			$turma_alunos = \App\Turma_aluno::where('turma_id', '=', $request->id)
+																				->where('ativo', '=', true)
+																				->get();
+
+			$alunos = array();
+	    foreach ($turma_alunos as $turma_aluno) {
+	      $aluno = \App\User::find($turma_aluno->aluno_id);
+
+	      array_push($alunos, $aluno);
+	    }
+
+			return view("professor/VisualizarAlunosMatriculados", ["alunos" => $alunos]);
+	}
 
 }

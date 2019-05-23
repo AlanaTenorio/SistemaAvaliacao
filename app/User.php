@@ -38,6 +38,10 @@ class User extends Authenticatable
     ];
 
     public function turma(){
-      return $this->hasToMany('Turma');
+      return $this->hasMany('Turma');
+    }
+
+    public function turma_aluno(){
+      return $this->hasMany('Turma_aluno');
     }
 }

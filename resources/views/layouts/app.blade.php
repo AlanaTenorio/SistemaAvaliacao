@@ -88,24 +88,39 @@
             </li>
 
 
-
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   <i class="ni ni-ruler-pencil text-blue"></i> Questões <span class="caret"></span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('/atividade/cadastrar') }}">
-                      Criar Nova
+                  
+                    <a class="dropdown-item" href="{{ route('/atividade/listarUser') }}">
+                        Minhas Questões
                     </a>
                     <a class="dropdown-item" href="">
                         Buscar Questões
                     </a>
                 </div>
             </li>
+            <hr class="my-3">
+              <?php $id = Auth::user()->id;
+              $turmas = \App\Turma::where('professor_id', '=', $id)->orderBy('ano', 'DESC')->get();
+              ?>
+              @if(count($turmas) != 0 and count($turmas) != 0)
+              <a class="nav-link">
+              <b>    Minhas turmas </b>
+              @foreach ($turmas as $turma)
+              <li class="nav-item">
 
-
+                <a class="nav-link" href="/turma/gerenciar/{{$turma->id}}">
+                    {{$turma->nome}}
+                </a>
+              </li>
+              @endforeach
             @endif
+            @endif
+
             @if (Auth::guard()->check() && Auth::user()->isAluno)
                   <li class="nav-item dropdown">
                       <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -142,7 +157,7 @@
 
         </ul>
         <!-- Divider -->
-        <hr class="my-3">
+
 
       </div>
     </div>

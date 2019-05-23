@@ -13,7 +13,21 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="nome_disciplina" class="col-md-4 col-form-label text-md-right">{{ __('Nome ') }}</label>
+                            <label for="nome_turma" class="col-md-4 col-form-label text-md-right">{{ __('Nome da turma') }}</label>
+
+                            <div class="col-md-6">
+                              <input name="nome_turma" id="nome_turma" type="text" class="form-control" required value= {{ old('nome_turma')}}> {{ $errors->first('nome_turma')}}
+
+                                @error('nome_turma')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="nome_disciplina" class="col-md-4 col-form-label text-md-right">{{ __('Disciplina') }}</label>
 
                             <div class="col-md-6">
                               <input name="nome_disciplina" id="nome_disciplina" type="text" class="form-control" required value= {{ old('nome_disciplina')}}> {{ $errors->first('nome_disciplina')}}

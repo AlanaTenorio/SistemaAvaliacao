@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-auto">
                           <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                            <a href="">
+                            <a href="{{ route('/atividade/cadastrar') }}">
                             <img src="{{asset('assets/images/books.png')}}" height="21" width="20" align = "right">
                             </a>
                           </div>
