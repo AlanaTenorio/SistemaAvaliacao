@@ -14,10 +14,10 @@
 
                     @if (Auth::guard()->check() && Auth::user()->isProfessor == true && $professor->id == Auth::user()->id)
                     <i class="ni ni-ruler-pencil text-blue"></i> <b>Criar Questões</b>
-                    <a class="nav-link" href="{{ route('/atividade/cadastrarMultipla') }}">
+                    <a class="nav-link" href="{{ route("/atividade/inserirAtividadeMultipla/", ['id' => $turma->id]) }}">
                         <i class="ni ni-bullet-list-67 text-blue"></i> Questão de Múltipla Escolha
                       </a>
-                      <a class="nav-link" href="{{ route('/atividade/cadastrarImagem') }}">
+                      <a class="nav-link" href="{{ route("/atividade/inserirAtividadeImagem/", ['id' => $turma->id]) }}">
                           <i class="ni ni-image text-blue"></i> Associar Imagem-texto
                       </a>
                       <a class="nav-link" href="{{ route('/atividade/cadastrarImagem') }}">

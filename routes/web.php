@@ -58,12 +58,14 @@ Route::get('/atividade/listarUser', 'AtividadeController@listarAtividadesUser')-
 Route::get('/atividade/exibir/{id}', 'AtividadeController@exibirAtividadeMultiplaEscolha')->name('/atividade/exibir');
 
 //Questão múltipla escola
+Route::get('/atividade/inserirAtividadeMultipla/{id}', 'AtividadeMultiplaEscolhaController@inserirAtividade')->name('/atividade/inserirAtividadeMultipla/')->middleware('auth');
 Route::get('/atividade/cadastrarMultipla', function(Request $request) {
     return view('professor/CadastrarQuestaoMultipla');
 })->name('/atividade/cadastrarMultipla')->middleware('auth');
 Route::post('/atividadeMultipla/cadastrar', 'AtividadeMultiplaEscolhaController@cadastrar')->name('/atividadeMultipla/cadastrar')->middleware('auth');
 
 //Questão Associar imagem-texto
+Route::get('/atividade/inserirAtividadeImagem/{id}', 'AtividadeAssociarImagemController@inserirAtividade')->name('/atividade/inserirAtividadeImagem/')->middleware('auth');
 Route::get('/atividade/cadastrarImagem', function(Request $request) {
     return view('professor/CadastrarQuestaoImagemTexto');
 })->name('/atividade/cadastrarImagem')->middleware('auth');

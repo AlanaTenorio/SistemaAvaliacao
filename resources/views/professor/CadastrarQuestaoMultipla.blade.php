@@ -11,6 +11,7 @@
                     <form method="POST" action="/atividadeMultipla/cadastrar">
                       {{ csrf_field() }}
                         @csrf
+                      <input type="hidden" name="turma_id" value="{{ $turma->id}}" />
 
                         <div class="form-group row">
 
@@ -100,7 +101,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="pontos" class="col-md-2 col-form-label text-md-right">{{ __('Pontos:') }}</label>
                             <div class="col-md-2">
                               <input name="pontuacao" id="pontuacao" type="number" step="0.01" min="0" max="10" class="form-control" required value= {{ old('pontuacao')}}> {{ $errors->first('pontuacao')}}
@@ -110,6 +111,25 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div> -->
+                        <div class="form-group row">
+                              <label for="conteudo_id" class="col-md-2 col-form-label text-md-right">{{ __('Conteúdo') }}</label>
+                              @if(count($conteudos) != 0 and count($conteudos) != 0)
+                              <div class="col-md-6">
+                                <select class="form-control" id="conteudos" name="conteudo_id" required>
+        								              <option value="">Selecione um conteúdo</option>
+        								              @foreach($conteudos as $conteudo)
+        									            <option value="{{$conteudo->id}}">{{$conteudo->nome}}</option>
+        								              @endforeach
+                                </select>
+                              </div>
+                              @else
+                              <div class="col-md-6">
+                                <select class="form-control" id="conteudos" name="conteudo_id" required>
+        								              <option value="">Não há conteúdos cadastrados</option>
+                                </select>
+                              </div>
+                              @endif
                         </div>
 
                         <div class="form-group row mb-0">

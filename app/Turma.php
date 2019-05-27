@@ -29,4 +29,8 @@ class Turma extends Model
     public function disciplina(){
       return $this->hasOne(\App\Disciplina::class);
     }
+
+    public function atividades(){
+      return $this->hasMany('Atividade');
+    }
 }

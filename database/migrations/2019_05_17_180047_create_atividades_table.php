@@ -17,10 +17,19 @@ class CreateAtividadesTable extends Migration
             $table->bigIncrements('id');
             $table->string('titulo')->nullable();
             $table->decimal('pontuacao')->nullable();
+            $table->integer('turma_id')->unsigned();
+            $table->foreign('turma_id')->references('id')
+                    ->on('turmas')
+                    ->onDelete('cascade');
+            $table->integer('conteudo_id')->unsigned();
+            $table->foreign('conteudo_id')->references('id')
+                    ->on('conteudos')
+                    ->onDelete('cascade');
             $table->integer('professor_id')->unsigned();
             $table->foreign('professor_id')->references('id')
                     ->on('users')
                     ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

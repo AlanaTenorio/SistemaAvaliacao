@@ -108,103 +108,147 @@ function readimg6(input) {
                 <div class="card-header">{{ __('Criar Questão') }}</div>
 
                 <div class="card-body">
+                  <div class="form-group row">
 
-                    <body>
-                      <input type='file' onchange="readimg1(this);" />
-                        <img id="img1" src="#"  alt=" " />
-                    </body>
+                      <div class="col-md-12">
+                        <textarea name="pergunta" id="pergunta" type="text" class="form-control" placeholder="Digite aqui o pergunta da questão" required value= {{ old('pergunta')}}> {{ $errors->first('pergunta')}} </textarea>
+                          @error('pergunta')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                      </div>
+                  </div>
 
+                  <div class="form-group row">
+                        <label for="conteudo_id" class="col-md-2 col-form-label text-md-right">{{ __('Conteúdo') }}</label>
+                        @if(count($conteudos) != 0 and count($conteudos) != 0)
+                        <div class="col-md-6">
+                          <select class="form-control" id="conteudos" name="conteudo_id" required>
+                                <option value="">Selecione um conteúdo</option>
+                                @foreach($conteudos as $conteudo)
+                                <option value="{{$conteudo->id}}">{{$conteudo->nome}}</option>
+                                @endforeach
+                          </select>
+                        </div>
+                        @else
+                        <div class="col-md-6">
+                          <select class="form-control" id="conteudos" name="conteudo_id" required>
+                                <option value="">Não há conteúdos cadastrados</option>
+                          </select>
+                        </div>
+                        @endif
+                  </div>
+
+                  <div class="card-body">
+
+                      <body>
+                        <input type='file' onchange="readimg1(this);" />
+                          <img id="img1" src="#"  alt=" " />
+                      </body>
+
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="respostaImg1" class="col-md-4 col-form-label text-md-right">{{ __('1. ') }}</label>
+
+                      <div class="col-md-6">
+                        <input name="respostaImg1" id="respostaImg1" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg1')}}> {{ $errors->first('respostaImg1')}}
+
+                      </div>
+                  </div>
+
+
+                  <div class="card-body">
+
+                      <body>
+                        <input type='file' onchange="readimg2(this);" />
+                          <img id="img2" src="#"  alt=" " />
+                      </body>
+                  </div>
+                  <div class="form-group row">
+                      <label for="respostaImg2" class="col-md-4 col-form-label text-md-right">{{ __('2. ') }}</label>
+
+                      <div class="col-md-6">
+                        <input name="respostaImg2" id="respostaImg2" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg2')}}> {{ $errors->first('respostaImg2')}}
+
+                      </div>
+                  </div>
+
+                  <div class="card-body">
+
+                      <body>
+                        <input type='file' onchange="readimg3(this);" />
+                          <img id="img3" src="#"  alt=" " />
+                      </body>
+                  </div>
+                  <div class="form-group row">
+                      <label for="respostaImg3" class="col-md-4 col-form-label text-md-right">{{ __('3. ') }}</label>
+
+                      <div class="col-md-6">
+                        <input name="respostaImg3" id="respostaImg3" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg3')}}> {{ $errors->first('respostaImg3')}}
+
+                      </div>
+                  </div>
+
+                  <div class="card-body">
+
+                      <body>
+                        <input type='file' onchange="readimg4(this);" />
+                          <img id="img4" src="#"  alt=" " />
+                      </body>
+                  </div>
+                  <div class="form-group row">
+                      <label for="respostaImg4" class="col-md-4 col-form-label text-md-right">{{ __('4. ') }}</label>
+
+                      <div class="col-md-6">
+                        <input name="respostaImg4" id="respostaImg4" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg4')}}> {{ $errors->first('respostaImg4')}}
+
+                      </div>
+                  </div>
+
+                  <div class="card-body">
+
+                      <body>
+                        <input type='file' onchange="readimg5(this);" />
+                          <img id="img5" src="#"  alt=" " />
+                      </body>
+                  </div>
+                  <div class="form-group row">
+                      <label for="respostaImg5" class="col-md-4 col-form-label text-md-right">{{ __('5. ') }}</label>
+
+                      <div class="col-md-6">
+                        <input name="respostaImg5" id="respostaImg5" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg5')}}> {{ $errors->first('respostaImg5')}}
+
+                      </div>
+                  </div>
+
+                  <div class="card-body">
+
+                      <body>
+                        <input type='file' onchange="readimg6(this);" />
+                          <img id="img6" src="#"  alt=" " />
+                      </body>
+                  </div>
+                  <div class="form-group row">
+                      <label for="respostaImg6" class="col-md-4 col-form-label text-md-right">{{ __('6. ') }}</label>
+
+                      <div class="col-md-6">
+                        <input name="respostaImg6" id="respostaImg6" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg6')}}> {{ $errors->first('respostaImg6')}}
+
+                      </div>
+                  </div>
+
+                  <div class="form-group row mb-0">
+                      <div class="col-md-6 offset-md-5">
+                        <button type="submit" class="btn btn-primary">
+                            Cadastrar
+                        </button>
+                      </div>
+                  </div>
+                  
                 </div>
 
-                <div class="form-group row">
-                    <label for="respostaImg1" class="col-md-4 col-form-label text-md-right">{{ __('1. ') }}</label>
-
-                    <div class="col-md-6">
-                      <input name="respostaImg1" id="respostaImg1" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg1')}}> {{ $errors->first('respostaImg1')}}
-
-                    </div>
-                </div>
-
-
-                <div class="card-body">
-
-                    <body>
-                      <input type='file' onchange="readimg2(this);" />
-                        <img id="img2" src="#"  alt=" " />
-                    </body>
-                </div>
-                <div class="form-group row">
-                    <label for="respostaImg2" class="col-md-4 col-form-label text-md-right">{{ __('2. ') }}</label>
-
-                    <div class="col-md-6">
-                      <input name="respostaImg2" id="respostaImg2" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg2')}}> {{ $errors->first('respostaImg2')}}
-
-                    </div>
-                </div>
-
-                <div class="card-body">
-
-                    <body>
-                      <input type='file' onchange="readimg3(this);" />
-                        <img id="img3" src="#"  alt=" " />
-                    </body>
-                </div>
-                <div class="form-group row">
-                    <label for="respostaImg3" class="col-md-4 col-form-label text-md-right">{{ __('3. ') }}</label>
-
-                    <div class="col-md-6">
-                      <input name="respostaImg3" id="respostaImg3" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg3')}}> {{ $errors->first('respostaImg3')}}
-
-                    </div>
-                </div>
-
-                <div class="card-body">
-
-                    <body>
-                      <input type='file' onchange="readimg4(this);" />
-                        <img id="img4" src="#"  alt=" " />
-                    </body>
-                </div>
-                <div class="form-group row">
-                    <label for="respostaImg4" class="col-md-4 col-form-label text-md-right">{{ __('4. ') }}</label>
-
-                    <div class="col-md-6">
-                      <input name="respostaImg4" id="respostaImg4" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg4')}}> {{ $errors->first('respostaImg4')}}
-
-                    </div>
-                </div>
-
-                <div class="card-body">
-
-                    <body>
-                      <input type='file' onchange="readimg5(this);" />
-                        <img id="img5" src="#"  alt=" " />
-                    </body>
-                </div>
-                <div class="form-group row">
-                    <label for="respostaImg5" class="col-md-4 col-form-label text-md-right">{{ __('5. ') }}</label>
-
-                    <div class="col-md-6">
-                      <input name="respostaImg5" id="respostaImg5" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg5')}}> {{ $errors->first('respostaImg5')}}
-
-                    </div>
-                </div>
-
-                <div class="card-body">
-
-                    <body>
-                      <input type='file' onchange="readimg6(this);" />
-                        <img id="img6" src="#"  alt=" " />
-                    </body>
-                </div>
-                <div class="form-group row">
-                    <label for="respostaImg6" class="col-md-4 col-form-label text-md-right">{{ __('6. ') }}</label>
-
-                    <div class="col-md-6">
-                      <input name="respostaImg6" id="respostaImg6" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg6')}}> {{ $errors->first('respostaImg6')}}
-
-                    </div>
-                </div>
             </div>
         </div>
     </div>

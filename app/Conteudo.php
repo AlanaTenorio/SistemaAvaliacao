@@ -23,4 +23,8 @@ class Conteudo extends Model
     public function dependencias(){
       return $this->hasMany('Conteudo');
     }
+
+    public function atividades(){
+      return $this->hasMany('Atividade');
+    }
 }
