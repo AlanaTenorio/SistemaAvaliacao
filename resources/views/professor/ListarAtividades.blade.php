@@ -27,7 +27,7 @@
                             <thead>
                               <tr>
                                   <th>Título</th>
-                                  <th>Pontuação</th>
+                                  <th>Tipo</th>
                                   <th colspan="2">Ações</th>
                               </tr>
                             </thead>
@@ -35,11 +35,24 @@
                               @foreach ($atividades as $atividade)
                                 <tr>
                                     <td data-title="Nome">{{ $atividade->titulo }}</td>
-                                    <td data-title="Ano">{{ $atividade->pontuacao }}</td>
+                                    @if ($atividade->tipo == 1)
+                                    <td data-title="Tipo">Questão Múltipla escolha</td>
+                                    @elseif ($atividade->tipo == 2)
+                                    <td data-title="Tipo">Questão Associar imagem-texto</td>
+                                    @elseif($atividade->tipo == 3)
+                                    <td data-title="Tipo">Questão Associar imagem-áudio</td>
+                                    @endif
                                     <td>
-                                      <a class="btn btn-primary" href="{{ route("/atividade/exibir", ['id' => $atividade->id]) }}">
+                                      @if ($atividade->tipo == 1)
+                                      <a class="btn btn-primary" href="{{ route("/atividadeMultipla/exibir", ['id' => $atividade->id]) }}">
                                       <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
                                       </a>
+                                      @elseif ($atividade->tipo == 2)
+                                      <a class="btn btn-primary" href="{{ route("/atividadeImagem/exibir", ['id' => $atividade->id]) }}">
+                                      <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
+                                      </a>
+                                      @endif
+
                                     </td>
 
                                 </tr>

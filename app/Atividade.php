@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Atividade extends Model
 {
-    protected $filleable = ['titulo', 'pontuacao', 'professor_id', 'turma_id', 'conteudo_id'];
+    protected $filleable = ['titulo', 'tipo', 'pontuacao', 'professor_id', 'turma_id', 'conteudo_id'];
 
     public function professor(){
       return $this->belongsTo('User');

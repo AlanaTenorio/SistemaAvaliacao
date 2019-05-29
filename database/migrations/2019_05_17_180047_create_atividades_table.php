@@ -18,6 +18,7 @@ class CreateAtividadesTable extends Migration
             $table->string('titulo')->nullable();
             $table->decimal('pontuacao')->nullable();
             $table->integer('turma_id')->unsigned();
+            $table->integer('tipo')->unsigned();
             $table->foreign('turma_id')->references('id')
                     ->on('turmas')
                     ->onDelete('cascade');

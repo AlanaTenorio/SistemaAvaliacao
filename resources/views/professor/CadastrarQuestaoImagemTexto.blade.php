@@ -72,20 +72,6 @@ function readimg5(input) {
             reader.readAsDataURL(input.files[0]);
         }
 }
-function readimg6(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#img6')
-                    .attr('src', e.target.result)
-                    .width(120)
-                    .height(120);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-}
 </script>
 <head>
     <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
@@ -105,9 +91,14 @@ function readimg6(input) {
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Criar Questão') }}</div>
+                <div class="card-header">{{ __('Criar Questão - Associar Imagem-Texto') }}</div>
 
                 <div class="card-body">
+
+                  <form method="POST" action="/atividadeImagem/cadastrar" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                      @csrf
+                    <input type="hidden" name="turma_id" value="{{ $turma->id}}" />
                   <div class="form-group row">
 
                       <div class="col-md-12">
@@ -143,7 +134,7 @@ function readimg6(input) {
                   <div class="card-body">
 
                       <body>
-                        <input type='file' onchange="readimg1(this);" />
+                        <input type='file' onchange="readimg1(this);"  id="image1" name="image1" accept="image/*"/>
                           <img id="img1" src="#"  alt=" " />
                       </body>
 
@@ -153,7 +144,7 @@ function readimg6(input) {
                       <label for="respostaImg1" class="col-md-4 col-form-label text-md-right">{{ __('1. ') }}</label>
 
                       <div class="col-md-6">
-                        <input name="respostaImg1" id="respostaImg1" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg1')}}> {{ $errors->first('respostaImg1')}}
+                        <input name="respostaImg1" id="respostaImg1" type="text" class="form-control" placeholder="Resposta"  value= {{ old('respostaImg1')}}> {{ $errors->first('respostaImg1')}}
 
                       </div>
                   </div>
@@ -162,7 +153,7 @@ function readimg6(input) {
                   <div class="card-body">
 
                       <body>
-                        <input type='file' onchange="readimg2(this);" />
+                        <input type='file' onchange="readimg2(this);" id="image2" name="image2" />
                           <img id="img2" src="#"  alt=" " />
                       </body>
                   </div>
@@ -170,7 +161,7 @@ function readimg6(input) {
                       <label for="respostaImg2" class="col-md-4 col-form-label text-md-right">{{ __('2. ') }}</label>
 
                       <div class="col-md-6">
-                        <input name="respostaImg2" id="respostaImg2" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg2')}}> {{ $errors->first('respostaImg2')}}
+                        <input name="respostaImg2" id="respostaImg2" type="text" class="form-control" placeholder="Resposta"  value= {{ old('respostaImg2')}}> {{ $errors->first('respostaImg2')}}
 
                       </div>
                   </div>
@@ -178,7 +169,7 @@ function readimg6(input) {
                   <div class="card-body">
 
                       <body>
-                        <input type='file' onchange="readimg3(this);" />
+                        <input type='file' onchange="readimg3(this);" id="image3" name="image3"/>
                           <img id="img3" src="#"  alt=" " />
                       </body>
                   </div>
@@ -186,7 +177,7 @@ function readimg6(input) {
                       <label for="respostaImg3" class="col-md-4 col-form-label text-md-right">{{ __('3. ') }}</label>
 
                       <div class="col-md-6">
-                        <input name="respostaImg3" id="respostaImg3" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg3')}}> {{ $errors->first('respostaImg3')}}
+                        <input name="respostaImg3" id="respostaImg3" type="text" class="form-control" placeholder="Resposta"  value= {{ old('respostaImg3')}}> {{ $errors->first('respostaImg3')}}
 
                       </div>
                   </div>
@@ -194,7 +185,7 @@ function readimg6(input) {
                   <div class="card-body">
 
                       <body>
-                        <input type='file' onchange="readimg4(this);" />
+                        <input type='file' onchange="readimg4(this);" id="image4" name="image4"/>
                           <img id="img4" src="#"  alt=" " />
                       </body>
                   </div>
@@ -202,7 +193,7 @@ function readimg6(input) {
                       <label for="respostaImg4" class="col-md-4 col-form-label text-md-right">{{ __('4. ') }}</label>
 
                       <div class="col-md-6">
-                        <input name="respostaImg4" id="respostaImg4" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg4')}}> {{ $errors->first('respostaImg4')}}
+                        <input name="respostaImg4" id="respostaImg4" type="text" class="form-control" placeholder="Resposta"  value= {{ old('respostaImg4')}}> {{ $errors->first('respostaImg4')}}
 
                       </div>
                   </div>
@@ -210,7 +201,7 @@ function readimg6(input) {
                   <div class="card-body">
 
                       <body>
-                        <input type='file' onchange="readimg5(this);" />
+                        <input type='file' onchange="readimg5(this);" id="image5" name="image5"/>
                           <img id="img5" src="#"  alt=" " />
                       </body>
                   </div>
@@ -218,26 +209,11 @@ function readimg6(input) {
                       <label for="respostaImg5" class="col-md-4 col-form-label text-md-right">{{ __('5. ') }}</label>
 
                       <div class="col-md-6">
-                        <input name="respostaImg5" id="respostaImg5" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg5')}}> {{ $errors->first('respostaImg5')}}
+                        <input name="respostaImg5" id="respostaImg5" type="text" class="form-control" placeholder="Resposta"  value= {{ old('respostaImg5')}}> {{ $errors->first('respostaImg5')}}
 
                       </div>
                   </div>
 
-                  <div class="card-body">
-
-                      <body>
-                        <input type='file' onchange="readimg6(this);" />
-                          <img id="img6" src="#"  alt=" " />
-                      </body>
-                  </div>
-                  <div class="form-group row">
-                      <label for="respostaImg6" class="col-md-4 col-form-label text-md-right">{{ __('6. ') }}</label>
-
-                      <div class="col-md-6">
-                        <input name="respostaImg6" id="respostaImg6" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg6')}}> {{ $errors->first('respostaImg6')}}
-
-                      </div>
-                  </div>
 
                   <div class="form-group row mb-0">
                       <div class="col-md-6 offset-md-5">
@@ -246,7 +222,7 @@ function readimg6(input) {
                         </button>
                       </div>
                   </div>
-                  
+                  </form>
                 </div>
 
             </div>

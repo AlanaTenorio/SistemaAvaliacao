@@ -16,6 +16,7 @@ class CreateItemAtividadeImagemsTable extends Migration
         Schema::create('item_atividade_imagems', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('imagem');
+            $table->string('resposta');
             $table->integer('ordem');
             $table->integer('atividade_id');
             $table->foreign('atividade_id')->references('id')->on('atividade_associar_imagems');

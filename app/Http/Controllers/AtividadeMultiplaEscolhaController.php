@@ -22,9 +22,11 @@ class AtividadeMultiplaEscolhaController extends Controller
     if($user = Auth::user()) {
       $atividade->professor_id = Auth::user()->id;
      }
-    $atividade->pontuacao = $request->pontuacao;
+    //$atividade->pontuacao = $request->pontuacao;
     $atividade->turma_id = $request->turma_id;
     $atividade->conteudo_id = $request->conteudo_id;
+    //Tipo Múltipla escolha
+    $atividade->tipo = 1;
     $atividade->save();
 
     $atividadeMultiplaEscolha = new \App\AtividadeMultiplaEscolha();

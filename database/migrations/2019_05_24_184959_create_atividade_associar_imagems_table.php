@@ -16,6 +16,10 @@ class CreateAtividadeAssociarImagemsTable extends Migration
         Schema::create('atividade_associar_imagems', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('pergunta');
+            $table->integer('atividade_id')->unsigned();
+            $table->foreign('atividade_id')->references('id')
+                    ->on('atividades')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }
