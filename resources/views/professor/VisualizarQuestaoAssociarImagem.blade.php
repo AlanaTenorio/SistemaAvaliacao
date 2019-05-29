@@ -28,7 +28,7 @@
                               </div>
 
                               <div class="col-md-1" >
-                                <i class="ni ni-bold-right text-blue"></i>
+                                <i class="ni ni-bold-right text-blue" style="padding-top: 15px;"></i>
                               </div>
 
                               <div class="col-md-5">
@@ -40,8 +40,13 @@
 
                           </div>
 
+
                         </div>
                         @endforeach
+                        <div class="panel-footer">
+                            <center><a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a></center>
+
+                        </div>
 
                 </div>
             </div>
