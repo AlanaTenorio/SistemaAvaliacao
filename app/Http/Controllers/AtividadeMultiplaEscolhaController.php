@@ -6,13 +6,27 @@ use Illuminate\Http\Request;
 
 class AtividadeMultiplaEscolhaController extends Controller
 {
+
+  public function inserirAtividade(Request $request){
+    $turma = \App\Turma::find($request->id);
+    $conteudos = \App\Conteudo::where('turma_id', '=', $request->id)->get();
+
+    return view("professor/CadastrarQuestaoMultipla", [
+        "turma" => $turma,
+        "conteudos" => $conteudos,
+    ]);
+  }
   public function cadastrar(Request $request){
     $atividade = new \App\Atividade();
     $atividade->titulo = $request->pergunta;
     if($user = Auth::user()) {
       $atividade->professor_id = Auth::user()->id;
      }
-    $atividade->pontuacao = $request->pontuacao;
+    //$atividade->pontuacao = $request->pontuacao;
+    $atividade->turma_id = $request->turma_id;
+    $atividade->conteudo_id = $request->conteudo_id;
+    //Tipo Múltipla escolha
+    $atividade->tipo = 1;
     $atividade->save();
 
     $atividadeMultiplaEscolha = new \App\AtividadeMultiplaEscolha();

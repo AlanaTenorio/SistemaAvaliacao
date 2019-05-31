@@ -32,4 +32,28 @@ class AtividadeController extends Controller
       ]);
   }
 
+  public function exibirAtividadeAssociarImagem(Request $request) {
+    $atividade = \App\Atividade::find($request->id);
+    $atividadeAssociarImagem = \App\AtividadeAssociarImagem::where('atividade_id' , '=', $atividade->id)->first();
+    $itens = \App\Item_atividade_imagem::where('atividade_id' , '=', $atividadeAssociarImagem->id)->get();
+
+    return view("professor/VisualizarQuestaoAssociarImagem", [
+        "atividade" => $atividade,
+        "atividadeAssociarImagem" => $atividadeAssociarImagem,
+        "itens" => $itens,
+      ]);
+  }
+
+  public function exibirAtividadeAssociarAudio(Request $request) {
+    $atividade = \App\Atividade::find($request->id);
+    $atividadeAssociarAudio = \App\AtividadeAssociarAudio::where('atividade_id' , '=', $atividade->id)->first();
+    $itens = \App\Item_atividade_audio::where('atividade_id' , '=', $atividadeAssociarAudio->id)->get();
+
+    return view("professor/VisualizarQuestaoAssociarAudio", [
+        "atividade" => $atividade,
+        "atividadeAssociarAudio" => $atividadeAssociarAudio,
+        "itens" => $itens,
+      ]);
+  }
+
 }

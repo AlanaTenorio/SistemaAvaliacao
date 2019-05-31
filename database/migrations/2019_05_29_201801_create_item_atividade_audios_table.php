@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConteudosTable extends Migration
+class CreateItemAtividadeAudiosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateConteudosTable extends Migration
      */
     public function up()
     {
-        Schema::create('conteudos', function (Blueprint $table) {
+        Schema::create('item_atividade_audios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
-            $table->string('descricao')->nullable();
-            $table->integer('turma_id')->unsigned();
-            $table->foreign('turma_id')->references('id')
-                		->on('turmas')
-                    ->onDelete('cascade');
+            $table->string('imagem');
+            $table->string('audio');
+            $table->integer('ordem');
+            $table->integer('atividade_id');
+            $table->foreign('atividade_id')->references('id')->on('atividade_associar_audio');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateConteudosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('conteudos');
+        Schema::dropIfExists('item_atividade_audios');
     }
 }

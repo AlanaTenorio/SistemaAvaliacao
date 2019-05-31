@@ -73,6 +73,21 @@ function selectAll() {
                         <input type="hidden" name="turma_id" value="{{ $turma->id}}" />
 
                         <div class="form-group row">
+                            <label for="titulo" class="col-md-4 col-form-label text-md-right">{{ __('Título ') }}</label>
+
+                            <div class="col-md-6">
+                              <input name="titulo" id="titulo" type="text" class="form-control"> {{ $errors->first('titulo')}}
+
+                                @error('titulo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
                             <label for="descricao" class="col-md-4 col-form-label text-md-right">{{ __('Descricao ') }}</label>
 
                             <div class="col-md-6">

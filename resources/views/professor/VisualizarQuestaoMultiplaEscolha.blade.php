@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Ver Questão') }}</div>
+                <div class="card-header">{{ __('Ver Questão - Múltipla Escolha') }}</div>
 
                 <div class="card-body">
                       {{ csrf_field() }}
@@ -63,14 +63,6 @@
 
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="pontos" class="col-md-2 col-form-label text-md-right">{{ __('Pontos:') }}</label>
-                            <div class="col-md-2">
-                              <input name="pontuacao" id="pontuacao" type="number" step="0.01" min="0" max="10" class="form-control" value = "{{ $atividade->pontuacao}}" required value= {{ old('pontuacao')}}> {{ $errors->first('pontuacao')}}
-
-                            </div>
-                        </div>
                         <div class="form-group row">
                             <label for="resposta" class="col-md-2 col-form-label text-md-right">{{ __('Resposta:') }}</label>
                             <div class="col-md-2">
@@ -78,6 +70,10 @@
 
                             </div>
                         </div>
+                </div>
+                <div class="panel-footer">
+                    <center><a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a></center>
+
                 </div>
             </div>
         </div>
