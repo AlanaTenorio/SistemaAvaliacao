@@ -44,4 +44,16 @@ class AtividadeController extends Controller
       ]);
   }
 
+  public function exibirAtividadeAssociarAudio(Request $request) {
+    $atividade = \App\Atividade::find($request->id);
+    $atividadeAssociarAudio = \App\AtividadeAssociarAudio::where('atividade_id' , '=', $atividade->id)->first();
+    $itens = \App\Item_atividade_audio::where('atividade_id' , '=', $atividadeAssociarAudio->id)->get();
+
+    return view("professor/VisualizarQuestaoAssociarAudio", [
+        "atividade" => $atividade,
+        "atividadeAssociarAudio" => $atividadeAssociarAudio,
+        "itens" => $itens,
+      ]);
+  }
+
 }

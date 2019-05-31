@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function turma_aluno(){
       return $this->hasMany('Turma_aluno');
     }
+
+    public function listas(){
+      return $this->hasMany('Lista');
+    }
 }

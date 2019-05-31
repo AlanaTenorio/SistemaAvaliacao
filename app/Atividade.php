@@ -20,4 +20,8 @@ class Atividade extends Model
       return $this->belongsTo('Conteudo');
     }
 
+    public function listas(){
+      return $this->belongsToMany('Lista');
+    }
+
 }

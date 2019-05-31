@@ -95,7 +95,7 @@ function readimg5(input) {
 
                 <div class="card-body">
 
-                  <form method="POST" action="/atividadeImagem/cadastrar" enctype="multipart/form-data">
+                  <form method="POST" action="/atividadeAudio/cadastrar" enctype="multipart/form-data">
                     {{ csrf_field() }}
                       @csrf
                     <input type="hidden" name="turma_id" value="{{ $turma->id}}" />
@@ -131,87 +131,123 @@ function readimg5(input) {
                         @endif
                   </div>
 
-                  <div class="card-body">
-
-                      <body>
-                        <input type='file' required onchange="readimg1(this);"  id="image1" name="image1" accept="image/*"/>
-                          <img id="img1" src="#"  alt=" " />
-                      </body>
-
-                  </div>
-
-                  <div class="form-group row">
-                      <label for="respostaImg1" class="col-md-4 col-form-label text-md-right">{{ __('1. ') }}</label>
-
-                      <div class="col-md-6">
-                        <input name="respostaImg1" id="respostaImg1" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg1')}}> {{ $errors->first('respostaImg1')}}
-
-                      </div>
-                  </div>
-
 
                   <div class="card-body">
 
-                      <body>
-                        <input type='file' required onchange="readimg2(this);" id="image2" name="image2" />
-                          <img id="img2" src="#"  alt=" " />
-                      </body>
-                  </div>
-                  <div class="form-group row">
-                      <label for="respostaImg2" class="col-md-4 col-form-label text-md-right">{{ __('2. ') }}</label>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <center><b><i class="ni ni-image text-blue"></i> Imagem</b></center>
+                        </div>
 
-                      <div class="col-md-6">
-                        <input name="respostaImg2" id="respostaImg2" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg2')}}> {{ $errors->first('respostaImg2')}}
-
+                        <div class="col-md-5">
+                          <center><b><i class="ni ni-headphones text-blue"></i> Áudio</b></center>
+                        </div>
                       </div>
+                      <br>
+
+                    </div>
+
                   </div>
+
 
                   <div class="card-body">
 
-                      <body>
-                        <input type='file' required onchange="readimg3(this);" id="image3" name="image3"/>
-                          <img id="img3" src="#"  alt=" " />
-                      </body>
-                  </div>
-                  <div class="form-group row">
-                      <label for="respostaImg3" class="col-md-4 col-form-label text-md-right">{{ __('3. ') }}</label>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <input type='file' required onchange="readimg1(this);"  id="image1" name="image1" accept="image/*"/>
+                            <img id="img1" src="#"  alt=" " />
+                        </div>
 
-                      <div class="col-md-6">
-                        <input name="respostaImg3" id="respostaImg3" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg3')}}> {{ $errors->first('respostaImg3')}}
-
+                        <div class="col-md-5">
+                          <input type='file' required id="audio1" name="audio1" accept="audio/*"/>
+                        </div>
                       </div>
+                      <br>
+
+                    </div>
+
                   </div>
 
                   <div class="card-body">
 
-                      <body>
-                        <input type='file' required onchange="readimg4(this);" id="image4" name="image4"/>
-                          <img id="img4" src="#"  alt=" " />
-                      </body>
-                  </div>
-                  <div class="form-group row">
-                      <label for="respostaImg4" class="col-md-4 col-form-label text-md-right">{{ __('4. ') }}</label>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <input type='file' required onchange="readimg2(this);"  id="image2" name="image2" accept="image/*"/>
+                            <img id="img2" src="#"  alt=" " />
+                        </div>
 
-                      <div class="col-md-6">
-                        <input name="respostaImg4" id="respostaImg4" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg4')}}> {{ $errors->first('respostaImg4')}}
+                        <div class="col-md-5">
+                          <input type='file' required id="audio2" name="audio2" accept="audio/*"/>
 
+                        </div>
                       </div>
+                      <br>
+
+                    </div>
+
                   </div>
 
                   <div class="card-body">
 
-                      <body>
-                        <input type='file' required onchange="readimg5(this);" id="image5" name="image5"/>
-                          <img id="img5" src="#"  alt=" " />
-                      </body>
-                  </div>
-                  <div class="form-group row">
-                      <label for="respostaImg5" class="col-md-4 col-form-label text-md-right">{{ __('5. ') }}</label>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <input type='file' required onchange="readimg3(this);"  id="image3" name="image3" accept="image/*"/>
+                            <img id="img3" src="#"  alt=" " />
+                        </div>
 
-                      <div class="col-md-6">
-                        <input name="respostaImg5" id="respostaImg5" type="text" class="form-control" placeholder="Resposta" required value= {{ old('respostaImg5')}}> {{ $errors->first('respostaImg5')}}
+                        <div class="col-md-5">
+                          <input type='file' required id="audio3" name="audio3" accept="audio/*"/>
 
+                        </div>
                       </div>
+                      <br>
+
+                    </div>
+
+                  </div>
+
+                  <div class="card-body">
+
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <input type='file' required onchange="readimg4(this);"  id="image4" name="image4" accept="image/*"/>
+                            <img id="img4" src="#"  alt=" " />
+                        </div>
+
+                        <div class="col-md-5">
+                          <input type='file' required id="audio4" name="audio4" accept="audio/*"/>
+
+                        </div>
+                      </div>
+                      <br>
+
+                    </div>
+
+                  </div>
+
+                  <div class="card-body">
+
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <input type='file' required onchange="readimg5(this);"  id="image5" name="image5" accept="image/*"/>
+                            <img id="img5" src="#"  alt=" " />
+                        </div>
+
+                        <div class="col-md-5">
+                          <input type='file' required id="audio5" name="audio5" accept="audio/*"/>
+
+                        </div>
+                      </div>
+                      <br>
+
+                    </div>
+
                   </div>
 
 

@@ -49,7 +49,15 @@ Route::post('/conteudo/salvar', 'ConteudoController@salvar')->name('/conteudo/sa
 //Lista Atividade
 Route::get('/lista/listarTurmasConteudos', 'ListaController@listarTurmasConteudos')->name('/lista/listarTurmasConteudos')->middleware('auth');
 Route::get('/lista/inserirLista/{id}', 'ListaController@inserirLista')->name('/lista/inserirLista')->middleware('auth');
+Route::get('/lista/inserirAtividades/{id}', 'ListaController@inserirAtividades')->name('/lista/inserirAtividades')->middleware('auth');
 Route::post('/lista/cadastrar', 'ListaController@cadastrar')->name('/lista/cadastrar')->middleware('auth');
+Route::post('/lista/inserirAtividade/', 'ListaController@adicionarAtividadeLista')->name('/lista/inserirAtividade')->middleware('auth');
+Route::get('/lista/removerAtividade/{id}', 'ListaController@removerAtividadeLista')->name('/lista/removerAtividade')->middleware('auth');
+Route::get('/lista/exibirLista/{id}', 'ListaController@exibirLista')->name('/lista/exibirLista')->middleware('auth');
+Route::get('/lista/exibirListasTurma/{id}', 'ListaController@exibirPorTurma')->name('/lista/exibirListasTurma')->middleware('auth');
+Route::get('/lista/exibirListas', 'ListaController@exibirTodas')->name('/lista/exibirListas')->middleware('auth');
+Route::get('/lista/publicar/{id}', 'ListaController@publicarLista')->name('/lista/publicar')->middleware('auth');
+
 //Atividade
 Route::get('/atividade/cadastrar', function(Request $request) {
     return view('professor/CriarQuestao');
@@ -71,6 +79,14 @@ Route::get('/atividade/cadastrarImagem', function(Request $request) {
 })->name('/atividade/cadastrarImagem')->middleware('auth');
 Route::post('/atividadeImagem/cadastrar', 'AtividadeAssociarImagemController@cadastrar')->name('/atividadeImagem/cadastrar')->middleware('auth');
 Route::get('/atividadeImagem/exibir/{id}', 'AtividadeController@exibirAtividadeAssociarImagem')->name('/atividadeImagem/exibir');
+
+//Questão Associar imagem-audio
+Route::get('/atividade/inserirAtividadeAudio/{id}', 'AtividadeAssociarAudioController@inserirAtividade')->name('/atividade/inserirAtividadeAudio/')->middleware('auth');
+Route::get('/atividade/cadastrarAudio', function(Request $request) {
+    return view('professor/CadastrarQuestaoImagemAudio');
+})->name('/atividade/cadastrarAudio')->middleware('auth');
+Route::post('/atividadeAudio/cadastrar', 'AtividadeAssociarAudioController@cadastrar')->name('/atividadeAudio/cadastrar')->middleware('auth');
+Route::get('/atividadeAudio/exibir/{id}', 'AtividadeController@exibirAtividadeAssociarAudio')->name('/atividadeAudio/exibir');
 
 
 //Rotas para emails

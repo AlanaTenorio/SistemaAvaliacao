@@ -84,6 +84,10 @@
                   <a class="dropdown-item" href="{{ route('/lista/listarTurmasConteudos') }}">
                       Criar Lista
                     </a>
+
+                  <a class="dropdown-item" href="{{ route('/lista/exibirListas') }}">
+                      Minhas Listas
+                    </a>
                 </div>
             </li>
 
@@ -94,7 +98,7 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  
+
                     <a class="dropdown-item" href="{{ route('/atividade/listarUser') }}">
                         Minhas Questões
                     </a>

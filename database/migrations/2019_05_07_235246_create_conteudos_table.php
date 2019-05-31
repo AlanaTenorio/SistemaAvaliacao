@@ -19,7 +19,8 @@ class CreateConteudosTable extends Migration
             $table->string('descricao')->nullable();
             $table->integer('turma_id')->unsigned();
             $table->foreign('turma_id')->references('id')
-                		->on('turmas');
+                		->on('turmas')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }

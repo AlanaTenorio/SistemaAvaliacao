@@ -1,27 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Atividades') }}</div>
+                <div class="card-header">{{ __('Ver Lista') }}</div>
 
                 <div class="card-body">
+                      {{ csrf_field() }}
+                        @csrf
 
-                  @if (\Session::has('success'))
-                  <br>
-                      <div class="alert alert-success">
-                          {!! \Session::get('success') !!}
-                      </div>
-                  @endif
-                  <div class="panel-body">
-                      @if(count($atividades) == 0 and count($atividades) == 0)
-                      <div class="alert alert-danger">
-                              Você ainda não cadastrou nenhuma atividade.
-                      </div>
-                      @else
+                        <div class="form-group row">
+
+                            <div class="col-md-12">
+                              <b>{{ $lista->titulo}}</b>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="col-md-12">
+                              {{ $lista->descricao}}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="col-md-12">
+                              <b><center>Questões:</center></b>
+                            </div>
+                        </div>
+
                         <div id="tabela" class="table-responsive">
                           <table class="table table-hover">
                             <thead>
@@ -32,6 +42,7 @@
                               </tr>
                             </thead>
                             <tbody>
+
                               @foreach ($atividades as $atividade)
                                 <tr>
                                     <td data-title="Nome">{{ $atividade->titulo }}</td>
@@ -65,11 +76,12 @@
                             </tbody>
                           </table>
                         </div>
-                      @endif
-                  </div>
-                  <div class="panel-footer">
-                      <a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a>
-                  </div>
+
+
+                </div>
+                <div class="panel-footer">
+                    <center><a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a></center>
+
                 </div>
             </div>
         </div>

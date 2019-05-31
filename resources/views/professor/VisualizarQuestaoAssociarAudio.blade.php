@@ -30,9 +30,11 @@
                               <div class="col-md-1" >
                                 <i class="ni ni-bold-right text-blue" style="padding-top: 15px;"></i>
                               </div>
-
                               <div class="col-md-5">
-                                <input name="respostaImg" id="respostaImg" type="text" readonly class="form-control" value = "{{ $item->resposta }}" required value= {{ old('respostaImg')}}> {{ $errors->first('respostaImg')}}
+
+                                <audio src="{{ asset('storage/audios/'.$item->audio) }}" type="audio/*" controls>
+
+                                </audio>
 
                               </div>
                             </div>

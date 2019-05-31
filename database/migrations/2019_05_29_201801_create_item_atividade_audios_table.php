@@ -19,7 +19,7 @@ class CreateItemAtividadeAudiosTable extends Migration
             $table->string('audio');
             $table->integer('ordem');
             $table->integer('atividade_id');
-            $table->foreign('atividade_id')->references('id')->on('atividade_associar_imagems');
+            $table->foreign('atividade_id')->references('id')->on('atividade_associar_audio');
             $table->timestamps();
         });
     }
