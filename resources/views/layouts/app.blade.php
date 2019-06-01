@@ -140,6 +140,35 @@
                           </a>
                       </div>
                   </li>
+
+                  <hr class="my-3">
+                    <?php
+                    $usuarioId = Auth::user()->id;
+            				$turmas_aluno = \App\Turma_aluno::where('aluno_id', '=', $usuarioId)
+            																					->where('ativo', '=', true)
+            																					->get();
+
+            				$turmas = array();
+            				foreach ($turmas_aluno as $turma_aluno) {
+            					$turma = \App\Turma::find($turma_aluno->turma_id);
+
+            					array_push($turmas, $turma);
+            				}
+
+                    ?>
+                    @if(count($turmas) != 0 and count($turmas) != 0)
+                    <a class="nav-link">
+                    <b>    Minhas turmas </b>
+                    @foreach ($turmas as $turma)
+                    <li class="nav-item">
+
+                      <a class="nav-link" href="/aluno/gerenciarTurma/{{$turma->id}}">
+                          {{$turma->nome}}
+                      </a>
+                    </li>
+                    @endforeach
+                  @endif
+
             @endif
 
           <hr class="my-3">

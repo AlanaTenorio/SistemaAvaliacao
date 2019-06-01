@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -20,7 +19,7 @@
                   <div class="panel-body">
                       @if(count($turmas) == 0 and count($turmas) == 0)
                       <div class="alert alert-danger">
-                              Você ainda não participa de nenhuma turma.
+                              Nenhuma turma foi encontrada com este nome.
                       </div>
                       @else
                         <div id="tabela" class="table-responsive">
@@ -28,6 +27,7 @@
                             <thead>
                               <tr>
                                   <th>Nome</th>
+                                  <th>Disciplina</th>
                                   <th>Descrição</th>
                                   <th>Ano</th>
                                   <th>Carga Horária</th>
@@ -37,22 +37,19 @@
                             <tbody>
                               @foreach ($turmas as $turma)
                                 <tr>
-                                    <td data-title="Nome">{{ $turma->disciplina->nome }}</td>
+                                    <td data-title="Nome">{{ $turma->nome }}</td>
+                                    <td data-title="Disciplina">{{ $turma->disciplina->nome }}</td>
                                     <td data-title="Descrição">{{ $turma->disciplina->descricao }}</td>
                                     <td data-title="Ano">{{ $turma->ano }}</td>
                                     <td data-title="Carga Horária">{{ $turma->disciplina->carga_horaria }}</td>
 
                                     <td>
+                                      
                                       <a class="btn btn-primary" href="{{ route("/turma/exibir", ['id' => $turma->id]) }}">
                                         <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
                                       </a>
                                     </td>
-                                    <td>
-                                      <a class="btn btn-primary" style="width:103px" href="">
-                                        Ver Listas
-                                      </a>
-                                    </td>
-                                    <td></td>
+
                                 </tr>
                               @endforeach
 

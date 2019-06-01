@@ -132,11 +132,20 @@ class ListaController extends Controller
         array_push($atividades, $atividade);
       }
 
-      return view("/professor/ExibirLista", [
-          "lista" => $lista,
-          "lista_atividades" => $lista_atividades,
-          "atividades" => $atividades,
-      ]);
+      if(Auth::user()->isProfessor){
+        return view("/professor/ExibirLista", [
+            "lista" => $lista,
+            "lista_atividades" => $lista_atividades,
+            "atividades" => $atividades,
+        ]);
+      } else if(Auth::user()->isAluno){
+        return view("/aluno/ExibirLista", [
+            "lista" => $lista,
+            "lista_atividades" => $lista_atividades,
+            "atividades" => $atividades,
+        ]);
+      }
+
     }
 
     public function publicarLista(Request $request){

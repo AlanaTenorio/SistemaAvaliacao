@@ -71,11 +71,19 @@ class TurmaController extends Controller
 			$disciplina = \App\Disciplina::where('turma_id', '=', $turma->id)->get();
 			$professor = \App\User::find($turma->professor_id);
 
-			return view("professor/GerenciarTurma", [
-					"turma" => $turma,
-					"professor" => $professor,
-					"disciplina" => $disciplina,
-				]);
+			if(Auth::user()->isProfessor){
+				return view("professor/GerenciarTurma", [
+						"turma" => $turma,
+						"professor" => $professor,
+						"disciplina" => $disciplina,
+					]);
+			} else if(Auth::user()->isAluno){
+				return view("aluno/GerenciarTurma", [
+						"turma" => $turma,
+						"disciplina" => $disciplina,
+					]);
+			}
+
 	    }
 
 			public function remover(Request $request){
@@ -187,4 +195,10 @@ class TurmaController extends Controller
 			return view("professor/VisualizarAlunosMatriculados", ["alunos" => $alunos]);
 	}
 
+	public function buscarTurmas(Request $request){
+		$turmas = \App\Turma::where('nome', 'ilike', '%' . $request->termo . '%')
+													->get();
+
+		return view("aluno/ListarTurmas", ["turmas" => $turmas]);
+    }
 }

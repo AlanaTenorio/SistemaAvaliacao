@@ -54,23 +54,15 @@
                                     <td data-title="Tipo">Questão Associar imagem-áudio</td>
                                     @endif
                                     <td>
-                                      @if(Auth::user()->isProfessor)
+                                      <?php
+                                      $aluno_atividade = \App\Aluno_atividade::where('aluno_id', '=', Auth::user()->id)
+                                                                      ->where('atividade_id', '=', $atividade->id)
+                                                                      ->where('lista_id', '=', $lista->id)
+                                                                      ->first();
+                                      ?>
+                                      @if(empty($aluno_atividade))
                                         @if ($atividade->tipo == 1)
-                                        <a class="btn btn-primary" href="{{ route("/atividadeMultipla/exibir", ['id' => $atividade->id]) }}">
-                                        <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
-                                        </a>
-                                        @elseif ($atividade->tipo == 2)
-                                        <a class="btn btn-primary" href="{{ route("/atividadeImagem/exibir", ['id' => $atividade->id]) }}">
-                                        <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
-                                        </a>
-                                        @elseif ($atividade->tipo == 3)
-                                        <a class="btn btn-primary" href="{{ route("/atividadeAudio/exibir", ['id' => $atividade->id]) }}">
-                                        <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
-                                        </a>
-                                        @endif
-                                      @else
-                                        @if ($atividade->tipo == 1)
-                                        <a class="btn btn-primary" href="{{ route("/atividadeMultipla/exibir", ['id' => $atividade->id]) }}">
+                                        <a class="btn btn-primary" href="{{ route("/aluno/atividadeMultipla", ['atividade_id' => $atividade->id, 'lista_id' => $lista->id]) }}">
                                           Responder
                                         </a>
                                         @elseif ($atividade->tipo == 2)
@@ -80,9 +72,9 @@
                                         <a class="btn btn-primary" href="{{ route("/atividadeAudio/exibir", ['id' => $atividade->id]) }}">
                                         </a>
                                         @endif
+                                      @else
+                                      <i class="ni ni-check-bold text-blue"></i>
                                       @endif
-
-
 
 
                                     </td>
@@ -97,7 +89,7 @@
 
                 </div>
                 <div class="panel-footer">
-                    <center><a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a></center>
+                    <center><a class="btn btn-primary" href="">Finalizar</a></center>
 
                 </div>
             </div>

@@ -25,11 +25,40 @@ class AtividadeController extends Controller
     $atividade = \App\Atividade::find($request->id);
     $atividadeMultiplaEscolha = \App\AtividadeMultiplaEscolha::where('atividade_id' , '=', $atividade->id)->first();
 
+    if(Auth::user()->isProfessor){
+      return view("professor/VisualizarQuestaoMultiplaEscolha", [
+          "atividade" => $atividade,
+          "atividadeMultiplaEscolha" => $atividadeMultiplaEscolha,
+        ]);
+    } else if(Auth::user()->isAluno){
+      $lista = \App\Lista::find($request->lista_id);
+      return view("aluno/ResponderAtividadeMultiplaEscolha", [
+          "atividade" => $atividade,
+          "atividadeMultiplaEscolha" => $atividadeMultiplaEscolha,
+        ]);
+    }
 
-    return view("professor/VisualizarQuestaoMultiplaEscolha", [
-        "atividade" => $atividade,
-        "atividadeMultiplaEscolha" => $atividadeMultiplaEscolha,
-      ]);
+  }
+
+  public function exibirAtividadeMultiplaEscolhaAluno(Request $request) {
+    $atividade = \App\Atividade::find($request->atividade_id);
+    $lista= \App\Lista::find($request->lista_id);
+    $atividadeMultiplaEscolha = \App\AtividadeMultiplaEscolha::where('atividade_id' , '=', $atividade->id)->first();
+
+    if(Auth::user()->isProfessor){
+      return view("professor/VisualizarQuestaoMultiplaEscolha", [
+          "atividade" => $atividade,
+          "atividadeMultiplaEscolha" => $atividadeMultiplaEscolha,
+        ]);
+    } else if(Auth::user()->isAluno){
+      $lista = \App\Lista::find($request->lista_id);
+      return view("aluno/ResponderAtividadeMultiplaEscolha", [
+          "atividade" => $atividade,
+          "atividadeMultiplaEscolha" => $atividadeMultiplaEscolha,
+          "lista" => $lista
+        ]);
+    }
+
   }
 
   public function exibirAtividadeAssociarImagem(Request $request) {

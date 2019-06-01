@@ -2,12 +2,11 @@
 
 @section('content')
 
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Turmas') }}</div>
+                <div class="card-header">{{ __('Minhas Listas - Não Finalizadas') }}</div>
 
                 <div class="card-body">
 
@@ -18,41 +17,37 @@
                       </div>
                   @endif
                   <div class="panel-body">
-                      @if(count($turmas) == 0 and count($turmas) == 0)
+                      @if(count($listas) == 0 and count($listas) == 0)
                       <div class="alert alert-danger">
-                              Você ainda não participa de nenhuma turma.
+                              Não há nenhuma lista há ser feita para esta turma.
                       </div>
                       @else
                         <div id="tabela" class="table-responsive">
                           <table class="table table-hover">
                             <thead>
                               <tr>
-                                  <th>Nome</th>
+                                  <th>titulo</th>
                                   <th>Descrição</th>
-                                  <th>Ano</th>
-                                  <th>Carga Horária</th>
+                                  <th>Data de Início</th>
+                                  <th>Data de Fim</th>
                                   <th colspan="2">Ações</th>
                               </tr>
                             </thead>
                             <tbody>
-                              @foreach ($turmas as $turma)
+                              @foreach ($listas as $lista)
                                 <tr>
-                                    <td data-title="Nome">{{ $turma->disciplina->nome }}</td>
-                                    <td data-title="Descrição">{{ $turma->disciplina->descricao }}</td>
-                                    <td data-title="Ano">{{ $turma->ano }}</td>
-                                    <td data-title="Carga Horária">{{ $turma->disciplina->carga_horaria }}</td>
+                                    <td data-title="Titulo">{{ $lista->titulo }}</td>
+                                    <td data-title="Descricao">{{ $lista->descricao }}</td>
+                                    <td data-title="data_inicio">{{ $lista->data_inicio }}</td>
+                                    <td data-title="data_fim">{{ $lista->data_fim }}</td>
+                                    <td>
+                                      <a class="btn btn-primary" href="{{ route("/aluno/exibirLista", ['id' => $lista->id]) }}">
+                                      Responder
+                                      </a>
 
-                                    <td>
-                                      <a class="btn btn-primary" href="{{ route("/turma/exibir", ['id' => $turma->id]) }}">
-                                        <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
-                                      </a>
+
                                     </td>
-                                    <td>
-                                      <a class="btn btn-primary" style="width:103px" href="">
-                                        Ver Listas
-                                      </a>
-                                    </td>
-                                    <td></td>
+
                                 </tr>
                               @endforeach
 
