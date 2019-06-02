@@ -9,18 +9,16 @@ class AlunoController extends Controller
 {
   public function listasFinalizadas(Request $request) {
     $usuarioId = Auth::user()->id;
-    $aluno_lista = \App\Aluno_lista::where('aluno_id', '=', $usuarioId)
+    $aluno_listas = \App\Aluno_lista::where('aluno_id', '=', $usuarioId)
                                     ->where('finalizada', '=', true)
                                     ->get();
-
+                                    
     $listas = array();
-    foreach ($aluno_lista as $aluno_lista) {
-      $lista = \App\Lista::where('id', '=', $aluno_lista->lista_id)
-                          ->where('turma_id', '=', $request->id)
-                          ->where('compartilhada', '=', true)
-                          ->first();
-
-      array_push($listas, $lista);
+    foreach ($aluno_listas as $aluno_lista) {
+      $lista = \App\Lista::where('id', '=', $aluno_lista->lista_id)->where('turma_id', '=', $request->id)->where('compartilhada', '=', true)->first();
+      if($lista != null){
+        array_push($listas, $lista);
+      }
     }
 
     return view("aluno/ListasFinalizadas", [
@@ -193,6 +191,16 @@ class AlunoController extends Controller
       $atividade->acertou = true;
     }
     $atividade->save();
+  }
+
+  public function exibirResultadosLista(Request $request){
+    $atividades = \App\Aluno_atividade::where('lista_id', '=', $request->id)
+                                        ->where('aluno_id', '=', Auth::user()->id)
+                                        ->get();
+
+   return view("aluno/ExibirResultadosLista", [
+              "atividades" => $atividades,
+    ]);
   }
 
 }

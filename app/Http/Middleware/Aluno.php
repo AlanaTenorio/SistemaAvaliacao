@@ -27,12 +27,13 @@ class Aluno
               $rotas_lista = [
               "aluno/exibirLista/{id}",
               "aluno/finalizarLista/{id}",
+              "aluno/exibirResultadosLista/{id}",
               ];
 
               $rotas_atividade = [
               "aluno/atividadeMultipla/{atividade_id}/{lista_id}",
               "aluno/atividadeImagem/{atividade_id}/{lista_id}",
-              "aluno/atividadeAudio/{atividade_id}/{lista_id}", 
+              "aluno/atividadeAudio/{atividade_id}/{lista_id}",
               ];
 
               if(!(\Auth::user()->isAluno)){
@@ -52,7 +53,7 @@ class Aluno
                   }
                 }
 
-                if(in_array($request->route()->uri,$rotas_turma)){
+                if(in_array($request->route()->uri,$rotas_lista)){
 
                   if($request->route('id') != null){
                     $lista = \App\Lista::find($request->route('id'));
