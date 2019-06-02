@@ -17,8 +17,9 @@ class CreateAlunoAtividadesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('tempo')->nullable();
             $table->string('resposta');
+            $table->string('gabarito');
             $table->date('data');
-            $table->boolean('finalizada')->default(false);
+            $table->boolean('acertou')->default(false);
             $table->integer('lista_id')->unsigned();
             $table->foreign('lista_id')->references('id')
                     ->on('listas')

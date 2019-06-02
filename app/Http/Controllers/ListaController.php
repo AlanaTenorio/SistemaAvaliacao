@@ -151,6 +151,7 @@ class ListaController extends Controller
     public function publicarLista(Request $request){
       $lista = \App\Lista::where('id', '=', $request->id)->first();
       $lista->compartilhada = true;
+      $lista->is_ativo = true;
       $lista->save();
 
       session()->flash('success', 'Essa lista foi compartilhada com sua turma.');

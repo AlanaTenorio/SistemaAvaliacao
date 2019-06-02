@@ -25,18 +25,10 @@ class AtividadeController extends Controller
     $atividade = \App\Atividade::find($request->id);
     $atividadeMultiplaEscolha = \App\AtividadeMultiplaEscolha::where('atividade_id' , '=', $atividade->id)->first();
 
-    if(Auth::user()->isProfessor){
       return view("professor/VisualizarQuestaoMultiplaEscolha", [
           "atividade" => $atividade,
           "atividadeMultiplaEscolha" => $atividadeMultiplaEscolha,
         ]);
-    } else if(Auth::user()->isAluno){
-      $lista = \App\Lista::find($request->lista_id);
-      return view("aluno/ResponderAtividadeMultiplaEscolha", [
-          "atividade" => $atividade,
-          "atividadeMultiplaEscolha" => $atividadeMultiplaEscolha,
-        ]);
-    }
 
   }
 
@@ -45,19 +37,12 @@ class AtividadeController extends Controller
     $lista= \App\Lista::find($request->lista_id);
     $atividadeMultiplaEscolha = \App\AtividadeMultiplaEscolha::where('atividade_id' , '=', $atividade->id)->first();
 
-    if(Auth::user()->isProfessor){
-      return view("professor/VisualizarQuestaoMultiplaEscolha", [
-          "atividade" => $atividade,
-          "atividadeMultiplaEscolha" => $atividadeMultiplaEscolha,
-        ]);
-    } else if(Auth::user()->isAluno){
       $lista = \App\Lista::find($request->lista_id);
       return view("aluno/ResponderAtividadeMultiplaEscolha", [
           "atividade" => $atividade,
           "atividadeMultiplaEscolha" => $atividadeMultiplaEscolha,
           "lista" => $lista
         ]);
-    }
 
   }
 
@@ -73,6 +58,20 @@ class AtividadeController extends Controller
       ]);
   }
 
+  public function exibirAtividadeAssociarImagemAluno(Request $request) {
+    $atividade = \App\Atividade::find($request->atividade_id);
+    $lista= \App\Lista::find($request->lista_id);
+    $atividadeAssociarImagem = \App\AtividadeAssociarImagem::where('atividade_id' , '=', $atividade->id)->first();
+    $itens = \App\Item_atividade_imagem::where('atividade_id' , '=', $atividadeAssociarImagem->id)->get();
+
+    return view("aluno/ResponderAtividadeAssociarImagem", [
+        "atividade" => $atividade,
+        "atividadeAssociarImagem" => $atividadeAssociarImagem,
+        "itens" => $itens,
+        "lista" => $lista,
+      ]);
+  }
+
   public function exibirAtividadeAssociarAudio(Request $request) {
     $atividade = \App\Atividade::find($request->id);
     $atividadeAssociarAudio = \App\AtividadeAssociarAudio::where('atividade_id' , '=', $atividade->id)->first();
@@ -82,6 +81,20 @@ class AtividadeController extends Controller
         "atividade" => $atividade,
         "atividadeAssociarAudio" => $atividadeAssociarAudio,
         "itens" => $itens,
+      ]);
+  }
+
+  public function exibirAtividadeAssociarAudioAluno(Request $request) {
+    $atividade = \App\Atividade::find($request->atividade_id);
+    $lista= \App\Lista::find($request->lista_id);
+    $atividadeAssociarAudio = \App\AtividadeAssociarAudio::where('atividade_id' , '=', $atividade->id)->first();
+    $itens = \App\Item_atividade_audio::where('atividade_id' , '=', $atividadeAssociarAudio->id)->get();
+
+    return view("aluno/ResponderAtividadeAssociarAudio", [
+        "atividade" => $atividade,
+        "atividadeAssociarAudio" => $atividadeAssociarAudio,
+        "itens" => $itens,
+        "lista" => $lista,
       ]);
   }
 

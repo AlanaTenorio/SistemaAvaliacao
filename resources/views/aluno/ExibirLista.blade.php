@@ -66,10 +66,12 @@
                                           Responder
                                         </a>
                                         @elseif ($atividade->tipo == 2)
-                                        <a class="btn btn-primary" href="{{ route("/atividadeImagem/exibir", ['id' => $atividade->id]) }}">
+                                        <a class="btn btn-primary" href="{{ route("/aluno/atividadeImagem", ['atividade_id' => $atividade->id, 'lista_id' => $lista->id]) }}">
+                                          Responder
                                         </a>
                                         @elseif ($atividade->tipo == 3)
-                                        <a class="btn btn-primary" href="{{ route("/atividadeAudio/exibir", ['id' => $atividade->id]) }}">
+                                        <a class="btn btn-primary" href="{{ route("/aluno/atividadeAudio", ['atividade_id' => $atividade->id, 'lista_id' => $lista->id]) }}">
+                                          Responder
                                         </a>
                                         @endif
                                       @else
@@ -89,7 +91,7 @@
 
                 </div>
                 <div class="panel-footer">
-                    <center><a class="btn btn-primary" href="">Finalizar</a></center>
+                    <center><a class="btn btn-primary" href="{{ route("/aluno/finalizarLista", ['id' => $lista->id])}}">Finalizar</a></center>
 
                 </div>
             </div>
