@@ -6,11 +6,18 @@
 
           <div class="container-fluid">
             <div class="header-body">
+              @if (\Session::has('denied'))
+              <br>
+                  <div class="alert alert-danger">
+                      {!! \Session::get('denied') !!}
+                  </div>
+              @endif
               <!-- Card stats -->
               <div class="row">
                 <div class="col-xl-3 col-lg-6">
                   <div class="card card-stats mb-4 mb-xl-0" style="border-color:#6072E2;">
                     <div class="card-body">
+
                       <div class="row">
                         <div class="col">
                           <span class="card-title text-uppercase text-muted mb-0">Cadastre Turmas</span></br></br></br></br>
