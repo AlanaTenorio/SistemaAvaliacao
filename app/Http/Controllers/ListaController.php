@@ -132,16 +132,26 @@ class ListaController extends Controller
         array_push($atividades, $atividade);
       }
 
-      return view("/professor/ExibirLista", [
-          "lista" => $lista,
-          "lista_atividades" => $lista_atividades,
-          "atividades" => $atividades,
-      ]);
+      if(Auth::user()->isProfessor){
+        return view("/professor/ExibirLista", [
+            "lista" => $lista,
+            "lista_atividades" => $lista_atividades,
+            "atividades" => $atividades,
+        ]);
+      } else if(Auth::user()->isAluno){
+        return view("/aluno/ExibirLista", [
+            "lista" => $lista,
+            "lista_atividades" => $lista_atividades,
+            "atividades" => $atividades,
+        ]);
+      }
+
     }
 
     public function publicarLista(Request $request){
       $lista = \App\Lista::where('id', '=', $request->id)->first();
       $lista->compartilhada = true;
+      $lista->is_ativo = true;
       $lista->save();
 
       session()->flash('success', 'Essa lista foi compartilhada com sua turma.');

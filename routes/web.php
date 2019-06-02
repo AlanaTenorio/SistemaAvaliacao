@@ -93,10 +93,29 @@ Route::get('/atividadeAudio/exibir/{id}', 'AtividadeController@exibirAtividadeAs
 Route::post('/share/mail','MailController@compartilharEmail')->name('/turma/compartilhar.post');
 
 //Rotas de aluno
+//Turmas
 Route::get('/turma/buscar', function(Request $request) {
     return view('aluno/BuscarTurma');
 })->name('/turma/buscar');
-
-Route::post('/turma/buscar', 'TurmaController@exibir');
+Route::post('/turma/buscar', 'TurmaController@buscarTurmas');
 Route::get('/turma/participar/{id}', 'TurmaController@participar')->name('/turma/participar')->middleware('auth');
 Route::get('/turma/alunoListar/', 'TurmaController@listarTurmasAluno')->name('/turma/alunoListar')->middleware('auth');
+Route::get('/aluno/gerenciarTurma/{id}', 'TurmaController@gerenciar')->name('/turma/gerenciarTurma');
+
+//Lista
+Route::get('/aluno/listasRespondidas/{id}', 'AlunoController@listasFinalizadas')->name('/aluno/listasRespondidas')->middleware('auth');
+Route::get('/aluno/listasNaoRespondidas/{id}', 'AlunoController@listasNaoFinalizadas')->name('/aluno/listasNaoRespondidas')->middleware('auth');
+Route::get('/aluno/exibirLista/{id}', 'ListaController@exibirLista')->name('/aluno/exibirLista')->middleware('auth');
+Route::get('/aluno/finalizarLista/{id}', 'AlunoController@finalizarLista')->name('/aluno/finalizarLista')->middleware('auth');
+
+//Atividade Múltipla escolha
+Route::post('/atividade/responderAtividadeMultiplaEscolha', 'AlunoController@responderAtividadeMultiplaEscolha')->name('/atividade/responderAtividadeMultiplaEscolha')->middleware('auth');
+Route::get('/aluno/atividadeMultipla/{atividade_id}/{lista_id}', 'AtividadeController@exibirAtividadeMultiplaEscolhaAluno')->name('/aluno/atividadeMultipla');
+
+//Atividade associar imagem-texto
+Route::get('/aluno/atividadeImagem/{atividade_id}/{lista_id}', 'AtividadeController@exibirAtividadeAssociarImagemAluno')->name('/aluno/atividadeImagem');
+Route::post('/atividade/responderAtividadeImagem', 'AlunoController@responderAtividadeImagem')->name('/atividade/responderAtividadeImagem')->middleware('auth');
+
+//Atividade associar imagem-áudio
+Route::get('/aluno/atividadeAudio/{atividade_id}/{lista_id}', 'AtividadeController@exibirAtividadeAssociarAudioAluno')->name('/aluno/atividadeAudio');
+Route::post('/atividade/responderAtividadeAudio', 'AlunoController@responderAtividadeAudio')->name('/atividade/responderAtividadeAudio')->middleware('auth');

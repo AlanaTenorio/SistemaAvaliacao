@@ -6,7 +6,7 @@
 
 function avisoPublicar(){
   if(confirm (' Deseja compartilhar essa lista agora? ')) {
-    location.href="/lista/publicar/{{$lista->id}}";
+    location.href="{{ route("/lista/publicar", ['id' => $lista->id]) }}";
   }
   else {
     return false;

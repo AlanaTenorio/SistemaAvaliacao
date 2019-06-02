@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Ver Lista') }}</div>
+                <div class="card-header">{{ __('Responder Lista') }}</div>
 
                 <div class="card-body">
                       {{ csrf_field() }}
@@ -54,36 +54,19 @@
                                     <td data-title="Tipo">Questão Associar imagem-áudio</td>
                                     @endif
                                     <td>
-                                      @if(Auth::user()->isProfessor)
-                                        @if ($atividade->tipo == 1)
-                                        <a class="btn btn-primary" href="{{ route("/atividadeMultipla/exibir", ['id' => $atividade->id]) }}">
-                                        <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
-                                        </a>
-                                        @elseif ($atividade->tipo == 2)
-                                        <a class="btn btn-primary" href="{{ route("/atividadeImagem/exibir", ['id' => $atividade->id]) }}">
-                                        <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
-                                        </a>
-                                        @elseif ($atividade->tipo == 3)
-                                        <a class="btn btn-primary" href="{{ route("/atividadeAudio/exibir", ['id' => $atividade->id]) }}">
-                                        <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
-                                        </a>
-                                        @endif
-                                      @else
-                                        @if ($atividade->tipo == 1)
-                                        <a class="btn btn-primary" href="{{ route("/atividadeMultipla/exibir", ['id' => $atividade->id]) }}">
-                                          Responder
-                                        </a>
-                                        @elseif ($atividade->tipo == 2)
-                                        <a class="btn btn-primary" href="{{ route("/atividadeImagem/exibir", ['id' => $atividade->id]) }}">
-                                        </a>
-                                        @elseif ($atividade->tipo == 3)
-                                        <a class="btn btn-primary" href="{{ route("/atividadeAudio/exibir", ['id' => $atividade->id]) }}">
-                                        </a>
-                                        @endif
+                                      @if ($atividade->tipo == 1)
+                                      <a class="btn btn-primary" href="{{ route("/atividadeMultipla/exibir", ['atividade_id' => $atividade->id, 'lista_id' => $lista->id]) }}">
+                                      <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
+                                      </a>
+                                      @elseif ($atividade->tipo == 2)
+                                      <a class="btn btn-primary" href="{{ route("/atividadeImagem/exibir", ['atividade_id' => $atividade->id, 'lista_id' => $lista->id]) }}">
+                                      <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
+                                      </a>
+                                      @elseif ($atividade->tipo == 3)
+                                      <a class="btn btn-primary" href="{{ route("/atividadeAudio/exibir", ['atividade_id' => $atividade->id, 'lista_id' => $lista->id]) }}">
+                                      <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
+                                      </a>
                                       @endif
-
-
-
 
                                     </td>
 

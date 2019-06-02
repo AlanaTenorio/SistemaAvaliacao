@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Ver Questão - Múltipla Escolha') }}</div>
+                <div class="card-header">{{ __('Ver Questão - Associar Imagem-áudio') }}</div>
 
                 <div class="card-body">
                       {{ csrf_field() }}

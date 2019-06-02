@@ -36,8 +36,8 @@
                             <tbody>
                               @foreach ($listas as $lista)
                                 <tr>
+                                    <td data-title="Titulo">{{ $lista->titulo }}</td>
                                     <td data-title="Descricao">{{ $lista->descricao }}</td>
-                                    <td data-title="Descricao">{{ $lista->titulo }}</td>
                                     <td data-title="data_inicio">{{ $lista->data_inicio }}</td>
                                     <td data-title="data_fim">{{ $lista->data_fim }}</td>
                                     <td>
