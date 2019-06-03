@@ -125,3 +125,4 @@ Route::post('/atividade/responderAtividadeAudio', 'AlunoController@responderAtiv
 
 //Resultados
 Route::get('/aluno/exibirResultadosLista/{id}', 'AlunoController@exibirResultadosLista')->name('/aluno/exibirResultadosLista')->middleware('aluno');
+Route::get('/aluno/exibirResultadosDisciplina/{id}', 'AlunoController@exibirResultadosDisciplina')->name('/aluno/exibirResultadosDisciplina')->middleware('aluno');

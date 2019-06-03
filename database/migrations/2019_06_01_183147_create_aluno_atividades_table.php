@@ -18,6 +18,7 @@ class CreateAlunoAtividadesTable extends Migration
             $table->integer('tempo')->nullable();
             $table->string('resposta');
             $table->string('gabarito');
+            $table->float('pontuacao')->unsigned();
             $table->date('data');
             $table->boolean('acertou')->default(false);
             $table->integer('lista_id')->unsigned();

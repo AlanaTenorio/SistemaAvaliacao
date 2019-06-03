@@ -19,6 +19,7 @@ class CreateAlunoListasTable extends Migration
             $table->date('data');
             $table->boolean('finalizada')->default(false);
             $table->integer('lista_id')->unsigned();
+            $table->float('pontuacao')->unsigned();
             $table->foreign('lista_id')->references('id')
                     ->on('listas')
                     ->onDelete('cascade');
