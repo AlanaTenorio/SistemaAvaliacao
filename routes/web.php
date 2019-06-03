@@ -122,3 +122,7 @@ Route::post('/atividade/responderAtividadeImagem', 'AlunoController@responderAti
 //Atividade associar imagem-áudio
 Route::get('/aluno/atividadeAudio/{atividade_id}/{lista_id}', 'AtividadeController@exibirAtividadeAssociarAudioAluno')->name('/aluno/atividadeAudio')->middleware('aluno');
 Route::post('/atividade/responderAtividadeAudio', 'AlunoController@responderAtividadeAudio')->name('/atividade/responderAtividadeAudio')->middleware('aluno');
+
+//Resultados
+Route::get('/aluno/exibirResultadosLista/{id}', 'AlunoController@exibirResultadosLista')->name('/aluno/exibirResultadosLista')->middleware('aluno');
+Route::get('/aluno/exibirResultadosDisciplina/{id}', 'AlunoController@exibirResultadosDisciplina')->name('/aluno/exibirResultadosDisciplina')->middleware('aluno');

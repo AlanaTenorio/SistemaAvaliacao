@@ -42,8 +42,8 @@
                                     <td data-title="data_fim">{{ $lista->data_fim }}</td>
                                     <td>
                                       @if($lista->is_ativo == false)
-                                      <a class="btn btn-primary" href="">
-                                        Resultados
+                                      <a class="btn btn-primary" href="{{ route("/aluno/exibirResultadosLista", ['id' => $lista->id]) }}">
+                                      Resultados
                                       </a>
                                       @endif
 

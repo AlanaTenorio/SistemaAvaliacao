@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Aluno_lista extends Model
 {
 
-  protected $filleable = ['tempo', 'data', 'finalizada'];
+  protected $filleable = ['tempo', 'data', 'finalizada', 'pontuacao'];
 
   public function aluno(){
     return $this->hasOne('User');

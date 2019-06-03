@@ -13,7 +13,7 @@
                 <div class="panel-body">
 
                     @if (Auth::guard()->check() && Auth::user()->isProfessor == true && $professor->id == Auth::user()->id)
-                    <i class="ni ni-ruler-pencil text-yellow"></i> <b>Criar Questões</b>
+                    <i class="ni ni-ruler-pencil text-blue"></i> <b>Criar Questões</b>
                     <a class="nav-link" href="{{ route("/atividade/inserirAtividadeMultipla/", ['id' => $turma->id]) }}">
                         <i class="ni ni-bullet-list-67 text-blue"></i> Questão de Múltipla Escolha
                       </a>
@@ -23,7 +23,7 @@
                       <a class="nav-link" href="{{ route("/atividade/inserirAtividadeAudio/", ['id' => $turma->id]) }}">
                           <i class="ni ni-headphones text-blue"></i> Associar Imagem-áudio
                       </a><br>
-                      <i class="ni ni-settings-gear-65 text-yellow"></i> <b>Gerenciar Turma</b>
+                      <i class="ni ni-settings-gear-65 text-blue"></i> <b>Gerenciar Turma</b>
                       <a class="nav-link" href="{{ route("/lista/inserirLista", ['id' => $turma->id]) }}">
                           <i class="ni ni-single-copy-04 text-blue"></i> Criar Lista
                       </a>

@@ -9,18 +9,16 @@ class AlunoController extends Controller
 {
   public function listasFinalizadas(Request $request) {
     $usuarioId = Auth::user()->id;
-    $aluno_lista = \App\Aluno_lista::where('aluno_id', '=', $usuarioId)
+    $aluno_listas = \App\Aluno_lista::where('aluno_id', '=', $usuarioId)
                                     ->where('finalizada', '=', true)
                                     ->get();
 
     $listas = array();
-    foreach ($aluno_lista as $aluno_lista) {
-      $lista = \App\Lista::where('id', '=', $aluno_lista->lista_id)
-                          ->where('turma_id', '=', $request->id)
-                          ->where('compartilhada', '=', true)
-                          ->first();
-
-      array_push($listas, $lista);
+    foreach ($aluno_listas as $aluno_lista) {
+      $lista = \App\Lista::where('id', '=', $aluno_lista->lista_id)->where('turma_id', '=', $request->id)->where('compartilhada', '=', true)->first();
+      if($lista != null){
+        array_push($listas, $lista);
+      }
     }
 
     return view("aluno/ListasFinalizadas", [
@@ -62,6 +60,8 @@ class AlunoController extends Controller
 
     $aluno_atividade->gabarito = $atividade->resposta;
     $aluno_atividade->lista_id = $request->lista_id;
+    $lista_atividade = \App\Lista_atividade::where('lista_id', '=', $request->lista_id)->where('atividade_id', '=', $request->atividade_id)->first();
+    $aluno_atividade->pontuacao = $lista_atividade->pontuacao;
     $fields = $request['gabarito'];
     $aluno_atividade->resposta = $fields;
     $aluno_atividade->data = new DateTime();
@@ -81,6 +81,8 @@ class AlunoController extends Controller
 
     $aluno_atividade->atividade_id = $request->atividade_id;
     $aluno_atividade->lista_id = $request->lista_id;
+    $lista_atividade = \App\Lista_atividade::where('lista_id', '=', $request->lista_id)->where('atividade_id', '=', $request->atividade_id)->first();
+    $aluno_atividade->pontuacao = $lista_atividade->pontuacao;
 
     $stringGabarito = "";
     $item1 = \App\Item_atividade_imagem::find($request->gabarito1);
@@ -124,6 +126,8 @@ class AlunoController extends Controller
 
     $aluno_atividade->atividade_id = $request->atividade_id;
     $aluno_atividade->lista_id = $request->lista_id;
+    $lista_atividade = \App\Lista_atividade::where('lista_id', '=', $request->lista_id)->where('atividade_id', '=', $request->atividade_id)->first();
+    $aluno_atividade->pontuacao = $lista_atividade->pontuacao;
 
     $stringGabarito = "";
     $item1 = \App\Item_atividade_audio::find($request->gabarito1);
@@ -162,6 +166,19 @@ class AlunoController extends Controller
     $aluno_lista = new \App\Aluno_lista();
     $aluno_lista->lista_id = $request->id;
     $aluno_lista->finalizada = true;
+
+    $aluno_atividades = \App\Aluno_atividade::where('lista_id', '=', $request->id)
+                                        ->where('aluno_id', '=', Auth::user()->id)
+                                        ->get();
+    $pontuacao_acertou = 0;
+    $pontuacao_total = 0;
+    foreach ($aluno_atividades as $aluno_atividade) {
+      if($aluno_atividade->acertou){
+        $pontuacao_acertou = $pontuacao_acertou + $aluno_atividade->pontuacao;
+      }
+      $pontuacao_total = $pontuacao_total + $aluno_atividade->pontuacao;
+    }
+    $aluno_lista->pontuacao = ($pontuacao_acertou/$pontuacao_total)*100;
     $aluno_lista->data = new DateTime();
     if($user = Auth::user()) {
       $aluno_lista->aluno_id = Auth::user()->id;
@@ -193,6 +210,36 @@ class AlunoController extends Controller
       $atividade->acertou = true;
     }
     $atividade->save();
+  }
+
+  public function exibirResultadosLista(Request $request){
+    $atividades = \App\Aluno_atividade::where('lista_id', '=', $request->id)
+                                        ->where('aluno_id', '=', Auth::user()->id)
+                                        ->get();
+   $lista = \App\Aluno_lista::where('lista_id', '=', $request->id)->first();
+   return view("aluno/ExibirResultadosLista", [
+              "atividades" => $atividades,
+              "lista" => $lista,
+    ]);
+  }
+
+  public function exibirResultadosDisciplina(Request $request){
+    $usuarioId = Auth::user()->id;
+    $aluno_listas = \App\Aluno_lista::where('aluno_id', '=', $usuarioId)
+                                    ->where('finalizada', '=', true)
+                                    ->get();
+
+    $listas = array();
+    foreach ($aluno_listas as $aluno_lista) {
+      $lista = \App\Lista::where('id', '=', $aluno_lista->lista_id)->where('turma_id', '=', $request->id)->where('compartilhada', '=', true)->first();
+      if($lista != null){
+        array_push($listas, $lista);
+      }
+    }
+
+   return view("aluno/ExibirResultadosDisciplina", [
+              "listas" => $listas,
+    ]);
   }
 
 }
