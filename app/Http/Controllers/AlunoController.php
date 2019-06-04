@@ -231,14 +231,16 @@ class AlunoController extends Controller
 
     $listas = array();
     foreach ($aluno_listas as $aluno_lista) {
-      $lista = \App\Lista::where('id', '=', $aluno_lista->lista_id)->where('turma_id', '=', $request->id)->where('compartilhada', '=', true)->first();
+      $lista = \App\Lista::where('id', '=', $aluno_lista->lista_id)->where('turma_id', '=', $request->id)->where('compartilhada', '=', true)->where('is_ativo', '=', false)->first();
       if($lista != null){
         array_push($listas, $lista);
       }
     }
 
+  $turma = \App\Turma::find($request->id);
    return view("aluno/ExibirResultadosDisciplina", [
               "listas" => $listas,
+              "turma" => $turma,
     ]);
   }
 

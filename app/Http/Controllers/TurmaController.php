@@ -191,8 +191,8 @@ class TurmaController extends Controller
 
 	      array_push($alunos, $aluno);
 	    }
-
-			return view("professor/VisualizarAlunosMatriculados", ["alunos" => $alunos]);
+			$turma = \App\Turma::find($request->id);
+			return view("professor/VisualizarAlunosMatriculados", ["alunos" => $alunos, "turma" => $turma]);
 	}
 
 	public function buscarTurmas(Request $request){
