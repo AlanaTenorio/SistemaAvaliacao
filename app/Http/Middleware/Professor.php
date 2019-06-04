@@ -32,6 +32,8 @@ class Professor
               "atividade/inserirAtividadeMultipla/{id}",
               "atividade/inserirAtividadeImagem/{id}",
               "atividade/inserirAtividadeAudio/{id}",
+              "professor/exibirResultadosDisciplina/{id}",
+              "professor/exibirResultadosAluno/{aluno_id}/{id}",
               ];
 
               $rotas_conteudo = [

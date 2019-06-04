@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Resultados') }}</div>
+                <div class="card-header">Resultados: <b>{{$turma->nome}}</b></div>
 
                 @foreach($listas as $lista)
                 @php
@@ -38,15 +38,17 @@
                                 <tr>
                                   @foreach ($atividades as $atividade_aluno)
                                   @if($atividade_aluno->acertou)
-                                  <td data-title="Resultado"><i class="ni ni-check-bold text-green"></i></td>
+                                  <td data-title="Resultado"><img src="{{asset('assets/images/check.png')}}" height="23" width="23"></td>
                                   @else
-                                  <td data-title="Resultado"><i class="ni ni-fat-remove text-red"></i></td>
+                                  <td data-title="Resultado">
+                                    <img src="{{asset('assets/images/wrong.png')}}" height="23" width="23">
+                                  </td>
                                   @endif
                                   @endforeach
                                   @php
                                   $lista_aluno = \App\Aluno_lista::where('lista_id', '=', $lista->id)->first();
                                   @endphp
-                                  <td data-title="Pontuacao">{{$lista_aluno->pontuacao}}%</td>
+                                  <td data-title="Pontuacao">{{round($lista_aluno->pontuacao, 2)}}%</td>
                                 </tr>
 
                             </tbody>
@@ -55,10 +57,11 @@
                   </div>
 
                   @endforeach
+                  <div class="panel-footer">
+                      <center><a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a></center>
+                  </div>
                 </div>
-                <div class="panel-footer">
-                    <center><a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a></center>
-                </div>
+
             </div>
         </div>
     </div>

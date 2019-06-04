@@ -29,6 +29,7 @@
                               <tr>
                                   <th>Nome</th>
                                   <th>Email</th>
+                                  <th>Resultados</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -36,8 +37,10 @@
                                 <tr>
                                     <td data-title="Nome">{{ $aluno->name }}</td>
                                     <td data-title="Email">{{ $aluno->email }}</td>
-                                    
-                                    <td></td>
+
+                                    <td><a class="btn btn-primary" href="{{ route("/professor/exibirResultadosAluno", ['aluno_id' => $aluno->id, 'id' => $turma->id]) }}">
+                                      <i class="ni ni-chart-bar-32 text-white"></i>
+                                    </a></td>
                                 </tr>
                               @endforeach
 

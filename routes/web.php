@@ -91,6 +91,9 @@ Route::get('/atividade/cadastrarAudio', function(Request $request) {
 Route::post('/atividadeAudio/cadastrar', 'AtividadeAssociarAudioController@cadastrar')->name('/atividadeAudio/cadastrar')->middleware('professor');
 Route::get('/atividadeAudio/exibir/{id}', 'AtividadeController@exibirAtividadeAssociarAudio')->name('/atividadeAudio/exibir')->middleware('professor');
 
+//Resultados
+Route::get('/professor/exibirResultadosDisciplina/{id}', 'ProfessorController@exibirResultadosDisciplina')->name('/professor/exibirResultadosDisciplina')->middleware('professor');
+Route::get('/professor/exibirResultadosAluno/{aluno_id}/{id}', 'ProfessorController@exibirResultadosAluno')->name('/professor/exibirResultadosAluno')->middleware('professor');
 
 //Rotas para emails
 Route::post('/share/mail','MailController@compartilharEmail')->name('/turma/compartilhar.post')->middleware('professor');

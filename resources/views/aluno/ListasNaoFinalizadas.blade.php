@@ -41,9 +41,14 @@
                                     <td data-title="data_inicio">{{ $lista->data_inicio }}</td>
                                     <td data-title="data_fim">{{ $lista->data_fim }}</td>
                                     <td>
+                                      @if($lista->is_ativo)
                                       <a class="btn btn-primary" href="{{ route("/aluno/exibirLista", ['id' => $lista->id]) }}">
                                       Responder
                                       </a>
+                                      @else
+                                      Essa lista já está encerrada
+                                      @endif
+
 
 
                                     </td>

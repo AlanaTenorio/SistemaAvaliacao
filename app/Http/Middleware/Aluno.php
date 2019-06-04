@@ -22,11 +22,13 @@ class Aluno
               "aluno/gerenciarTurma/{id}",
               "aluno/listasRespondidas/{id}",
               "aluno/listasNaoRespondidas/{id}",
+              "aluno/exibirResultadosDisciplina/{id}",
               ];
 
               $rotas_lista = [
               "aluno/exibirLista/{id}",
               "aluno/finalizarLista/{id}",
+              "aluno/exibirResultadosLista/{id}",
               "aluno/exibirResultadosLista/{id}",
               ];
 

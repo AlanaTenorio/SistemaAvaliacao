@@ -33,6 +33,9 @@
                       <a class="nav-link" href="{{ route("/turma/listarAlunosMatriculados", ['id' => $turma->id]) }}">
                           <i class="ni ni-circle-08 text-blue"></i> Lista de Alunos
                       </a>
+                      <a class="nav-link" href="{{ route("/professor/exibirResultadosDisciplina", ['id' => $turma->id]) }}">
+                          <i class="ni ni-chart-bar-32 text-blue"></i> Resultados
+                      </a>
 
                     @endif
               </div>

@@ -48,9 +48,6 @@
                                       </a>
                                     </td>
                                     <td>
-                                      <a class="btn btn-primary" style="width:103px" href="">
-                                        Ver Listas
-                                      </a>
                                     </td>
                                     <td></td>
                                 </tr>
