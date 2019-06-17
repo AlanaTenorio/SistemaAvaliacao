@@ -15,11 +15,11 @@ class CreateAlternativaAtividadesTable extends Migration
     {
         Schema::create('alternativa_atividades', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('A');
-            $table->string('B');
-            $table->string('C');
-            $table->string('D');
-            $table->string('E');
+            $table->longText('A');
+            $table->longText('B');
+            $table->longText('C');
+            $table->longText('D');
+            $table->longText('E');
             $table->integer('atividade_multipla_escolha_id')->unsigned();
             $table->foreign('atividade_multipla_escolha_id')->references('id')
                     ->on('atividade_multipla_escolhas')

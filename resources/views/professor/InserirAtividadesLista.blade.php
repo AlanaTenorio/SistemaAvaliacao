@@ -48,7 +48,7 @@ function avisoPublicar(){
                             <tbody>
                               @foreach ($atividades as $atividade)
                                 <tr>
-                                    <td data-title="Nome">{{ $atividade->titulo }}</td>
+                                    <td data-title="Nome">{{ str_limit(preg_replace('/<[^>]*>|[&;]|nbsp/', '', preg_replace(array('/nbsp/','/<(.*?)>/'), ' ', $atividade->titulo)), $limit = 180, $end = '...') }}</td>
                                     <td data-title="Pontuacao">
                                       <form method="POST" action="/lista/inserirAtividade">
                                         {{ csrf_field() }}

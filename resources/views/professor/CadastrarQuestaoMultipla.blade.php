@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/lang/summernote-pt-BR.js"></script>
+</head>
+
+<body>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -14,23 +24,23 @@
                       <input type="hidden" name="turma_id" value="{{ $turma->id}}" />
 
                         <div class="form-group row">
-
                             <div class="col-md-12">
-                              <textarea name="pergunta" id="pergunta" type="text" class="form-control" placeholder="Digite aqui o pergunta da questão" required value= {{ old('pergunta')}}> {{ $errors->first('pergunta')}} </textarea>
-                                @error('pergunta')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+
+                                <textarea name="pergunta" id="summernote"  type="text" class="form-control summernote" required> {{ $errors->first('pergunta')}} </textarea>
+                                  @error('pergunta')
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                      </span>
+                                  @enderror
+                                </div>
                             </div>
-                        </div>
 
                         <div class="form-group row">
                           <input type="radio" name="gabarito" value="a" required>
                             <label for="A" class="col-md-1 col-form-label text-md-right">{{ __('A) ') }}</label>
 
                             <div class="col-md-10">
-                              <input name="A" id="A" type="text" class="form-control" required value= {{ old('A')}}> {{ $errors->first('A')}}
+                              <textarea name="A"  type="text" class="form-control summernote_alt" required value= {{ old('A')}}> {{ $errors->first('A')}}</textarea>
 
                                 @error('A')
                                     <span class="invalid-feedback" role="alert">
@@ -45,7 +55,7 @@
                             <label for="B" class="col-md-1 col-form-label text-md-right">{{ __('B)') }}</label>
 
                             <div class="col-md-10">
-                              <input name="B" id="B" type="text" class="form-control" > {{ $errors->first('B')}}
+                              <textarea name="B"  type="text" class="form-control summernote_alt" required value= {{ old('B')}}> {{ $errors->first('B')}}</textarea>
 
                                 @error('B')
                                     <span class="invalid-feedback" role="alert">
@@ -61,7 +71,7 @@
                             <label for="C" class="col-md-1 col-form-label text-md-right">{{ __('C)') }}</label>
 
                             <div class="col-md-10">
-                              <input name="C" id="C" type="text" class="form-control" required value= {{ old('C')}}> {{ $errors->first('C')}}
+                              <textarea name="C" type="text" class="form-control summernote_alt" required value= {{ old('C')}}> {{ $errors->first('C')}}</textarea>
 
                                 @error('C')
                                     <span class="invalid-feedback" role="alert">
@@ -76,7 +86,7 @@
                             <label for="D" class="col-md-1 col-form-label text-md-right">{{ __('D)') }}</label>
 
                             <div class="col-md-10">
-                              <input name="D" id="D" type="text" class="form-control"> {{ $errors->first('D')}}
+                              <textarea name="D" type="text" class="form-control summernote_alt" required value= {{ old('D')}}> {{ $errors->first('D')}}</textarea>
 
                                 @error('D')
                                     <span class="invalid-feedback" role="alert">
@@ -91,7 +101,7 @@
                             <label for="E" class="col-md-1 col-form-label text-md-right">{{ __('E)') }}</label>
 
                             <div class="col-md-10">
-                              <input name="E" id="E" type="text" class="form-control"> {{ $errors->first('E')}}
+                              <textarea name="E" type="text" class="form-control summernote_alt" required value= {{ old('E')}}> {{ $errors->first('E')}}</textarea>
 
                                 @error('E')
                                     <span class="invalid-feedback" role="alert">
@@ -101,17 +111,6 @@
                             </div>
                         </div>
 
-                        <!-- <div class="form-group row">
-                            <label for="pontos" class="col-md-2 col-form-label text-md-right">{{ __('Pontos:') }}</label>
-                            <div class="col-md-2">
-                              <input name="pontuacao" id="pontuacao" type="number" step="0.01" min="0" max="10" class="form-control" required value= {{ old('pontuacao')}}> {{ $errors->first('pontuacao')}}
-                                @error('pontuacao')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div> -->
                         <div class="form-group row">
                               <label for="conteudo_id" class="col-md-2 col-form-label text-md-right">{{ __('Conteúdo') }}</label>
                               @if(count($conteudos) != 0 and count($conteudos) != 0)
@@ -145,4 +144,19 @@
         </div>
     </div>
 </div>
+<script>
+  $('#summernote').summernote({
+    placeholder: 'Digite aqui o enunciado da questão',
+    tabsize: 2,
+    height: 100
+  });
+  </script>
+  <script>
+  $('.summernote_alt').summernote({
+    tabsize: 1,
+    width: 800,
+    height: 50
+  });
+</script>
+</body>
 @endsection

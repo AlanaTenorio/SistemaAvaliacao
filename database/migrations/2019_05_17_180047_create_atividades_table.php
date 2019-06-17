@@ -15,7 +15,7 @@ class CreateAtividadesTable extends Migration
     {
         Schema::create('atividades', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('titulo')->nullable();
+            $table->longText('titulo')->nullable();
             $table->decimal('pontuacao')->nullable();
             $table->integer('turma_id')->unsigned();
             $table->integer('tipo')->unsigned();

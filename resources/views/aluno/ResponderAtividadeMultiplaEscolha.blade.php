@@ -19,7 +19,7 @@
                       <div class="form-group row">
 
                           <div class="col-md-12">
-                            {{ $atividade->titulo}}
+                            <span> {!! $atividade->toArray()['titulo'] !!} </span>
                           </div>
                       </div>
 
@@ -27,20 +27,20 @@
                           <input type="radio" name="gabarito" value="a" required>
                             <label for="A" class="col-md-1 col-form-label text-md-right">{{ __('A) ') }}</label>
 
-                                <div class="col-md-10">
-                                  <input name="A" id="A" type="text" readonly class="form-control" value = "{{ $atividadeMultiplaEscolha->alternativa->A}}" required value= {{ old('A')}}> {{ $errors->first('A')}}
+                            <div class="col-md-10" style="padding-top:10px">
+                              <span> {!! $atividadeMultiplaEscolha->alternativa->toArray()['A'] !!} </span>
 
-                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group row">
                           <input type="radio" name="gabarito" value="b" required>
                             <label for="B" class="col-md-1 col-form-label text-md-right">{{ __('B)') }}</label>
 
-                                <div class="col-md-10">
-                                  <input name="B" id="B" type="text" readonly class="form-control" value = "{{ $atividadeMultiplaEscolha->alternativa->B}}" required value= {{ old('B')}}> {{ $errors->first('B')}}
+                            <div class="col-md-10" style="padding-top:10px">
+                              <span> {!! $atividadeMultiplaEscolha->alternativa->toArray()['B'] !!} </span>
 
-                                </div>
+                            </div>
                         </div>
 
 
@@ -48,30 +48,30 @@
                           <input type="radio" name="gabarito" value="c" required>
                             <label for="C" class="col-md-1 col-form-label text-md-right">{{ __('C)') }}</label>
 
-                                <div class="col-md-10">
-                                  <input name="C" id="C" type="text" readonly class="form-control" value = "{{ $atividadeMultiplaEscolha->alternativa->C}}" required value= {{ old('C')}}> {{ $errors->first('C')}}
+                            <div class="col-md-10" style="padding-top:10px">
+                              <span> {!! $atividadeMultiplaEscolha->alternativa->toArray()['C'] !!} </span>
 
-                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group row">
                           <input type="radio" name="gabarito" value="d" required>
                             <label for="D" class="col-md-1 col-form-label text-md-right">{{ __('D)') }}</label>
 
-                                <div class="col-md-10">
-                                  <input name="D" id="D" type="text" readonly class="form-control" value = "{{ $atividadeMultiplaEscolha->alternativa->D}}" required value= {{ old('D')}}> {{ $errors->first('D')}}
+                            <div class="col-md-10" style="padding-top:10px">
+                              <span> {!! $atividadeMultiplaEscolha->alternativa->toArray()['D'] !!} </span>
 
-                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group row">
                           <input type="radio" name="gabarito" value="e" required>
                             <label for="E" class="col-md-1 col-form-label text-md-right">{{ __('E)') }}</label>
 
-                                <div class="col-md-10">
-                                  <input name="E" id="E" type="text" readonly class="form-control" value = "{{ $atividadeMultiplaEscolha->alternativa->E}}" required value= {{ old('E')}}> {{ $errors->first('E')}}
+                            <div class="col-md-10" style="padding-top:10px">
+                              <span> {!! $atividadeMultiplaEscolha->alternativa->toArray()['E'] !!} </span>
 
-                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group row mb-0">
