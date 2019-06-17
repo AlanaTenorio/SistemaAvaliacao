@@ -47,10 +47,10 @@
                                </div>
 
                                <div class="col-md-1" >
-                                 <i class="ni ni-bold-right text-blue" style="padding-top: 15px;"></i>
+                                 <i class="ni ni-bold-right text-blue" style="padding-top: 55px;"></i>
                                </div>
 
-                               <div class="col-md-3">
+                               <div class="col-md-3" style="padding-top: 43px;">
                                  <input id="resposta1" name="resposta1" type="number" min="1" max="5" class="form-control" placeholder="Resposta" required>
                                </div>
                              </div>
@@ -62,10 +62,10 @@
                                </div>
 
                                <div class="col-md-1" >
-                                 <i class="ni ni-bold-right text-blue" style="padding-top: 15px;"></i>
+                                 <i class="ni ni-bold-right text-blue" style="padding-top: 55px;"></i>
                                </div>
 
-                               <div class="col-md-3">
+                               <div class="col-md-3" style="padding-top: 43px;">
                                  <input id="resposta2" name="resposta2" type="number" min="1" max="5" class="form-control" placeholder="Resposta" required>
                                </div>
                              </div>
@@ -77,10 +77,10 @@
                                </div>
 
                                <div class="col-md-1" >
-                                 <i class="ni ni-bold-right text-blue" style="padding-top: 15px;"></i>
+                                 <i class="ni ni-bold-right text-blue" style="padding-top: 55px;"></i>
                                </div>
 
-                               <div class="col-md-3">
+                               <div class="col-md-3" style="padding-top: 43px;">
                                  <input id="resposta3" name="resposta3" type="number" min="1" max="5" class="form-control" placeholder="Resposta" required>
                                </div>
                              </div>
@@ -92,10 +92,10 @@
                                </div>
 
                                <div class="col-md-1" >
-                                 <i class="ni ni-bold-right text-blue" style="padding-top: 15px;"></i>
+                                 <i class="ni ni-bold-right text-blue" style="padding-top: 55px;"></i>
                                </div>
 
-                               <div class="col-md-3">
+                               <div class="col-md-3" style="padding-top: 43px;">
                                  <input id="resposta4" name="resposta4" type="number" min="1" max="5" class="form-control" placeholder="Resposta" required>
                                </div>
                              </div>
@@ -107,10 +107,10 @@
                                </div>
 
                                <div class="col-md-1" >
-                                 <i class="ni ni-bold-right text-blue" style="padding-top: 15px;"></i>
+                                 <i class="ni ni-bold-right text-blue" style="padding-top: 55px;"></i>
                                </div>
 
-                               <div class="col-md-3">
+                               <div class="col-md-3" style="padding-top: 43px;">
                                  <input id="resposta5" name="resposta5" type="number" min="1" max="5" class="form-control" placeholder="Resposta" required>
                                </div>
                              </div>

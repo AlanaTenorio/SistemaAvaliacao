@@ -1,6 +1,17 @@
+@section('navbar')
+    <a href="{{ route("home") }}">Início</a> >
+    <a href="{{ route("/turma/gerenciar", ["id" => $turma->id]) }}">Turma</a> >
+    Editar
+@endsection
+
 @extends('layouts.app')
 
+
+
 @section('content')
+
+
+
 
 <head>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -36,8 +47,8 @@
                             </div>
 
                         <div class="form-group row">
-                          <input type="radio" name="gabarito" value="a" required>
-                            <label for="A" class="col-md-1 col-form-label text-md-right">{{ __('A) ') }}</label>
+                          <input type="radio" name="gabarito" value="a" required >
+                            <label for="A" class="col-md-1 col-form-label text-md-right" style="padding-top:40px">{{ __('A) ') }}</label>
 
                             <div class="col-md-10">
                               <textarea name="A"  type="text" class="form-control summernote_alt" required value= {{ old('A')}}> {{ $errors->first('A')}}</textarea>
@@ -52,7 +63,7 @@
 
                         <div class="form-group row">
                           <input type="radio" name="gabarito" value="b" required>
-                            <label for="B" class="col-md-1 col-form-label text-md-right">{{ __('B)') }}</label>
+                            <label for="B" class="col-md-1 col-form-label text-md-right" style="padding-top:40px">{{ __('B)') }}</label>
 
                             <div class="col-md-10">
                               <textarea name="B"  type="text" class="form-control summernote_alt" required value= {{ old('B')}}> {{ $errors->first('B')}}</textarea>
@@ -68,7 +79,7 @@
 
                         <div class="form-group row">
                           <input type="radio" name="gabarito" value="c" required>
-                            <label for="C" class="col-md-1 col-form-label text-md-right">{{ __('C)') }}</label>
+                            <label for="C" class="col-md-1 col-form-label text-md-right" style="padding-top:40px">{{ __('C)') }}</label>
 
                             <div class="col-md-10">
                               <textarea name="C" type="text" class="form-control summernote_alt" required value= {{ old('C')}}> {{ $errors->first('C')}}</textarea>
@@ -83,7 +94,7 @@
 
                         <div class="form-group row">
                           <input type="radio" name="gabarito" value="d" required>
-                            <label for="D" class="col-md-1 col-form-label text-md-right">{{ __('D)') }}</label>
+                            <label for="D" class="col-md-1 col-form-label text-md-right" style="padding-top:40px">{{ __('D)') }}</label>
 
                             <div class="col-md-10">
                               <textarea name="D" type="text" class="form-control summernote_alt" required value= {{ old('D')}}> {{ $errors->first('D')}}</textarea>
@@ -98,7 +109,7 @@
 
                         <div class="form-group row">
                           <input type="radio" name="gabarito" value="e" required>
-                            <label for="E" class="col-md-1 col-form-label text-md-right">{{ __('E)') }}</label>
+                            <label for="E" class="col-md-1 col-form-label text-md-right" style="padding-top:40px">{{ __('E)') }}</label>
 
                             <div class="col-md-10">
                               <textarea name="E" type="text" class="form-control summernote_alt" required value= {{ old('E')}}> {{ $errors->first('E')}}</textarea>

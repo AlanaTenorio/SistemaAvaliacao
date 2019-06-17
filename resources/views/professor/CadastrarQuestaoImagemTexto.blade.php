@@ -73,6 +73,7 @@ function readimg5(input) {
         }
 }
 </script>
+
 <head>
     <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -112,7 +113,8 @@ function readimg5(input) {
                   </div>
 
                   <div class="form-group row">
-                        <label for="conteudo_id" class="col-md-2 col-form-label text-md-right">{{ __('Conteúdo') }}</label>
+
+                        <label for="conteudo_id" class="col-md-2 col-form-label" style="padding-left:45px">{{ __('Conteúdo') }}</label>
                         @if(count($conteudos) != 0 and count($conteudos) != 0)
                         <div class="col-md-6">
                           <select class="form-control" id="conteudos" name="conteudo_id" required>
@@ -134,8 +136,14 @@ function readimg5(input) {
                   <div class="card-body">
 
                       <body>
-                        <input type='file' required onchange="readimg1(this);"  id="image1" name="image1" accept="image/*"/>
+                        <div class="fileinputs">
+                        	<input type="file" class="file" required onchange="readimg1(this);"  id="image1" name="image1" accept="image/*"/>
                           <img id="img1" src="#"  alt=" " />
+                            <div class="fakefile">
+                          		<img src="{{asset('assets/images/attach.png')}}" height="30" width="29"  />
+                          	</div>
+
+                        </div>
                       </body>
 
                   </div>
@@ -152,10 +160,17 @@ function readimg5(input) {
 
                   <div class="card-body">
 
-                      <body>
-                        <input type='file' required onchange="readimg2(this);" id="image2" name="image2" />
-                          <img id="img2" src="#"  alt=" " />
-                      </body>
+
+                    <body>
+                      <div class="fileinputs">
+                        <input type="file" class="file" required onchange="readimg2(this);"  id="image2" name="image2" accept="image/*"/>
+                        <img id="img2" src="#"  alt=" " />
+                        <div class="fakefile">
+                          <img src="{{asset('assets/images/attach.png')}}" height="30" width="29" />
+                        </div>
+                      </div>
+                    </body>
+
                   </div>
                   <div class="form-group row">
                       <label for="respostaImg2" class="col-md-4 col-form-label text-md-right">{{ __('2. ') }}</label>
@@ -168,10 +183,15 @@ function readimg5(input) {
 
                   <div class="card-body">
 
-                      <body>
-                        <input type='file' required onchange="readimg3(this);" id="image3" name="image3"/>
-                          <img id="img3" src="#"  alt=" " />
-                      </body>
+                    <body>
+                      <div class="fileinputs">
+                        <input type="file" class="file" required onchange="readimg3(this);"  id="image3" name="image3" accept="image/*"/>
+                        <img id="img3" src="#"  alt=" " />
+                        <div class="fakefile">
+                          <img src="{{asset('assets/images/attach.png')}}" height="30" width="29" />
+                        </div>
+                      </div>
+                    </body>
                   </div>
                   <div class="form-group row">
                       <label for="respostaImg3" class="col-md-4 col-form-label text-md-right">{{ __('3. ') }}</label>
@@ -184,10 +204,15 @@ function readimg5(input) {
 
                   <div class="card-body">
 
-                      <body>
-                        <input type='file' required onchange="readimg4(this);" id="image4" name="image4"/>
-                          <img id="img4" src="#"  alt=" " />
-                      </body>
+                    <body>
+                      <div class="fileinputs">
+                        <input type="file" class="file" required onchange="readimg4(this);"  id="image4" name="image4" accept="image/*"/>
+                        <img id="img4" src="#"  alt=" " />
+                        <div class="fakefile">
+                          <img src="{{asset('assets/images/attach.png')}}" height="30" width="29" />
+                        </div>
+                      </div>
+                    </body>
                   </div>
                   <div class="form-group row">
                       <label for="respostaImg4" class="col-md-4 col-form-label text-md-right">{{ __('4. ') }}</label>
@@ -200,10 +225,15 @@ function readimg5(input) {
 
                   <div class="card-body">
 
-                      <body>
-                        <input type='file' required onchange="readimg5(this);" id="image5" name="image5"/>
-                          <img id="img5" src="#"  alt=" " />
-                      </body>
+                    <body>
+                      <div class="fileinputs">
+                        <input type="file" class="file" required onchange="readimg5(this);"  id="image5" name="image5" accept="image/*"/>
+                        <img id="img5" src="#"  alt=" " />
+                        <div class="fakefile">
+                          <img src="{{asset('assets/images/attach.png')}}" height="30" width="29" />
+                        </div>
+                      </div>
+                    </body>
                   </div>
                   <div class="form-group row">
                       <label for="respostaImg5" class="col-md-4 col-form-label text-md-right">{{ __('5. ') }}</label>

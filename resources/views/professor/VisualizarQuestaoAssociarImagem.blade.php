@@ -28,10 +28,10 @@
                               </div>
 
                               <div class="col-md-1" >
-                                <i class="ni ni-bold-right text-blue" style="padding-top: 15px;"></i>
+                                <i class="ni ni-bold-right text-blue" style="padding-top: 55px;"></i>
                               </div>
 
-                              <div class="col-md-5">
+                              <div class="col-md-5" style="padding-top: 43px;">
                                 <input name="respostaImg" id="respostaImg" type="text" readonly class="form-control" value = "{{ $item->resposta }}" required value= {{ old('respostaImg')}}> {{ $errors->first('respostaImg')}}
 
                               </div>
