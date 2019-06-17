@@ -5,7 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Turma: <strong>{{$turma->disciplina->nome}}</strong></div>
+                <div class="card-header">
+                  <a href="{{ route("home") }}">Início</a> >
+                  <a href="{{ route("/turma/listarUser")}}">Minhas Turmas</a> >
+                  Compartilhar Turma: <strong>{{$turma->disciplina->nome}}</strong>
+                </div>
 
                 <div class="card-body">
                   <div class="panel-body">

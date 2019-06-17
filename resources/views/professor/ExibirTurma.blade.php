@@ -19,6 +19,11 @@ function avisoDeletar(){
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+              <div class="card-header">
+                <a href="{{ route("home") }}">Início</a> >
+                <a href="{{ route("/turma/listarUser") }}">Minhas Turmas</a> >
+                Turma <b> {{$turma->nome}} </b>
+              </div>
 
                 <div class="panel-body">
                     <div style="width: 100%; margin-left: 0%" class="row">
@@ -56,7 +61,7 @@ function avisoDeletar(){
                     </a>
                     @endif
                     @endif
-                    <a class="btn btn-primary" href="/turma/listarConteudos/{{$turma->id}}">Conteúdos</a>
+
                     @if (Auth::guard()->check() && Auth::user()->isAluno == true)
                     <?php
                     $turma_participa = \App\Turma_aluno::where('aluno_id', '=', Auth::user()->id)

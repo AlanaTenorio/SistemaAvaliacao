@@ -1,16 +1,6 @@
-@section('navbar')
-    <a href="{{ route("home") }}">Início</a> >
-    <a href="{{ route("/turma/gerenciar", ["id" => $turma->id]) }}">Turma</a> >
-    Editar
-@endsection
-
 @extends('layouts.app')
 
-
-
 @section('content')
-
-
 
 
 <head>
@@ -26,7 +16,12 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Criar Questão - Múltipla Escolha') }}</div>
+                <div class="card-header">
+                  <a href="{{ route("home") }}">Início</a> >
+                  <a href="{{ route("/turma/gerenciar", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                  Criar Questão - Múltipla Escolha
+
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="/atividadeMultipla/cadastrar">

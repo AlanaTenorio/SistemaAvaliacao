@@ -7,7 +7,12 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Solicitacoes') }}</div>
+                <div class="card-header">
+                  <a href="{{ route("home") }}">Início</a> >
+                  <a href="{{ route("/turma/listarUser") }}">Minhas Turmas</a> >
+                  <a href="{{ route("/turma/exibir", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                  Solicitações
+                </div>
 
                 <div class="card-body">
 

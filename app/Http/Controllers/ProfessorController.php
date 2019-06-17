@@ -14,7 +14,7 @@ class ProfessorController extends Controller
     public function listarSolicitacoes(Request $request) {
 
     $solicitacoes = \App\Turma_aluno::where('turma_id', '=', $request->id)->where('ativo', '=', false)->get();
-
+		$turma = \App\Turma::find($request->id);
     $alunos = array();
     foreach ($solicitacoes as $solicitacao) {
       $aluno = \App\User::find($solicitacao->aluno_id);
@@ -25,6 +25,7 @@ class ProfessorController extends Controller
     return view("professor/VisualizarSolicitacoes", [
         "solicitacoes" => $solicitacoes,
         "alunos" => $alunos,
+				"turma" => $turma,
     ]);
 
     }
@@ -76,11 +77,12 @@ class ProfessorController extends Controller
 	        array_push($listas, $lista);
 	      }
 	    }
-
+		$turma = \App\Turma::find($request->id);
 		$aluno = \App\User::find($request->aluno_id);
 	   return view("professor/ExibirResultadosAluno", [
 	              "listas" => $listas,
 								"aluno" => $aluno,
+								"turma" => $turma,
 	    ]);
 
     }

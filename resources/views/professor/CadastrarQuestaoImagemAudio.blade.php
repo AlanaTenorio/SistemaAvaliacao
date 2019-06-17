@@ -86,7 +86,7 @@ function readaudio1(input) {
 
             reader.readAsDataURL(input.files[0]);
             var audio_1_load = document.getElementById("audio_1_load");
-            audio_1_load.src = "{{asset('assets/images/check.png')}}";
+            audio_1_load.src = "{{asset('assets/images/loaded.png')}}";
         }
 }
 
@@ -103,7 +103,7 @@ function readaudio2(input) {
 
             reader.readAsDataURL(input.files[0]);
             var audio_2_load = document.getElementById("audio_2_load");
-            audio_2_load.src = "{{asset('assets/images/check.png')}}";
+            audio_2_load.src = "{{asset('assets/images/loaded.png')}}";
         }
 }
 
@@ -120,7 +120,7 @@ function readaudio3(input) {
 
             reader.readAsDataURL(input.files[0]);
             var audio_3_load = document.getElementById("audio_3_load");
-            audio_3_load.src = "{{asset('assets/images/check.png')}}";
+            audio_3_load.src = "{{asset('assets/images/loaded.png')}}";
         }
 }
 
@@ -137,7 +137,7 @@ function readaudio4(input) {
 
             reader.readAsDataURL(input.files[0]);
             var audio_4_load = document.getElementById("audio_4_load");
-            audio_4_load.src = "{{asset('assets/images/check.png')}}";
+            audio_4_load.src = "{{asset('assets/images/loaded.png')}}";
         }
 }
 
@@ -154,7 +154,7 @@ function readaudio5(input) {
 
             reader.readAsDataURL(input.files[0]);
             var audio_5_load = document.getElementById("audio_5_load");
-            audio_5_load.src = "{{asset('assets/images/check.png')}}";
+            audio_5_load.src = "{{asset('assets/images/loaded.png')}}";
         }
 }
 </script>
@@ -176,7 +176,11 @@ function readaudio5(input) {
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Criar Questão - Associar Imagem-Texto') }}</div>
+                <div class="card-header">
+                  <a href="{{ route("home") }}">Início</a> >
+                  <a href="{{ route("/turma/gerenciar", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                  Criar Questão - Associar Imagem-Áudio
+                </div>
 
                 <div class="card-body">
 
@@ -255,7 +259,7 @@ function readaudio5(input) {
                         <div class="col-md-5">
                           <div class="fileinputs">
                             <input type="file" class="file" required  onchange="readaudio1(this);" id="audio1" name="audio1" accept="audio/*"/>
-                            <img id="audio_1_load" src="{{asset('assets/images/wrong.png')}}" height="23" width="23">
+                            <img id="audio_1_load" src="{{asset('assets/images/del.png')}}" height="23" width="23">
 
                               <div class="fakefile">
                                 <img src="{{asset('assets/images/audio.jpg')}}" height="30" width="29"  />
@@ -288,7 +292,7 @@ function readaudio5(input) {
                         <div class="col-md-5">
                           <div class="fileinputs">
                             <input type="file" class="file" required onchange="readaudio2(this);" id="audio2" name="audio2" accept="audio/*"/>
-                            <img id="audio_2_load" src="{{asset('assets/images/wrong.png')}}" height="23" width="23">
+                            <img id="audio_2_load" src="{{asset('assets/images/del.png')}}" height="23" width="23">
                               <div class="fakefile">
                                 <img src="{{asset('assets/images/audio.jpg')}}" height="30" width="29"  />
                               </div>
@@ -320,7 +324,7 @@ function readaudio5(input) {
                         <div class="col-md-5">
                           <div class="fileinputs">
                             <input type="file" class="file" required onchange="readaudio3(this);" id="audio3" name="audio3" accept="audio/*"/>
-                            <img id="audio_3_load" src="{{asset('assets/images/wrong.png')}}" height="23" width="23">
+                            <img id="audio_3_load" src="{{asset('assets/images/del.png')}}" height="23" width="23">
                               <div class="fakefile">
                                 <img src="{{asset('assets/images/audio.jpg')}}" height="30" width="29"  />
                               </div>
@@ -352,7 +356,7 @@ function readaudio5(input) {
                         <div class="col-md-5">
                           <div class="fileinputs">
                             <input type="file" class="file" required onchange="readaudio4(this);" id="audio4" name="audio4" accept="audio/*"/>
-                            <img id="audio_4_load" src="{{asset('assets/images/wrong.png')}}" height="23" width="23">
+                            <img id="audio_4_load" src="{{asset('assets/images/del.png')}}" height="23" width="23">
                               <div class="fakefile">
                                 <img src="{{asset('assets/images/audio.jpg')}}" height="30" width="29"  />
                               </div>
@@ -384,7 +388,7 @@ function readaudio5(input) {
                         <div class="col-md-5">
                           <div class="fileinputs">
                             <input type="file" class="file" required onchange="readaudio5(this);" id="audio5" name="audio5" accept="audio/*"/>
-                            <img id="audio_5_load" src="{{asset('assets/images/wrong.png')}}" height="23" width="23">
+                            <img id="audio_5_load" src="{{asset('assets/images/del.png')}}" height="23" width="23">
                               <div class="fakefile">
                                 <img src="{{asset('assets/images/audio.jpg')}}" height="30" width="29"  />
                               </div>

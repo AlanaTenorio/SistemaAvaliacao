@@ -9,6 +9,7 @@ class AlunoController extends Controller
 {
   public function listasFinalizadas(Request $request) {
     $usuarioId = Auth::user()->id;
+    $turma = \App\Turma::find($request->id);
     $aluno_listas = \App\Aluno_lista::where('aluno_id', '=', $usuarioId)
                                     ->where('finalizada', '=', true)
                                     ->get();
@@ -23,6 +24,7 @@ class AlunoController extends Controller
 
     return view("aluno/ListasFinalizadas", [
         "listas" => $listas,
+        "turma" => $turma,
     ]);
 
     }
@@ -30,7 +32,7 @@ class AlunoController extends Controller
   public function listasNaoFinalizadas(Request $request) {
     $usuarioId = Auth::user()->id;
     $listas_turma = \App\Lista::where('turma_id', '=', $request->id)->where('compartilhada', '=', true)->get();
-
+    $turma = \App\Turma::find($request->id);
     $listas = array();
     foreach ($listas_turma as $lista_turma) {
       $aluno_lista = \App\Aluno_lista::where('aluno_id', '=', $usuarioId)
@@ -44,6 +46,7 @@ class AlunoController extends Controller
 
     return view("aluno/ListasNaoFinalizadas", [
         "listas" => $listas,
+        "turma" => $turma,
     ]);
 
   }
@@ -216,10 +219,13 @@ class AlunoController extends Controller
     $atividades = \App\Aluno_atividade::where('lista_id', '=', $request->id)
                                         ->where('aluno_id', '=', Auth::user()->id)
                                         ->get();
-   $lista = \App\Aluno_lista::where('lista_id', '=', $request->id)->first();
+   $lista_aluno = \App\Aluno_lista::where('lista_id', '=', $request->id)->first();
+   $lista = \App\Lista::find($request->id);
+   $turma = \App\Turma::find($lista->turma_id);
    return view("aluno/ExibirResultadosLista", [
               "atividades" => $atividades,
-              "lista" => $lista,
+              "lista" => $lista_aluno,
+              "turma" => $turma,
     ]);
   }
 

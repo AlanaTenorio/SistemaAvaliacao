@@ -6,7 +6,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Turmas') }}</div>
+                <div class="card-header">
+                  <a href="{{ route("home") }}">Início</a> >{{ __('Turmas') }}</div>
 
                 <div class="card-body">
 
@@ -44,7 +45,7 @@
                                     <td data-title="Carga Horária">{{ $turma->disciplina->carga_horaria }}</td>
 
                                     <td>
-                                      
+
                                       <a class="btn btn-primary" href="{{ route("/turma/exibir", ['id' => $turma->id]) }}">
                                         <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">
                                       </a>

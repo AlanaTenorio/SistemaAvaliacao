@@ -51,11 +51,12 @@ class ListaController extends Controller
           $this->adicionarListaConteudo($lista->id, $conteudo->id);
         }
       }
-
+      $turma = \App\Turma::find($request->turma_id);
       session()->flash('success', 'Lista Inserida com sucesso.');
       return view("/professor/InserirAtividadesLista", [
           "lista" => $lista,
           "atividades" => $atividades,
+          "turma" => $turma,
       ]);
     }
 
@@ -80,11 +81,12 @@ class ListaController extends Controller
       $lista = \App\Lista::where('id', '=', $request->lista_id)->first();
       $atividades = \App\Atividade::where('turma_id', '=', $lista->turma_id)->get();
 
-
+      $turma = \App\Turma::find($lista->turma_id);
       session()->flash('success', 'Questão adicionada.');
       return view("/professor/InserirAtividadesLista", [
           "lista" => $lista,
           "atividades" => $atividades,
+          "turma" => $turma,
       ]);
     }
 
@@ -93,7 +95,7 @@ class ListaController extends Controller
 
       $lista = \App\Lista::where('id', '=', $lista_atividade->lista_id)->first();
       $atividades = \App\Atividade::where('turma_id', '=', $lista->turma_id)->get();
-
+      $turma = \App\Turma::find($lista->turma_id);
       $lista_atividade->delete();
 
 
@@ -101,6 +103,7 @@ class ListaController extends Controller
       return view("/professor/InserirAtividadesLista", [
           "lista" => $lista,
           "atividades" => $atividades,
+          "turma" => $turma,
       ]);
     }
 
@@ -115,16 +118,17 @@ class ListaController extends Controller
 
     public function exibirPorTurma($turma_id){
       $listas = \App\Lista::where('turma_id', '=', $turma_id)->get();
-
+      $turma = \App\Turma::find($turma_id);
       return view("/professor/ExibirListas", [
           "listas" => $listas,
+          "turma" =>$turma,
       ]);
     }
 
     public function exibirLista(Request $request){
       $lista = \App\Lista::where('id', '=', $request->id)->first();
       $lista_atividades = \App\Lista_atividade::where('lista_id', '=', $lista->id)->get();
-
+      $turma = \App\Turma::find($lista->turma_id);
       $atividades = array();
       foreach ($lista_atividades as $lista_atividade) {
         $atividade = \App\Atividade::find($lista_atividade->atividade_id);
@@ -137,12 +141,14 @@ class ListaController extends Controller
             "lista" => $lista,
             "lista_atividades" => $lista_atividades,
             "atividades" => $atividades,
+            "turma" => $turma,
         ]);
       } else if(Auth::user()->isAluno){
         return view("/aluno/ExibirLista", [
             "lista" => $lista,
             "lista_atividades" => $lista_atividades,
             "atividades" => $atividades,
+            "turma" => $turma,
         ]);
       }
 

@@ -9,7 +9,11 @@
               @php
               $nomeLista = \App\Lista::find($lista->lista_id);
               @endphp
-                <div class="card-header">Resultados: <b>{{$nomeLista->titulo}}</b></div>
+                <div class="card-header">
+                  <a href="{{ route("home") }}">Início</a> >
+                  <a href="{{ route("/turma/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                  <a href="{{ route("/aluno/listasRespondidas", ["id" => $turma->id]) }}">Minhas Listas - Finalizadas</a> >
+                  Resultados: <b>{{$nomeLista->titulo}}</b></div>
 
                 <div class="card-body">
 
