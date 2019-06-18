@@ -66,6 +66,7 @@ Route::get('/atividade/cadastrar', function(Request $request) {
     return view('professor/CriarQuestao');
 })->name('/atividade/cadastrar')->middleware('professor');
 Route::get('/atividade/listarUser', 'AtividadeController@listarAtividadesUser')->name('/atividade/listarUser')->middleware('auth');
+Route::get('/atividade/listarTurma/{id}', 'AtividadeController@listarAtividadesTurma')->name('/atividade/listarTurma/')->middleware('auth');
 
 //Questão múltipla escolha
 Route::get('/atividade/inserirAtividadeMultipla/{id}', 'AtividadeMultiplaEscolhaController@inserirAtividade')->name('/atividade/inserirAtividadeMultipla/')->middleware('professor');

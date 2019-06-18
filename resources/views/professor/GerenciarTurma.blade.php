@@ -25,6 +25,9 @@
                       </a>
                       <a class="nav-link" href="{{ route("/atividade/inserirAtividadeAudio/", ['id' => $turma->id]) }}">
                           <i class="ni ni-headphones text-blue"></i> Associar Imagem-áudio
+                      </a>
+                      <a class="nav-link" href="{{ route("/atividade/listarTurma/", ['id' => $turma->id]) }}">
+                          <i class="ni ni-collection text-blue"></i> Ver Questões
                       </a><br>
                       <i class="ni ni-settings-gear-65 text-blue"></i> <b>Gerenciar Turma</b>
                       <a class="nav-link" href="{{ route("/turma/listarConteudos", ['id' => $turma->id]) }}">

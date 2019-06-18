@@ -20,15 +20,25 @@
   	opacity: 0;
   	z-index: 2;
   }
+
+
 </style>
+
+<script language= 'javascript'>
+
+function ativarLink(elemento){
+  elemento.style.color = "#4286f4";
+  var content_turma = document.getElementById("content_turma");
+}
+</script>
 
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
+  <meta name="description" content="">
+  <meta name="author" content="">
   <title>Gestão de Avaliação</title>
   <!-- Favicon -->
 
@@ -138,8 +148,7 @@
               <b>    Minhas turmas </b>
               @foreach ($turmas as $turma)
               <li class="nav-item">
-
-                <a class="nav-link" href="/turma/gerenciar/{{$turma->id}}">
+                <a class="nav-link" href="/turma/gerenciar/{{$turma->id}}" id="turma_nome" onclick="ativarLink(this);">
                     <i class="ni ni-hat-3 "></i> {{$turma->nome}} <span class="caret"></span>
                 </a>
               </li>
@@ -201,6 +210,7 @@
               <i class="ni ni-key-25 text-info"></i> Login
             </a>
           </li>
+
           @if (Route::has('register'))
           <li class="nav-item">
             <a class="nav-link" href="{{ route('register') }}">

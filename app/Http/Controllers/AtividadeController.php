@@ -21,6 +21,15 @@ class AtividadeController extends Controller
 
   }
 
+  public function listarAtividadesTurma(Request $request) {
+
+    $atividades = Atividade::where('turma_id', '=', $request->id)->get();
+    return view("professor/ListarAtividades", [
+        "atividades" => $atividades,
+    ]);
+
+  }
+
   public function exibirAtividadeMultiplaEscolha(Request $request) {
     $atividade = \App\Atividade::find($request->id);
     $atividadeMultiplaEscolha = \App\AtividadeMultiplaEscolha::where('atividade_id' , '=', $atividade->id)->first();
