@@ -138,7 +138,7 @@ class TurmaController extends Controller
 			if($user = Auth::user()) {
 				$turma_aluno->aluno_id = Auth::user()->id;
 			 }
-
+			 
 			 $turma = \App\Turma::find($request->id);
 
 			 $turma_aluno->turma_id = $turma->id;

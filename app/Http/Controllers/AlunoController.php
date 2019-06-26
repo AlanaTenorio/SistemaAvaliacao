@@ -103,13 +103,14 @@ class AlunoController extends Controller
     $item5 = \App\Item_atividade_imagem::find($request->gabarito5);
     $stringGabarito = $stringGabarito . '-' . $item5->ordem;
 
+
     $stringResposta = "";
     $stringResposta = $request->resposta1;
+
     $stringResposta = $stringResposta . '-' . $request->resposta2;
     $stringResposta = $stringResposta . '-' . $request->resposta3;
     $stringResposta = $stringResposta . '-' . $request->resposta4;
     $stringResposta = $stringResposta . '-' . $request->resposta5;
-
     $aluno_atividade->resposta = $stringResposta;
     $aluno_atividade->gabarito = $stringGabarito;
     $aluno_atividade->data = new DateTime();
@@ -150,11 +151,12 @@ class AlunoController extends Controller
 
     $stringResposta = "";
     $stringResposta = $request->resposta1;
+
     $stringResposta = $stringResposta . '-' . $request->resposta2;
     $stringResposta = $stringResposta . '-' . $request->resposta3;
     $stringResposta = $stringResposta . '-' . $request->resposta4;
     $stringResposta = $stringResposta . '-' . $request->resposta5;
-
+    //dd($stringResposta);
     $aluno_atividade->resposta = $stringResposta;
     $aluno_atividade->gabarito = $stringGabarito;
     $aluno_atividade->data = new DateTime();

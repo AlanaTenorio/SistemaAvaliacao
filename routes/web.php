@@ -31,6 +31,10 @@ Route::middleware('professor')->group(function() {
   })->name('/turma/cadastrar');
 });
 
+Route::get('/teste', function(Request $request) {
+    return view('aluno/teste');
+})->name('/teste');
+
 Route::post('/turma/cadastrar', 'TurmaController@inserir')->middleware('professor');
 Route::get('/turma/listarUser', 'TurmaController@listarUser')->name('/turma/listarUser')->middleware('professor');
 Route::get('/turma/exibir/{id}', 'TurmaController@exibir')->name('/turma/exibir');
