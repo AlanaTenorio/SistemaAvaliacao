@@ -31,10 +31,15 @@ Route::middleware('professor')->group(function() {
   })->name('/turma/cadastrar');
 });
 
-Route::get('/teste', function(Request $request) {
-    return view('aluno/teste');
-})->name('/teste');
+// Route::get('/teste', function(Request $request) {
+//     return view('professor/teste');
+// })->name('/teste');
 
+Route::get('/turma/exibirGrafoConteudos/{id}', function ($id) {
+    return view('professor/VisualizarGrafoConteudos');
+})->name('/turma/exibirGrafoConteudos/');
+
+Route::get('/turma/exibirGrafoConteudos/{id}', 'ConteudoController@visualizarGrafoConteudo')->name('/turma/exibirGrafoConteudos');
 Route::post('/turma/cadastrar', 'TurmaController@inserir')->middleware('professor');
 Route::get('/turma/listarUser', 'TurmaController@listarUser')->name('/turma/listarUser')->middleware('professor');
 Route::get('/turma/exibir/{id}', 'TurmaController@exibir')->name('/turma/exibir');
@@ -99,6 +104,7 @@ Route::get('/atividadeAudio/exibir/{id}', 'AtividadeController@exibirAtividadeAs
 //Resultados
 Route::get('/professor/exibirResultadosDisciplina/{id}', 'ProfessorController@exibirResultadosDisciplina')->name('/professor/exibirResultadosDisciplina')->middleware('professor');
 Route::get('/professor/exibirResultadosAluno/{aluno_id}/{id}', 'ProfessorController@exibirResultadosAluno')->name('/professor/exibirResultadosAluno')->middleware('professor');
+Route::get('/professor/respostaAtividade/{id}', 'ProfessorController@respostaAtividade')->name('/professor/respostaAtividade')->middleware('professor');
 
 //Rotas para emails
 Route::post('/share/mail','MailController@compartilharEmail')->name('/turma/compartilhar.post')->middleware('professor');
@@ -134,3 +140,4 @@ Route::post('/atividade/responderAtividadeAudio', 'AlunoController@responderAtiv
 //Resultados
 Route::get('/aluno/exibirResultadosLista/{id}', 'AlunoController@exibirResultadosLista')->name('/aluno/exibirResultadosLista')->middleware('aluno');
 Route::get('/aluno/exibirResultadosDisciplina/{id}', 'AlunoController@exibirResultadosDisciplina')->name('/aluno/exibirResultadosDisciplina')->middleware('aluno');
+Route::get('/aluno/respostaAtividade/{id}', 'ProfessorController@respostaAtividade')->name('/aluno/respostaAtividade')->middleware('aluno');

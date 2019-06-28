@@ -69,7 +69,7 @@ function avisoDeletar(){
                                                       ->first();
 
                     if($turma_participa == null){ ?>
-                      <a class="btn btn-primary" href="/turma/participar/{{$turma->id}}">Soliciar Participação</a>
+                      <a class="btn btn-primary" href="/turma/participar/{{$turma->id}}">Solicitar Participação</a>
                     <?php } else if ($turma_participa->ativo == false) { ?>
                     Solitação já enviada
                   <?php } else { ?>

@@ -39,10 +39,17 @@
                             <tbody>
                               @foreach ($listas as $lista)
                                 <tr>
-                                    <td data-title="Titulo">{{ $lista->titulo }}</td>
-                                    <td data-title="Descricao">{{ $lista->descricao }}</td>
-                                    <td data-title="data_inicio">{{ $lista->data_inicio }}</td>
-                                    <td data-title="data_fim">{{ $lista->data_fim }}</td>
+                                    <td data-title="Titulo" style="overflow: hidden; word-wrap: break-word; max-width: 20rem;">
+                                      {{ $lista->titulo }}
+                                    </td>
+                                    <td data-title="Descricao" style="overflow: hidden; word-wrap: break-word; max-width: 20rem;">
+                                      {{ $lista->descricao }}</td>
+                                    <td data-title="data_inicio" style="overflow: hidden; word-wrap: break-word; max-width: 10rem;">
+                                      {{ $lista->data_inicio }}
+                                    </td>
+                                    <td data-title="data_fim" style="overflow: hidden; word-wrap: break-word; max-width: 10rem;">
+                                      {{ $lista->data_fim }}
+                                    </td>
                                     <td>
                                       <a class="btn btn-primary" href="{{ route("/lista/exibirLista", ['id' => $lista->id]) }}">
                                       <img src="{{asset('assets/images/see.png')}}" height="21" width="20" align = "right">

@@ -60,10 +60,6 @@
                   <a href="{{ route("/aluno/exibirLista", ["id" => $lista->id]) }}">{{$lista->titulo}}</a> >
                   {{ __('Responder Questão - Associar imagem-áudio') }}</div>
 
-
-
-
-
                 <div class="card-body">
                   <form method="POST" action="/atividade/responderAtividadeAudio">
                     {{ csrf_field() }}
@@ -84,11 +80,11 @@
                         shuffle($itens_shuffled);
                          ?>
 
-                         <input type="hidden" name="gabarito1" value="{{ $itens[0]->ordem}}" />
-                         <input type="hidden" name="gabarito2" value="{{ $itens[1]->ordem}}" />
-                         <input type="hidden" name="gabarito3" value="{{ $itens[2]->ordem}}" />
-                         <input type="hidden" name="gabarito4" value="{{ $itens[3]->ordem}}" />
-                         <input type="hidden" name="gabarito5" value="{{ $itens[4]->ordem}}" />
+                         <input type="hidden" name="gabarito1" value="{{ $itens[0]->id}}" />
+                         <input type="hidden" name="gabarito2" value="{{ $itens[1]->id}}" />
+                         <input type="hidden" name="gabarito3" value="{{ $itens[2]->id}}" />
+                         <input type="hidden" name="gabarito4" value="{{ $itens[3]->id}}" />
+                         <input type="hidden" name="gabarito5" value="{{ $itens[4]->id}}" />
 
                          <div class="card-body">
 

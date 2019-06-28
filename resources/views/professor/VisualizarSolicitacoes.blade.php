@@ -48,7 +48,11 @@
                                       </a>
                                     </td>
                                     <td>
-                                      <a class="btn btn-primary ni ni-check-bold" href="/turma/aceitarSolicitacao/{{$solicitacao->id}}">
+                                      <a class="btn btn-success ni ni-check-bold" href="/turma/aceitarSolicitacao/{{$solicitacao->id}}">
+                                      </a>
+                                    </td>
+                                    <td>
+                                      <a class="btn btn-danger ni ni-fat-remove" href="">
                                       </a>
                                     </td>
                                     <td></td>
@@ -61,7 +65,7 @@
                       @endif
                   </div>
                   <div class="panel-footer">
-                      <a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a>
+                      <center><a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a></center>
                   </div>
                 </div>
             </div>

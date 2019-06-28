@@ -20,6 +20,17 @@ class ConteudoController extends Controller
 
   }
 
+  public function visualizarGrafoConteudo(Request $request) {
+    //dd("A");
+  $conteudos = \App\Conteudo::where('turma_id', '=', $request->id)->get();
+  $turma = \App\Turma::find($request->id);
+  return view("professor/VisualizarGrafoConteudos", [
+      "conteudos" => $conteudos,
+      "turma" => $turma,
+  ]);
+
+  }
+
   public function inserirConteudo(Request $request){
     $turma = \App\Turma::find($request->id);
     $conteudos = \App\Conteudo::where('turma_id', '=', $request->id)->get();

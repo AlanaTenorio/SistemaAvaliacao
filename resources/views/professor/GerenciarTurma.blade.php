@@ -33,6 +33,9 @@
                       <a class="nav-link" href="{{ route("/turma/listarConteudos", ['id' => $turma->id]) }}">
                           <i class="ni ni-book-bookmark text-blue"></i> Conteúdos
                       </a>
+                      <a class="nav-link" href="{{ route("/turma/exibirGrafoConteudos", ['id' => $turma->id]) }}">
+                          <i class="ni ni-book-bookmark text-blue"></i> Grafo
+                      </a>
                       <a class="nav-link" href="{{ route("/lista/inserirLista", ['id' => $turma->id]) }}">
                           <i class="ni ni-single-copy-04 text-blue"></i> Criar Lista
                       </a>

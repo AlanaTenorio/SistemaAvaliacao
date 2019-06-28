@@ -43,10 +43,12 @@
                                 <tr>
                                   @foreach ($atividades as $atividade_aluno)
                                   @if($atividade_aluno->acertou)
-                                  <td data-title="Resultado"><img src="{{asset('assets/images/check.png')}}" height="23" width="23"></td>
+                                  <td data-title="Resultado">
+                                    <a href = "{{ route("/professor/respostaAtividade", ["id" => $atividade_aluno->id]) }}"><img src="{{asset('assets/images/check.png')}}" height="23" width="23"></a>
+                                  </td>
                                   @else
                                   <td data-title="Resultado">
-                                    <img src="{{asset('assets/images/wrong.png')}}" height="23" width="23">
+                                    <a href = "{{ route("/professor/respostaAtividade", ["id" => $atividade_aluno->id]) }}"><img src="{{asset('assets/images/wrong.png')}}" height="23" width="23"></a>
                                   </td>
                                   @endif
                                   @endforeach

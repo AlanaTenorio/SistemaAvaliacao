@@ -194,7 +194,7 @@ function ativarLink(elemento){
                     <li class="nav-item">
 
                       <a class="nav-link" href="/aluno/gerenciarTurma/{{$turma->id}}">
-                          {{$turma->nome}}
+                          <i class="ni ni-hat-3 "></i> {{$turma->nome}}
                       </a>
                     </li>
                     @endforeach

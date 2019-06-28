@@ -51,7 +51,9 @@ function avisoPublicar(){
                             <tbody>
                               @foreach ($atividades as $atividade)
                                 <tr>
-                                    <td data-title="Nome">{{ str_limit(preg_replace('/<[^>]*>|[&;]|nbsp/', '', preg_replace(array('/nbsp/','/<(.*?)>/'), ' ', $atividade->titulo)), $limit = 180, $end = '...') }}</td>
+                                    <td data-title="Nome" style="overflow: hidden; word-wrap: break-word; max-width: 25rem;">
+                                      {{ str_limit(preg_replace('/<[^>]*>|[&;]|nbsp/', '', preg_replace(array('/nbsp/','/<(.*?)>/'), ' ', $atividade->titulo)), $limit = 180, $end = '...') }}
+                                    </td>
                                     <td data-title="Pontuacao">
                                       <form method="POST" action="/lista/inserirAtividade">
                                         {{ csrf_field() }}
@@ -112,8 +114,10 @@ function avisoPublicar(){
                       @endif
                   </div>
                   <div class="panel-footer">
+                      <center>
                       <a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a>
                       <a class="btn btn-primary" onClick="avisoPublicar({{$lista->id}});" href="{{ route("/lista/exibirLista", ['id' => $lista->id]) }}">Finalizar</a>
+                    </center>
                   </div>
                 </div>
             </div>
