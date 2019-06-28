@@ -15,8 +15,8 @@ class CreateAtividadeMultiplaEscolhasTable extends Migration
     {
         Schema::create('atividade_multipla_escolhas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('resposta');
-            $table->string('pergunta');
+            $table->longText('resposta');
+            $table->longText('pergunta');
             $table->integer('atividade_id')->unsigned();
             $table->foreign('atividade_id')->references('id')
                     ->on('atividades')

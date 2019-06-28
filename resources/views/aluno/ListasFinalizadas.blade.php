@@ -6,7 +6,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Minhas Listas - Finalizadas') }}</div>
+                <div class="card-header">
+                <a href="{{ route("home") }}">Início</a> >
+                <a href="{{ route("/turma/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                {{ __('Minhas Listas - Finalizadas') }}</div>
 
                 <div class="card-body">
 
@@ -36,10 +39,18 @@
                             <tbody>
                               @foreach ($listas as $lista)
                                 <tr>
-                                    <td data-title="Titulo">{{ $lista->titulo }}</td>
-                                    <td data-title="Descricao">{{ $lista->descricao }}</td>
-                                    <td data-title="data_inicio">{{ $lista->data_inicio }}</td>
-                                    <td data-title="data_fim">{{ $lista->data_fim }}</td>
+                                    <td data-title="Titulo" style="overflow: hidden; word-wrap: break-word; max-width: 20rem;">
+                                      {{ $lista->titulo }}
+                                    </td>
+                                    <td data-title="Descricao" style="overflow: hidden; word-wrap: break-word; max-width: 20rem;">
+                                      {{ $lista->descricao }}
+                                    </td>
+                                    <td data-title="data_inicio" style="overflow: hidden; word-wrap: break-word; max-width: 5rem;">
+                                      {{ $lista->data_inicio }}
+                                    </td>
+                                    <td data-title="data_fim" style="overflow: hidden; word-wrap: break-word; max-width: 5rem;">
+                                      {{ $lista->data_fim }}
+                                    </td>
                                     <td>
                                       @if($lista->is_ativo == false)
                                       <a class="btn btn-primary" href="{{ route("/aluno/exibirResultadosLista", ['id' => $lista->id]) }}">
@@ -60,7 +71,7 @@
                       @endif
                   </div>
                   <div class="panel-footer">
-                      <a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a>
+                      <center><a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a></center>
                   </div>
                 </div>
             </div>

@@ -34,7 +34,9 @@
                             <tbody>
                               @foreach ($atividades as $atividade)
                                 <tr>
-                                    <td data-title="Nome">{{ $atividade->titulo }}</td>
+                                    <td data-title="Nome" style="overflow: hidden; word-wrap: break-word; max-width: 38rem;">
+                                      {{ str_limit(preg_replace('/<[^>]*>|[&;]|nbsp/', '', preg_replace(array('/nbsp/','/<(.*?)>/'), ' ', $atividade->titulo)), $limit = 180, $end = '...') }}
+                                    </td>
                                     @if ($atividade->tipo == 1)
                                     <td data-title="Tipo">Questão Múltipla escolha</td>
                                     @elseif ($atividade->tipo == 2)

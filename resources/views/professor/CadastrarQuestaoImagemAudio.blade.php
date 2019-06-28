@@ -72,6 +72,91 @@ function readimg5(input) {
             reader.readAsDataURL(input.files[0]);
         }
 }
+
+function readaudio1(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#ad1')
+                    .attr('src', e.target.result)
+                    .width(120)
+                    .height(120);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+            var audio_1_load = document.getElementById("audio_1_load");
+            audio_1_load.src = "{{asset('assets/images/loaded.png')}}";
+        }
+}
+
+function readaudio2(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#ad2')
+                    .attr('src', e.target.result)
+                    .width(120)
+                    .height(120);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+            var audio_2_load = document.getElementById("audio_2_load");
+            audio_2_load.src = "{{asset('assets/images/loaded.png')}}";
+        }
+}
+
+function readaudio3(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#ad3')
+                    .attr('src', e.target.result)
+                    .width(120)
+                    .height(120);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+            var audio_3_load = document.getElementById("audio_3_load");
+            audio_3_load.src = "{{asset('assets/images/loaded.png')}}";
+        }
+}
+
+function readaudio4(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#ad4')
+                    .attr('src', e.target.result)
+                    .width(120)
+                    .height(120);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+            var audio_4_load = document.getElementById("audio_4_load");
+            audio_4_load.src = "{{asset('assets/images/loaded.png')}}";
+        }
+}
+
+function readaudio5(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#ad5')
+                    .attr('src', e.target.result)
+                    .width(120)
+                    .height(120);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+            var audio_5_load = document.getElementById("audio_5_load");
+            audio_5_load.src = "{{asset('assets/images/loaded.png')}}";
+        }
+}
 </script>
 <head>
     <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
@@ -91,7 +176,11 @@ function readimg5(input) {
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Criar Questão - Associar Imagem-Texto') }}</div>
+                <div class="card-header">
+                  <a href="{{ route("home") }}">Início</a> >
+                  <a href="{{ route("/turma/gerenciar", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                  Criar Questão - Associar Imagem-Áudio
+                </div>
 
                 <div class="card-body">
 
@@ -112,7 +201,8 @@ function readimg5(input) {
                   </div>
 
                   <div class="form-group row">
-                        <label for="conteudo_id" class="col-md-2 col-form-label text-md-right">{{ __('Conteúdo') }}</label>
+
+                        <label for="conteudo_id" class="col-md-2 col-form-label" style="padding-left:45px">{{ __('Conteúdo') }}</label>
                         @if(count($conteudos) != 0 and count($conteudos) != 0)
                         <div class="col-md-6">
                           <select class="form-control" id="conteudos" name="conteudo_id" required>
@@ -156,12 +246,26 @@ function readimg5(input) {
                     <div class="container">
                       <div class="row">
                         <div class="col-md-7">
-                          <input type='file' required onchange="readimg1(this);"  id="image1" name="image1" accept="image/*"/>
+                          <div class="fileinputs">
+                            <input type="file" class="file" required onchange="readimg1(this);"  id="image1" name="image1" accept="image/*"/>
                             <img id="img1" src="#"  alt=" " />
+                              <div class="fakefile">
+                                <img src="{{asset('assets/images/attach.png')}}" height="30" width="29"  />
+                              </div>
+
+                          </div>
                         </div>
 
                         <div class="col-md-5">
-                          <input type='file' required id="audio1" name="audio1" accept="audio/*"/>
+                          <div class="fileinputs">
+                            <input type="file" class="file" required  onchange="readaudio1(this);" id="audio1" name="audio1" accept="audio/*"/>
+                            <img id="audio_1_load" src="{{asset('assets/images/del.png')}}" height="23" width="23">
+
+                              <div class="fakefile">
+                                <img src="{{asset('assets/images/audio.jpg')}}" height="30" width="29"  />
+                              </div>
+
+                          </div>
                         </div>
                       </div>
                       <br>
@@ -175,13 +279,25 @@ function readimg5(input) {
                     <div class="container">
                       <div class="row">
                         <div class="col-md-7">
-                          <input type='file' required onchange="readimg2(this);"  id="image2" name="image2" accept="image/*"/>
+                          <div class="fileinputs">
+                            <input type="file" class="file" required onchange="readimg2(this);"  id="image2" name="image2" accept="image/*"/>
                             <img id="img2" src="#"  alt=" " />
+                              <div class="fakefile">
+                                <img src="{{asset('assets/images/attach.png')}}" height="30" width="29"  />
+                              </div>
+
+                          </div>
                         </div>
 
                         <div class="col-md-5">
-                          <input type='file' required id="audio2" name="audio2" accept="audio/*"/>
+                          <div class="fileinputs">
+                            <input type="file" class="file" required onchange="readaudio2(this);" id="audio2" name="audio2" accept="audio/*"/>
+                            <img id="audio_2_load" src="{{asset('assets/images/del.png')}}" height="23" width="23">
+                              <div class="fakefile">
+                                <img src="{{asset('assets/images/audio.jpg')}}" height="30" width="29"  />
+                              </div>
 
+                          </div>
                         </div>
                       </div>
                       <br>
@@ -195,13 +311,25 @@ function readimg5(input) {
                     <div class="container">
                       <div class="row">
                         <div class="col-md-7">
-                          <input type='file' required onchange="readimg3(this);"  id="image3" name="image3" accept="image/*"/>
+                          <div class="fileinputs">
+                            <input type="file" class="file" required onchange="readimg3(this);"  id="image3" name="image3" accept="image/*"/>
                             <img id="img3" src="#"  alt=" " />
+                              <div class="fakefile">
+                                <img src="{{asset('assets/images/attach.png')}}" height="30" width="29"  />
+                              </div>
+
+                          </div>
                         </div>
 
                         <div class="col-md-5">
-                          <input type='file' required id="audio3" name="audio3" accept="audio/*"/>
+                          <div class="fileinputs">
+                            <input type="file" class="file" required onchange="readaudio3(this);" id="audio3" name="audio3" accept="audio/*"/>
+                            <img id="audio_3_load" src="{{asset('assets/images/del.png')}}" height="23" width="23">
+                              <div class="fakefile">
+                                <img src="{{asset('assets/images/audio.jpg')}}" height="30" width="29"  />
+                              </div>
 
+                          </div>
                         </div>
                       </div>
                       <br>
@@ -215,13 +343,25 @@ function readimg5(input) {
                     <div class="container">
                       <div class="row">
                         <div class="col-md-7">
-                          <input type='file' required onchange="readimg4(this);"  id="image4" name="image4" accept="image/*"/>
+                          <div class="fileinputs">
+                            <input type="file" class="file" required onchange="readimg4(this);"  id="image4" name="image4" accept="image/*"/>
                             <img id="img4" src="#"  alt=" " />
+                              <div class="fakefile">
+                                <img src="{{asset('assets/images/attach.png')}}" height="30" width="29"  />
+                              </div>
+
+                          </div>
                         </div>
 
                         <div class="col-md-5">
-                          <input type='file' required id="audio4" name="audio4" accept="audio/*"/>
+                          <div class="fileinputs">
+                            <input type="file" class="file" required onchange="readaudio4(this);" id="audio4" name="audio4" accept="audio/*"/>
+                            <img id="audio_4_load" src="{{asset('assets/images/del.png')}}" height="23" width="23">
+                              <div class="fakefile">
+                                <img src="{{asset('assets/images/audio.jpg')}}" height="30" width="29"  />
+                              </div>
 
+                          </div>
                         </div>
                       </div>
                       <br>
@@ -235,13 +375,25 @@ function readimg5(input) {
                     <div class="container">
                       <div class="row">
                         <div class="col-md-7">
-                          <input type='file' required onchange="readimg5(this);"  id="image5" name="image5" accept="image/*"/>
+                          <div class="fileinputs">
+                            <input type="file" class="file" required onchange="readimg5(this);"  id="image5" name="image5" accept="image/*"/>
                             <img id="img5" src="#"  alt=" " />
+                              <div class="fakefile">
+                                <img src="{{asset('assets/images/attach.png')}}" height="30" width="29"  />
+                              </div>
+
+                          </div>
                         </div>
 
                         <div class="col-md-5">
-                          <input type='file' required id="audio5" name="audio5" accept="audio/*"/>
+                          <div class="fileinputs">
+                            <input type="file" class="file" required onchange="readaudio5(this);" id="audio5" name="audio5" accept="audio/*"/>
+                            <img id="audio_5_load" src="{{asset('assets/images/del.png')}}" height="23" width="23">
+                              <div class="fakefile">
+                                <img src="{{asset('assets/images/audio.jpg')}}" height="30" width="29"  />
+                              </div>
 
+                          </div>
                         </div>
                       </div>
                       <br>

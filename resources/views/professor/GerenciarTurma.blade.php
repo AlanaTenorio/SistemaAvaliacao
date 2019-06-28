@@ -6,7 +6,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-              <div class="card-header"><b>Turma:</b> {{$turma->nome}}</div>
+              <div class="card-header">
+                <a href="{{ route("home") }}">Início</a> >
+                <b>Turma:</b> {{$turma->nome}}
+              </div>
 
               <div class="card-body">
 
@@ -22,8 +25,17 @@
                       </a>
                       <a class="nav-link" href="{{ route("/atividade/inserirAtividadeAudio/", ['id' => $turma->id]) }}">
                           <i class="ni ni-headphones text-blue"></i> Associar Imagem-áudio
+                      </a>
+                      <a class="nav-link" href="{{ route("/atividade/listarTurma/", ['id' => $turma->id]) }}">
+                          <i class="ni ni-collection text-blue"></i> Ver Questões
                       </a><br>
                       <i class="ni ni-settings-gear-65 text-blue"></i> <b>Gerenciar Turma</b>
+                      <a class="nav-link" href="{{ route("/turma/listarConteudos", ['id' => $turma->id]) }}">
+                          <i class="ni ni-book-bookmark text-blue"></i> Conteúdos
+                      </a>
+                      <a class="nav-link" href="{{ route("/turma/exibirGrafoConteudos", ['id' => $turma->id]) }}">
+                          <i class="ni ni-book-bookmark text-blue"></i> Grafo
+                      </a>
                       <a class="nav-link" href="{{ route("/lista/inserirLista", ['id' => $turma->id]) }}">
                           <i class="ni ni-single-copy-04 text-blue"></i> Criar Lista
                       </a>

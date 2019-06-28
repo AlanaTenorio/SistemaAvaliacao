@@ -45,7 +45,9 @@
 
                               @foreach ($atividades as $atividade)
                                 <tr>
-                                    <td data-title="Nome">{{ $atividade->titulo }}</td>
+                                    <td data-title="Nome" style="overflow: hidden; word-wrap: break-word; max-width: 38rem;">
+                                      {{ $atividade->titulo }}
+                                    </td>
                                     @if ($atividade->tipo == 1)
                                     <td data-title="Tipo">Questão Múltipla escolha</td>
                                     @elseif ($atividade->tipo == 2)

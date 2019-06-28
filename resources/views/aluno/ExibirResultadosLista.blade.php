@@ -9,7 +9,11 @@
               @php
               $nomeLista = \App\Lista::find($lista->lista_id);
               @endphp
-                <div class="card-header">Resultados: <b>{{$nomeLista->titulo}}</b></div>
+                <div class="card-header">
+                  <a href="{{ route("home") }}">Início</a> >
+                  <a href="{{ route("/turma/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                  <a href="{{ route("/aluno/listasRespondidas", ["id" => $turma->id]) }}">Minhas Listas - Finalizadas</a> >
+                  Resultados: <b>{{$nomeLista->titulo}}</b></div>
 
                 <div class="card-body">
 
@@ -33,10 +37,12 @@
                                 <tr>
                                   @foreach ($atividades as $atividade_aluno)
                                   @if($atividade_aluno->acertou)
-                                  <td data-title="Resultado"><img src="{{asset('assets/images/check.png')}}" height="23" width="23"></td>
+                                  <td data-title="Resultado">
+                                    <a href = "{{ route("/aluno/respostaAtividade", ["id" => $atividade_aluno->id]) }}"><img src="{{asset('assets/images/check.png')}}" height="23" width="23"></a>
+                                  </td>
                                   @else
                                   <td data-title="Resultado">
-                                    <img src="{{asset('assets/images/wrong.png')}}" height="23" width="23">
+                                    <a href = "{{ route("/aluno/respostaAtividade", ["id" => $atividade_aluno->id]) }}"><img src="{{asset('assets/images/wrong.png')}}" height="23" width="23"></a>
                                   </td>
                                   @endif
                                   @endforeach

@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 
+<style>
+  div.fileinputs {
+  	position: relative;
+  }
+
+  div.fakefile {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	z-index: 1;
+  }
+
+  input.file {
+  	position: relative;
+  	text-align: right;
+  	-moz-opacity:0 ;
+  	filter:alpha(opacity: 0);
+  	opacity: 0;
+  	z-index: 2;
+  }
+
+
+</style>
+
+<script language= 'javascript'>
+
+function ativarLink(elemento){
+  elemento.style.color = "#4286f4";
+  var content_turma = document.getElementById("content_turma");
+}
+</script>
+
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
+  <meta name="description" content="">
+  <meta name="author" content="">
   <title>Gestão de Avaliação</title>
   <!-- Favicon -->
 
@@ -55,7 +87,7 @@
           <li class="nav-item">
 
             <a class="nav-link" href="{{ url('/') }}">
-                <i class="ni ni-tv-2 text-primary"></i> Início
+                <i class="ni ni-tv-2 text-yellow"></i> Início
               </a>
             </li>
 
@@ -75,7 +107,7 @@
               </a>
             </div>
             </li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   <i class="ni ni-single-copy-04 text-red"></i> Listas <span class="caret"></span>
                 </a>
@@ -106,7 +138,7 @@
                         Buscar Questões
                     </a>
                 </div>
-            </li>
+            </li> -->
             <hr class="my-3">
               <?php $id = Auth::user()->id;
               $turmas = \App\Turma::where('professor_id', '=', $id)->orderBy('ano', 'DESC')->get();
@@ -116,9 +148,8 @@
               <b>    Minhas turmas </b>
               @foreach ($turmas as $turma)
               <li class="nav-item">
-
-                <a class="nav-link" href="/turma/gerenciar/{{$turma->id}}">
-                    {{$turma->nome}}
+                <a class="nav-link" href="/turma/gerenciar/{{$turma->id}}" id="turma_nome" onclick="ativarLink(this);">
+                    <i class="ni ni-hat-3 "></i> {{$turma->nome}} <span class="caret"></span>
                 </a>
               </li>
               @endforeach
@@ -163,7 +194,7 @@
                     <li class="nav-item">
 
                       <a class="nav-link" href="/aluno/gerenciarTurma/{{$turma->id}}">
-                          {{$turma->nome}}
+                          <i class="ni ni-hat-3 "></i> {{$turma->nome}}
                       </a>
                     </li>
                     @endforeach
@@ -179,6 +210,7 @@
               <i class="ni ni-key-25 text-info"></i> Login
             </a>
           </li>
+
           @if (Route::has('register'))
           <li class="nav-item">
             <a class="nav-link" href="{{ route('register') }}">

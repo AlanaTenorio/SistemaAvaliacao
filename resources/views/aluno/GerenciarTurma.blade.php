@@ -6,7 +6,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-              <div class="card-header"><b>Turma:</b> {{$turma->nome}}</div>
+              <div class="card-header">
+                <a href="{{ route("home") }}">Início</a> >
+                <b>Turma:</b> {{$turma->nome}}</div>
 
               <div class="card-body">
 

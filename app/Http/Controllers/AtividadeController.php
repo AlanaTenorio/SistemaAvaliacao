@@ -21,13 +21,23 @@ class AtividadeController extends Controller
 
   }
 
+  public function listarAtividadesTurma(Request $request) {
+
+    $atividades = Atividade::where('turma_id', '=', $request->id)->get();
+    return view("professor/ListarAtividades", [
+        "atividades" => $atividades,
+    ]);
+
+  }
+
   public function exibirAtividadeMultiplaEscolha(Request $request) {
     $atividade = \App\Atividade::find($request->id);
     $atividadeMultiplaEscolha = \App\AtividadeMultiplaEscolha::where('atividade_id' , '=', $atividade->id)->first();
-
+    $turma = \App\Turma::find($atividade->turma_id);
       return view("professor/VisualizarQuestaoMultiplaEscolha", [
           "atividade" => $atividade,
           "atividadeMultiplaEscolha" => $atividadeMultiplaEscolha,
+          "turma" => $turma,
         ]);
 
   }
@@ -35,13 +45,15 @@ class AtividadeController extends Controller
   public function exibirAtividadeMultiplaEscolhaAluno(Request $request) {
     $atividade = \App\Atividade::find($request->atividade_id);
     $lista= \App\Lista::find($request->lista_id);
+    $turma = \App\Turma::find($atividade->turma_id);
     $atividadeMultiplaEscolha = \App\AtividadeMultiplaEscolha::where('atividade_id' , '=', $atividade->id)->first();
 
-      $lista = \App\Lista::find($request->lista_id);
+    $lista = \App\Lista::find($request->lista_id);
       return view("aluno/ResponderAtividadeMultiplaEscolha", [
           "atividade" => $atividade,
           "atividadeMultiplaEscolha" => $atividadeMultiplaEscolha,
-          "lista" => $lista
+          "lista" => $lista,
+          "turma" => $turma,
         ]);
 
   }
@@ -50,17 +62,19 @@ class AtividadeController extends Controller
     $atividade = \App\Atividade::find($request->id);
     $atividadeAssociarImagem = \App\AtividadeAssociarImagem::where('atividade_id' , '=', $atividade->id)->first();
     $itens = \App\Item_atividade_imagem::where('atividade_id' , '=', $atividadeAssociarImagem->id)->get();
-
+    $turma = \App\Turma::find($atividade->turma_id);
     return view("professor/VisualizarQuestaoAssociarImagem", [
         "atividade" => $atividade,
         "atividadeAssociarImagem" => $atividadeAssociarImagem,
         "itens" => $itens,
+        "turma" => $turma,
       ]);
   }
 
   public function exibirAtividadeAssociarImagemAluno(Request $request) {
     $atividade = \App\Atividade::find($request->atividade_id);
     $lista= \App\Lista::find($request->lista_id);
+    $turma = \App\Turma::find($atividade->turma_id);
     $atividadeAssociarImagem = \App\AtividadeAssociarImagem::where('atividade_id' , '=', $atividade->id)->first();
     $itens = \App\Item_atividade_imagem::where('atividade_id' , '=', $atividadeAssociarImagem->id)->get();
 
@@ -69,6 +83,7 @@ class AtividadeController extends Controller
         "atividadeAssociarImagem" => $atividadeAssociarImagem,
         "itens" => $itens,
         "lista" => $lista,
+        "turma" => $turma,
       ]);
   }
 
@@ -76,17 +91,19 @@ class AtividadeController extends Controller
     $atividade = \App\Atividade::find($request->id);
     $atividadeAssociarAudio = \App\AtividadeAssociarAudio::where('atividade_id' , '=', $atividade->id)->first();
     $itens = \App\Item_atividade_audio::where('atividade_id' , '=', $atividadeAssociarAudio->id)->get();
-
+    $turma = \App\Turma::find($atividade->turma_id);
     return view("professor/VisualizarQuestaoAssociarAudio", [
         "atividade" => $atividade,
         "atividadeAssociarAudio" => $atividadeAssociarAudio,
         "itens" => $itens,
+        "turma" => $turma,
       ]);
   }
 
   public function exibirAtividadeAssociarAudioAluno(Request $request) {
     $atividade = \App\Atividade::find($request->atividade_id);
     $lista= \App\Lista::find($request->lista_id);
+    $turma = \App\Turma::find($atividade->turma_id);
     $atividadeAssociarAudio = \App\AtividadeAssociarAudio::where('atividade_id' , '=', $atividade->id)->first();
     $itens = \App\Item_atividade_audio::where('atividade_id' , '=', $atividadeAssociarAudio->id)->get();
 
@@ -95,6 +112,7 @@ class AtividadeController extends Controller
         "atividadeAssociarAudio" => $atividadeAssociarAudio,
         "itens" => $itens,
         "lista" => $lista,
+        "turma" => $turma,
       ]);
   }
 

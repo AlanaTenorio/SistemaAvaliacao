@@ -7,7 +7,12 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Solicitacoes') }}</div>
+                <div class="card-header">
+                  <a href="{{ route("home") }}">Início</a> >
+                  <a href="{{ route("/turma/listarUser") }}">Minhas Turmas</a> >
+                  <a href="{{ route("/turma/exibir", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                  Solicitações
+                </div>
 
                 <div class="card-body">
 
@@ -43,7 +48,11 @@
                                       </a>
                                     </td>
                                     <td>
-                                      <a class="btn btn-primary ni ni-check-bold" href="/turma/aceitarSolicitacao/{{$solicitacao->id}}">
+                                      <a class="btn btn-success ni ni-check-bold" href="/turma/aceitarSolicitacao/{{$solicitacao->id}}">
+                                      </a>
+                                    </td>
+                                    <td>
+                                      <a class="btn btn-danger ni ni-fat-remove" href="">
                                       </a>
                                     </td>
                                     <td></td>
@@ -56,7 +65,7 @@
                       @endif
                   </div>
                   <div class="panel-footer">
-                      <a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a>
+                      <center><a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a></center>
                   </div>
                 </div>
             </div>

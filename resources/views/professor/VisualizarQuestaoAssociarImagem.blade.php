@@ -5,7 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Ver Questão - Associar Imagem-texto') }}</div>
+                <div class="card-header">
+                  <a href="{{ route("home") }}">Início</a> >
+                  <a href="{{ route("/turma/gerenciar", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                  Ver Questão - Associar Imagem-texto
+                </div>
 
                 <div class="card-body">
                       {{ csrf_field() }}
@@ -28,10 +32,10 @@
                               </div>
 
                               <div class="col-md-1" >
-                                <i class="ni ni-bold-right text-blue" style="padding-top: 15px;"></i>
+                                <i class="ni ni-bold-right text-blue" style="padding-top: 55px;"></i>
                               </div>
 
-                              <div class="col-md-5">
+                              <div class="col-md-5" style="padding-top: 43px;">
                                 <input name="respostaImg" id="respostaImg" type="text" readonly class="form-control" value = "{{ $item->resposta }}" required value= {{ old('respostaImg')}}> {{ $errors->first('respostaImg')}}
 
                               </div>

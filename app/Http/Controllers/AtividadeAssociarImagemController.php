@@ -41,7 +41,7 @@ class AtividadeAssociarImagemController extends Controller
 
 
     session()->flash('success', 'Atividade inserida com sucesso.');
-    return redirect()->route('/atividade/listarUser');
+    return redirect()->route('/atividade/listarTurma/' , ['id' => $request->turma_id]);
   }
 
   public function criarItem($resposta, $imagem, $ordem, $atividade_id){

@@ -5,7 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Ver Lista') }}</div>
+                <div class="card-header">
+                  <a href="{{ route("home") }}">Início</a> >
+                  <a href="{{ route("/turma/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                  {{$lista->titulo}} >
+                  Responder Lista</div>
 
                 <div class="card-body">
                       {{ csrf_field() }}
@@ -45,7 +49,9 @@
 
                               @foreach ($atividades as $atividade)
                                 <tr>
-                                    <td data-title="Nome">{{ $atividade->titulo }}</td>
+                                    <td data-title="Nome" style="overflow: hidden; word-wrap: break-word; max-width: 38rem;">
+                                      {{ str_limit(preg_replace('/<[^>]*>|[&;]|nbsp/', '', preg_replace(array('/nbsp/','/<(.*?)>/'), ' ', $atividade->titulo)), $limit = 180, $end = '...') }}
+                                    </td>
                                     @if ($atividade->tipo == 1)
                                     <td data-title="Tipo">Questão Múltipla escolha</td>
                                     @elseif ($atividade->tipo == 2)

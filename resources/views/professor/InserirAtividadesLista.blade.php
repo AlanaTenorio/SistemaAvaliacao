@@ -18,7 +18,10 @@ function avisoPublicar(){
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Atividades') }}</div>
+                <div class="card-header">
+                  <a href="{{ route("home") }}">Início</a> >
+                  <a href="{{ route("/turma/gerenciar", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                  Cadastrar Lista - Inserir Atividades</div>
 
                 <div class="card-body">
 
@@ -48,7 +51,9 @@ function avisoPublicar(){
                             <tbody>
                               @foreach ($atividades as $atividade)
                                 <tr>
-                                    <td data-title="Nome">{{ $atividade->titulo }}</td>
+                                    <td data-title="Nome" style="overflow: hidden; word-wrap: break-word; max-width: 25rem;">
+                                      {{ str_limit(preg_replace('/<[^>]*>|[&;]|nbsp/', '', preg_replace(array('/nbsp/','/<(.*?)>/'), ' ', $atividade->titulo)), $limit = 180, $end = '...') }}
+                                    </td>
                                     <td data-title="Pontuacao">
                                       <form method="POST" action="/lista/inserirAtividade">
                                         {{ csrf_field() }}
@@ -109,8 +114,10 @@ function avisoPublicar(){
                       @endif
                   </div>
                   <div class="panel-footer">
+                      <center>
                       <a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a>
                       <a class="btn btn-primary" onClick="avisoPublicar({{$lista->id}});" href="{{ route("/lista/exibirLista", ['id' => $lista->id]) }}">Finalizar</a>
+                    </center>
                   </div>
                 </div>
             </div>

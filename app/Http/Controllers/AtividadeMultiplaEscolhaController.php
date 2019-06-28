@@ -50,6 +50,6 @@ class AtividadeMultiplaEscolhaController extends Controller
 
 
     session()->flash('success', 'Atividade inserida com sucesso.');
-    return redirect()->route('/atividade/listarUser');
+    return redirect()->route('/atividade/listarTurma/' , ['id' => $request->turma_id]);
   }
 }
