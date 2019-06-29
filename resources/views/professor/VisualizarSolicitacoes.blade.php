@@ -44,15 +44,15 @@
                                     <td data-title="Nome">{{ $aluno->name }}</td>
                                     <td data-title="Email">{{ $aluno->email }}</td>
                                     <td>
-                                      <a class="btn btn-primary ni ni-circle-08" href="/perfil/{{$solicitacao->aluno_id}}">
+                                      <a class="btn btn-primary ni ni-circle-08" href="{{ route("/perfil", ['id' => $solicitacao->aluno_id]) }}">
                                       </a>
                                     </td>
                                     <td>
-                                      <a class="btn btn-success ni ni-check-bold" href="/turma/aceitarSolicitacao/{{$solicitacao->id}}">
+                                      <a class="btn btn-success ni ni-check-bold" href="{{ route("/turma/aceitarSolicitacao", ['id' => $solicitacao->id]) }}">
                                       </a>
                                     </td>
                                     <td>
-                                      <a class="btn btn-danger ni ni-fat-remove" href="">
+                                      <a class="btn btn-danger ni ni-fat-remove" href="{{ route("/turma/excluirSolicitacao", ['id' => $solicitacao->id]) }}">
                                       </a>
                                     </td>
                                     <td></td>

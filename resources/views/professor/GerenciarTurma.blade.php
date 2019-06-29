@@ -30,11 +30,11 @@
                           <i class="ni ni-collection text-blue"></i> Ver Questões
                       </a><br>
                       <i class="ni ni-settings-gear-65 text-blue"></i> <b>Gerenciar Turma</b>
-                      <a class="nav-link" href="{{ route("/turma/listarConteudos", ['id' => $turma->id]) }}">
-                          <i class="ni ni-book-bookmark text-blue"></i> Conteúdos
+                      <a class="nav-link" href="{{ route("/inserirConteudoGrafo", ['id' => $turma->id]) }}">
+                          <i class="ni ni-map-big text-blue"></i> Mapa de Conteúdos
                       </a>
-                      <a class="nav-link" href="{{ route("/turma/exibirGrafoConteudos", ['id' => $turma->id]) }}">
-                          <i class="ni ni-book-bookmark text-blue"></i> Grafo
+                      <a class="nav-link" href="{{ route("/turma/listarConteudos", ['id' => $turma->id]) }}">
+                          <i class="ni ni-book-bookmark text-blue"></i> Gerenciar Conteúdos
                       </a>
                       <a class="nav-link" href="{{ route("/lista/inserirLista", ['id' => $turma->id]) }}">
                           <i class="ni ni-single-copy-04 text-blue"></i> Criar Lista

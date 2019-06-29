@@ -92,20 +92,15 @@ function ativarLink(elemento){
             </li>
 
             @if (Auth::guard()->check() && Auth::user()->isProfessor)
-            <li class="nav-item dropdown">
+            <li class="nav-item">
 
-              <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                <i class="ni ni-hat-3 text-yellow"></i> Turmas <span class="caret"></span>
+              <a class="nav-link" href="{{ route('/turma/cadastrar') }}">
+                  <i class="ni ni-hat-3 text-yellow"></i> Inserir Turma <span class="caret"></span>
               </a>
 
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item " href="{{ route('/turma/cadastrar') }}">
-                  Inserir Turma
-                </a>
-              <a class="dropdown-item" href="{{ route('/turma/listarUser') }}">
-                  Gerenciar Turmas
+              <a class="nav-link" href="{{ route('/turma/listarUser') }}">
+                  <i class="ni ni-settings text-yellow"></i> Gerenciar Turmas <span class="caret"></span>
               </a>
-            </div>
             </li>
             <!-- <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -148,7 +143,7 @@ function ativarLink(elemento){
               <b>    Minhas turmas </b>
               @foreach ($turmas as $turma)
               <li class="nav-item">
-                <a class="nav-link" href="/turma/gerenciar/{{$turma->id}}" id="turma_nome" onclick="ativarLink(this);">
+                <a class="nav-link" href="{{route("/turma/gerenciar", ['id' => $turma->id])}}" id="turma_nome" onclick="ativarLink(this);">
                     <i class="ni ni-hat-3 "></i> {{$turma->nome}} <span class="caret"></span>
                 </a>
               </li>
@@ -157,19 +152,17 @@ function ativarLink(elemento){
             @endif
 
             @if (Auth::guard()->check() && Auth::user()->isAluno)
-                  <li class="nav-item dropdown">
-                      <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                          <i class="ni ni-hat-3 text-yellow"></i> Turmas <span class="caret"></span>
+                  <li class="nav-item">
+                    <li class="nav-item">
+
+                      <a class="nav-link" href="{{ route('/turma/buscar') }}" onclick="ativarLink(this);">
+                          <i class="ni ni-zoom-split-in text-yellow"></i> Buscar Turma <span class="caret"></span>
                       </a>
 
-                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="{{ route('/turma/buscar') }}">
-                              Buscar Turma
-                          </a>
-                          <a class="dropdown-item" href="{{ route('/turma/alunoListar') }}">
-                              Minhas Turmas
-                          </a>
-                      </div>
+                      <a class="nav-link" href="{{ route('/turma/alunoListar') }}" onclick="ativarLink(this);">
+                          <i class="ni ni-hat-3 text-yellow"></i> Minhas Turmas <span class="caret"></span>
+                      </a>
+                    </li>
                   </li>
 
                   <hr class="my-3">
@@ -193,7 +186,7 @@ function ativarLink(elemento){
                     @foreach ($turmas as $turma)
                     <li class="nav-item">
 
-                      <a class="nav-link" href="/aluno/gerenciarTurma/{{$turma->id}}">
+                      <a class="nav-link" href="{{ route("/aluno/gerenciarTurma", ['id' => $turma->id]) }}">
                           <i class="ni ni-hat-3 "></i> {{$turma->nome}}
                       </a>
                     </li>

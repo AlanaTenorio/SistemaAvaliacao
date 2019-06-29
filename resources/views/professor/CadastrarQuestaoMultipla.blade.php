@@ -31,8 +31,8 @@
 
                         <div class="form-group row">
                             <div class="col-md-12">
-
-                                <textarea name="pergunta" id="summernote"  type="text" class="form-control summernote" required> {{ $errors->first('pergunta')}} </textarea>
+                              <b>Digite o enunciado da questão e abaixo suas alternativas:</b><br><br>
+                                <textarea name="pergunta" id="summernote"  type="text" class="form-control summernote" required>{{ $errors->first('pergunta')}}</textarea>
                                   @error('pergunta')
                                       <span class="invalid-feedback" role="alert">
                                           <strong>{{ $message }}</strong>
@@ -43,10 +43,10 @@
 
                         <div class="form-group row">
                           <input type="radio" name="gabarito" value="a" required >
-                            <label for="A" class="col-md-1 col-form-label text-md-right" style="padding-top:40px">{{ __('A) ') }}</label>
 
+                            <label for="A" class="col-md-1 col-form-label text-md-right" style="padding-top:40px">{{ __('A) ') }}</label>
                             <div class="col-md-10">
-                              <textarea name="A"  type="text" class="form-control summernote_alt" required value= {{ old('A')}}> {{ $errors->first('A')}}</textarea>
+                              <textarea name="A"  type="text" class="form-control summernote_alt" required value= {{ old('A')}}>{{ $errors->first('A')}}</textarea>
 
                                 @error('A')
                                     <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
                             <label for="B" class="col-md-1 col-form-label text-md-right" style="padding-top:40px">{{ __('B)') }}</label>
 
                             <div class="col-md-10">
-                              <textarea name="B"  type="text" class="form-control summernote_alt" required value= {{ old('B')}}> {{ $errors->first('B')}}</textarea>
+                              <textarea name="B"  type="text" class="form-control summernote_alt" required value= {{ old('B')}}>{{ $errors->first('B')}}</textarea>
 
                                 @error('B')
                                     <span class="invalid-feedback" role="alert">
@@ -77,7 +77,7 @@
                             <label for="C" class="col-md-1 col-form-label text-md-right" style="padding-top:40px">{{ __('C)') }}</label>
 
                             <div class="col-md-10">
-                              <textarea name="C" type="text" class="form-control summernote_alt" required value= {{ old('C')}}> {{ $errors->first('C')}}</textarea>
+                              <textarea name="C" type="text" class="form-control summernote_alt" required value= {{ old('C')}}>{{ $errors->first('C')}}</textarea>
 
                                 @error('C')
                                     <span class="invalid-feedback" role="alert">
@@ -92,7 +92,7 @@
                             <label for="D" class="col-md-1 col-form-label text-md-right" style="padding-top:40px">{{ __('D)') }}</label>
 
                             <div class="col-md-10">
-                              <textarea name="D" type="text" class="form-control summernote_alt" required value= {{ old('D')}}> {{ $errors->first('D')}}</textarea>
+                              <textarea name="D" type="text" class="form-control summernote_alt" required value= {{ old('D')}}>{{ $errors->first('D')}}</textarea>
 
                                 @error('D')
                                     <span class="invalid-feedback" role="alert">
@@ -107,7 +107,7 @@
                             <label for="E" class="col-md-1 col-form-label text-md-right" style="padding-top:40px">{{ __('E)') }}</label>
 
                             <div class="col-md-10">
-                              <textarea name="E" type="text" class="form-control summernote_alt" required value= {{ old('E')}}> {{ $errors->first('E')}}</textarea>
+                              <textarea name="E" type="text" class="form-control summernote_alt" required value= {{ old('E')}}>{{ $errors->first('E')}}</textarea>
 
                                 @error('E')
                                     <span class="invalid-feedback" role="alert">
@@ -152,13 +152,14 @@
 </div>
 <script>
   $('#summernote').summernote({
-    placeholder: 'Digite aqui o enunciado da questão',
+    placeholder: 'Digite aqui o enunciado',
     tabsize: 2,
     height: 100
   });
   </script>
   <script>
   $('.summernote_alt').summernote({
+    placeholder: 'Digite aqui a alternativa',
     tabsize: 1,
     width: 800,
     height: 50

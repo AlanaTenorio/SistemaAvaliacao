@@ -48,7 +48,6 @@
                         </div>
                         @endforeach
                         <div class="panel-footer">
-                            <center><a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a></center>
 
                         </div>
 

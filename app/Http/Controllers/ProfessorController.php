@@ -43,6 +43,17 @@ class ProfessorController extends Controller
 
     }
 
+		public function excluirSolicitacao(Request $request) {
+
+    $solicitacao = \App\Turma_aluno::find($request->id);
+
+    $solicitacao->delete();
+
+    session()->flash('success', 'A Solicitação foi excluída com sucesso');
+    return redirect()->route('/turma/listarUser');
+
+    }
+
 		public function exibirResultadosDisciplina(Request $request) {
 
 		$turma = \App\Turma::find($request->id);

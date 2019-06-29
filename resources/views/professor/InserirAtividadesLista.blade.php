@@ -2,17 +2,6 @@
 
 @section('content')
 
-<script language= 'javascript'>
-
-function avisoPublicar(){
-  if(confirm (' Deseja compartilhar essa lista agora? ')) {
-    location.href="{{ route("/lista/publicar", ['id' => $lista->id]) }}";
-  }
-  else {
-    return false;
-  }
-}
-</script>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -116,7 +105,7 @@ function avisoPublicar(){
                   <div class="panel-footer">
                       <center>
                       <a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a>
-                      <a class="btn btn-primary" onClick="avisoPublicar({{$lista->id}});" href="{{ route("/lista/exibirLista", ['id' => $lista->id]) }}">Finalizar</a>
+                      <a class="btn btn-primary" href="{{ route("/lista/exibirLista", ['id' => $lista->id]) }}">Finalizar</a>
                     </center>
                   </div>
                 </div>

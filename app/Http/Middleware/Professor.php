@@ -27,6 +27,7 @@ class Professor
               "turma/compartilhar/{id}",
               "turma/listarAlunosMatriculados/{id}",
               "conteudo/inserirConteudo/{id}",
+              "inserirConteudoGrafo/{id}",
               "lista/inserirLista/{id}",
               "lista/exibirListasTurma/{id}",
               "atividade/inserirAtividadeMultipla/{id}",

@@ -16,6 +16,7 @@ class CreateConteudoDependenciasTable extends Migration
         Schema::create('conteudo_dependencias', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('conteudo_id')->unsigned();
+            $table->integer('turma_id')->unsigned();
             $table->foreign('conteudo_id')->references('id')
                 		->on('conteudos')
                     ->onDelete('cascade');
