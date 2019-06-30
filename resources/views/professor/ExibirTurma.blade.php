@@ -46,23 +46,26 @@ function avisoDeletar(){
                     <div class="panel-footer">
 
                     @if (Auth::guard()->check() && Auth::user()->isProfessor == true && $professor->id == Auth::user()->id)
-                    <a class="btn btn-primary" href="/turma/editar/{{$turma->id}}">
+                    <a class="btn btn-primary" href=" {{ route("/turma/editar", ['id' => $turma->id]) }}">
                     <img src="{{asset('assets/images/edit.png')}}" height="21" width="20" align = "right">
                     </a>
                     <a class="btn btn-primary" onClick="avisoDeletar({{$turma->id}});">
                       <img src="{{asset('assets/images/delete.png')}}" height="21" width="20" align = "right">
                     </a>
                     @if ($flag == true)
-                    <a class="btn btn-primary " href="/turma/listarSolicitacoes/{{$turma->id}}">Solicitações
+                    <a class="btn btn-primary " href="{{ route("/turma/listarSolicitacoes", ['id' => $turma->id]) }}">Solicitações
                       <i class="ni ni-bell-55 text-red"></i>
                     </a>
                     @else
-                    <a class="btn btn-primary " href="/turma/listarSolicitacoes/{{$turma->id}}">Solicitações
+                    <a class="btn btn-primary " href="{{ route("/turma/listarSolicitacoes", ['id' => $turma->id]) }}">Solicitações
+                    </a>
+                    <a class="btn btn-primary " href="{{ route("/visualizarConteudoGrafo", ['id' => $turma->id]) }}">Conteúdos
                     </a>
                     @endif
                     @endif
 
                     @if (Auth::guard()->check() && Auth::user()->isAluno == true)
+                    <a class="btn btn-primary " href="{{ route("/visualizarConteudoGrafo", ['id' => $turma->id]) }}">Conteúdos</a>
                     <?php
                     $turma_participa = \App\Turma_aluno::where('aluno_id', '=', Auth::user()->id)
                                                       ->where('turma_id', '=', $turma->id)
@@ -71,9 +74,10 @@ function avisoDeletar(){
                     if($turma_participa == null){ ?>
                       <a class="btn btn-primary" href="/turma/participar/{{$turma->id}}">Solicitar Participação</a>
                     <?php } else if ($turma_participa->ativo == false) { ?>
-                    Solitação já enviada
+                      <a class="btn btn-danger " href="">Solitação Já enviada</a>
                   <?php } else { ?>
-                    <a class="btn btn-primary" href="">Sair da turma</a>
+                    <a class="btn btn-success " href="">Aluno Ativo</a>
+
                   <?php } ?>
                     @endif
                     </div>

@@ -21,13 +21,26 @@ class ConteudoController extends Controller
   }
 
   public function visualizarGrafoConteudo(Request $request) {
-    //dd("A");
-  $conteudos = \App\Conteudo::where('turma_id', '=', $request->id)->get();
-  $turma = \App\Turma::find($request->id);
-  return view("professor/VisualizarGrafoConteudos", [
-      "conteudos" => $conteudos,
-      "turma" => $turma,
-  ]);
+    $dependencias = \App\Conteudo_dependencia::where('turma_id', '=', $request->id)->get();
+    $conteudos = \App\Conteudo::where('turma_id', '=', $request->id)->get();
+    $turma = \App\Turma::find($request->id);
+    return view("professor/VisualizarConteudoGrafo", [
+        "conteudos" => $conteudos,
+        "dependencias" => $dependencias,
+        "turma" => $turma,
+    ]);
+
+  }
+
+  public function inserirGrafoConteudo(Request $request) {
+    $dependencias = \App\Conteudo_dependencia::where('turma_id', '=', $request->id)->get();
+    $conteudos = \App\Conteudo::where('turma_id', '=', $request->id)->get();
+    $turma = \App\Turma::find($request->id);
+    return view("professor/InserirConteudoGrafo", [
+        "conteudos" => $conteudos,
+        "dependencias" => $dependencias,
+        "turma" => $turma,
+    ]);
 
   }
 
@@ -53,7 +66,7 @@ class ConteudoController extends Controller
 
       foreach ($listaDependencias as $dependencia){
         $conteudo_dependencia = \App\Conteudo::find($dependencia);
-        $this->adicionarDependencia($conteudo->id, $conteudo_dependencia->id);
+        $this->adicionarDependencia($conteudo->id, $conteudo_dependencia->id, $request->turma_id);
       }
     }
 
@@ -105,7 +118,7 @@ class ConteudoController extends Controller
 
       foreach ($listaDependencias as $dependencia){
         $conteudo_dependencia = \App\Conteudo::find($dependencia);
-        $this->adicionarDependencia($conteudo->id, $conteudo_dependencia->id);
+        $this->adicionarDependencia($conteudo->id, $conteudo_dependencia->id, $request->id_turma);
       }
     }
 
@@ -115,10 +128,11 @@ class ConteudoController extends Controller
 
   }
 
-  public function adicionarDependencia($conteudo_id, $dependencia_id){
+  public function adicionarDependencia($conteudo_id, $dependencia_id, $turma_id){
     $conteudo_dependencia = new \App\Conteudo_dependencia();
     $conteudo_dependencia->conteudo_id = $conteudo_id;
     $conteudo_dependencia->dependencia_id = $dependencia_id;
+    $conteudo_dependencia->turma_id = $turma_id;
 
     $conteudo_dependencia->save();
 

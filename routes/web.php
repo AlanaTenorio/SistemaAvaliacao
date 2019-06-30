@@ -30,16 +30,9 @@ Route::middleware('professor')->group(function() {
       return view('professor/CadastrarTurma');
   })->name('/turma/cadastrar');
 });
-
-// Route::get('/teste', function(Request $request) {
-//     return view('professor/teste');
-// })->name('/teste');
-
-Route::get('/turma/exibirGrafoConteudos/{id}', function ($id) {
-    return view('professor/VisualizarGrafoConteudos');
-})->name('/turma/exibirGrafoConteudos/');
-
-Route::get('/turma/exibirGrafoConteudos/{id}', 'ConteudoController@visualizarGrafoConteudo')->name('/turma/exibirGrafoConteudos');
+Route::get('/visualizarConteudoGrafo/{id}', 'ConteudoController@visualizarGrafoConteudo')->name('/visualizarConteudoGrafo')->middleware('auth');
+Route::get('/inserirConteudoGrafo/{id}', 'ConteudoController@inserirGrafoConteudo')->name('/inserirConteudoGrafo')->middleware('professor');
+Route::get('/turma/exibirGrafoConteudos/{id_turma}', 'ConteudoController@visualizarGrafoConteudo')->name('/turma/exibirGrafoConteudos');
 Route::post('/turma/cadastrar', 'TurmaController@inserir')->middleware('professor');
 Route::get('/turma/listarUser', 'TurmaController@listarUser')->name('/turma/listarUser')->middleware('professor');
 Route::get('/turma/exibir/{id}', 'TurmaController@exibir')->name('/turma/exibir');
@@ -49,6 +42,7 @@ Route::get('/turma/editar/{id}', 'TurmaController@editar')->name('/turma/editar'
 Route::post('/turma/salvar', 'TurmaController@salvar')->name('/turma/salvar')->middleware('professor');
 Route::get('/turma/listarSolicitacoes/{id}', 'ProfessorController@listarSolicitacoes')->name('/turma/listarSolicitacoes')->middleware('professor');
 Route::get('/turma/aceitarSolicitacao/{id}', 'ProfessorController@aceitarSolicitacao')->name('/turma/aceitarSolicitacao')->middleware('professor');
+Route::get('/turma/excluirSolicitacao/{id}', 'ProfessorController@excluirSolicitacao')->name('/turma/excluirSolicitacao')->middleware('professor');
 Route::get('/turma/compartilhar/{id}', 'TurmaController@compartilhar')->name('/turma/compartilhar')->middleware('professor');
 Route::get('/turma/listarConteudos/{id}', 'ConteudoController@listarConteudosTurma')->name('/turma/listarConteudos')->middleware('auth');
 Route::get('/turma/listarAlunosMatriculados/{id}', 'TurmaController@listarAlunosMatriculados')->name('/turma/listarAlunosMatriculados')->middleware('professor');
@@ -117,7 +111,7 @@ Route::get('/turma/buscar', function(Request $request) {
 Route::post('/turma/buscar', 'TurmaController@buscarTurmas');
 Route::get('/turma/participar/{id}', 'TurmaController@participar')->name('/turma/participar')->middleware('aluno');
 Route::get('/turma/alunoListar/', 'TurmaController@listarTurmasAluno')->name('/turma/alunoListar')->middleware('aluno');
-Route::get('/aluno/gerenciarTurma/{id}', 'TurmaController@gerenciar')->name('/turma/gerenciarTurma')->middleware('aluno');
+Route::get('/aluno/gerenciarTurma/{id}', 'TurmaController@gerenciar')->name('/aluno/gerenciarTurma')->middleware('aluno');
 
 //Lista
 Route::get('/aluno/listasRespondidas/{id}', 'AlunoController@listasFinalizadas')->name('/aluno/listasRespondidas')->middleware('aluno');

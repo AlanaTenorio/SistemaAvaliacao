@@ -101,8 +101,10 @@
 
                 </div>
                 <div class="panel-footer">
-                    <center><a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a></center>
-
+                    <center><a class="btn btn-primary" href="{{URL::previous()}}">Voltar</a>
+                    @if ($lista->compartilhada == false)
+                    <a class="btn btn-success" href="{{ route("/lista/publicar", ['id' => $lista->id]) }}">Publicar</a></center>
+                    @endif
                 </div>
             </div>
         </div>
