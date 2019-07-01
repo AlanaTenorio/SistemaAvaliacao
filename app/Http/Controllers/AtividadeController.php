@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Atividade;
+use App\Turma;
 use Auth;
 
 class AtividadeController extends Controller
@@ -24,8 +25,10 @@ class AtividadeController extends Controller
   public function listarAtividadesTurma(Request $request) {
 
     $atividades = Atividade::where('turma_id', '=', $request->id)->get();
+    $turma = Turma::find($request->id);
     return view("professor/ListarAtividades", [
         "atividades" => $atividades,
+        "turma" => $turma,
     ]);
 
   }

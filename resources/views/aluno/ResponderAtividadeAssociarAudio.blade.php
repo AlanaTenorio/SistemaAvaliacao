@@ -47,6 +47,17 @@
    document.getElementById("resposta5").value = data;
 
   }
+
+  function dropBack(ev) {
+   ev.preventDefault();
+   var data = ev.dataTransfer.getData("text");
+   ev.target.appendChild(document.getElementById(data));
+  }
+
+  function help(){
+    alert("Arraste a imagem até a resposta correspondente e solte-a.");
+  }
+
   </script>
 </head>
 <body>
@@ -59,6 +70,9 @@
                   <a href="{{ route("/aluno/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
                   <a href="{{ route("/aluno/exibirLista", ["id" => $lista->id]) }}">{{$lista->titulo}}</a> >
                   {{ __('Responder Questão - Associar imagem-áudio') }}</div>
+                  <div style="display: flex; justify-content: flex-end">
+                  <img id="help" onclick="help();" src="{{ asset('assets/images/help.png') }}" width="20" height="20">
+                </div>
 
                 <div class="card-body">
                   <form method="POST" action="/atividade/responderAtividadeAudio">
@@ -70,7 +84,7 @@
                         <div class="form-group row">
 
                             <div class="col-md-12">
-                              {{ $atividade->titulo}}
+                              <h2>{{ $atividade->titulo}}</h2>
                             </div>
                         </div>
 
@@ -92,11 +106,21 @@
                              <div class="row">
                                <div class="col-md-12">
 
-                                 <img id="{{ $itens_shuffled[0]->ordem }}" src="{{ asset($itens_shuffled[0]->imagem) }}" draggable="true" ondragstart="drag(event)" width="140" height="140">
-                                 <img id="{{ $itens_shuffled[1]->ordem }}" src="{{ asset($itens_shuffled[1]->imagem) }}" draggable="true" ondragstart="drag(event)" width="140" height="140">
-                                 <img id="{{ $itens_shuffled[2]->ordem }}" src="{{ asset($itens_shuffled[2]->imagem) }}" draggable="true" ondragstart="drag(event)" width="140" height="140">
-                                 <img id="{{ $itens_shuffled[3]->ordem }}" src="{{ asset($itens_shuffled[3]->imagem) }}" draggable="true" ondragstart="drag(event)" width="140" height="140">
-                                 <img id="{{ $itens_shuffled[4]->ordem }}" src="{{ asset($itens_shuffled[4]->imagem) }}" draggable="true" ondragstart="drag(event)" width="140" height="140">
+                                 <div ondrop="dropBack(event)" ondragover="allowDrop(event)" style="display: inline-block; border-style: dotted; border-color: #4286f4; width: 150px; height: 150px;">
+                                   <img id="{{ $itens_shuffled[0]->ordem }}" src="{{ asset($itens_shuffled[0]->imagem) }}" draggable="true" ondragstart="drag(event)" width="140" height="140">
+                                 </div>
+                                 <div ondrop="dropBack(event)" ondragover="allowDrop(event)" style="display: inline-block; border-style: dotted; border-color: #4286f4; width: 150px; height: 150px;">
+                                   <img id="{{ $itens_shuffled[1]->ordem }}" src="{{ asset($itens_shuffled[1]->imagem) }}" draggable="true" ondragstart="drag(event)" width="140" height="140">
+                                 </div>
+                                 <div ondrop="dropBack(event)" ondragover="allowDrop(event)" style="display: inline-block; border-style: dotted; border-color: #4286f4; width: 150px; height: 150px;">
+                                   <img id="{{ $itens_shuffled[2]->ordem }}" src="{{ asset($itens_shuffled[2]->imagem) }}" draggable="true" ondragstart="drag(event)" width="140" height="140">
+                                 </div>
+                                 <div ondrop="dropBack(event)" ondragover="allowDrop(event)" style="display: inline-block; border-style: dotted; border-color: #4286f4; width: 150px; height: 150px;">
+                                   <img id="{{ $itens_shuffled[3]->ordem }}" src="{{ asset($itens_shuffled[3]->imagem) }}" draggable="true" ondragstart="drag(event)" width="140" height="140">
+                                 </div>
+                                 <div ondrop="dropBack(event)" ondragover="allowDrop(event)" style="display: inline-block; border-style: dotted; border-color: #4286f4; width: 150px; height: 150px;">
+                                   <img id="{{ $itens_shuffled[4]->ordem }}" src="{{ asset($itens_shuffled[4]->imagem) }}" draggable="true" ondragstart="drag(event)" width="140" height="140">
+                                 </div>
                                </div>
                              </div>
                              <br>

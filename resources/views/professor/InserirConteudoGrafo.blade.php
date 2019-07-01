@@ -20,7 +20,7 @@
       $nomeConteudo = \App\Conteudo::find($dependendencia->conteudo_id);
       $nomeDependencia = \App\Conteudo::find($dependendencia->dependencia_id);
     ?>
-      g.addEdge("{{$nomeConteudo->nome}}", "{{$nomeDependencia->nome}}", { directed: true });
+      g.addEdge("{{$nomeDependencia->nome}}", "{{$nomeConteudo->nome}}", { directed: true });
 
     <?php endforeach; ?>
 
@@ -102,6 +102,10 @@
           }
   }
 
+  function help(){
+    alert("Selecione da lista os conteúdos dos quais este conteúdo depende. ");
+  }
+
   </script>
     <script type="text/javascript" src="../js/raphael-min.js"></script>
     <script type="text/javascript" src="../js/dracula_graffle.js"></script>
@@ -119,6 +123,9 @@
                 <a href="{{ route("/turma/gerenciar", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
                 Mapa de Conteúdos
                 </div>
+                <div style="display: flex; justify-content: flex-end">
+                <img id="help" onclick="help();" src="{{ asset('assets/images/help.png') }}" width="20" height="20">
+              </div>
                 <div id="canvas"></div>
 
                 <div class="container">

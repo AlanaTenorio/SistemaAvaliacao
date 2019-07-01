@@ -53,16 +53,19 @@
                                     </td>
                                     <td>
                                       @php
-                                      $timeZone = new DateTimeZone('UTC');
-
-                                      $data1 = DateTime::createFromFormat ('d/m/Y', $lista->data_fim, $timeZone);
-                                      $data2 = date('d/m/Y');
-                                      if ($data1 < $data2) {
+                                      $end = new DateTime($lista->data_fim);
+                                      $end = $end->format('d/m/Y');
+                                      $today = date('d/m/Y');
+                                      if ($end < $today) {
                                       @endphp
                                         <a class="btn btn-primary" href="{{ route("/aluno/exibirResultadosLista", ['id' => $lista->id]) }}">
                                         Resultados
                                       @php
-                                      }
+                                    } else  {
+                                      @endphp
+                                        Não disponível
+                                      @php
+                                    }
                                       @endphp
 
                                       </a>
