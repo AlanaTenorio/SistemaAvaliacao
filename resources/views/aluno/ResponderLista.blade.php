@@ -14,7 +14,7 @@
                         <div class="form-group row">
 
                             <div class="col-md-12">
-                              <b>{{ $lista->titulo}}</b>
+                              <b><h2>{{ $lista->titulo}}<h2></b>
                             </div>
                         </div>
 

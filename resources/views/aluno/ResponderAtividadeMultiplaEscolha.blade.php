@@ -2,6 +2,12 @@
 
 @section('content')
 
+<script>
+function help(){
+  alert("Selecione a alternativa que responde à questão.");
+}
+</script>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -11,6 +17,9 @@
                   <a href="{{ route("/aluno/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
                   <a href="{{ route("/aluno/exibirLista", ["id" => $lista->id]) }}">{{$lista->titulo}}</a> >
                   {{ __('Responder Questão - Múltipla Escolha') }}</div>
+                  <div style="display: flex; justify-content: flex-end">
+                  <img id="help" onclick="help();" src="{{ asset('assets/images/help.png') }}" width="20" height="20">
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="/atividade/responderAtividadeMultiplaEscolha">

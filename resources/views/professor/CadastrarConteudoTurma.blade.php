@@ -53,6 +53,10 @@ function selectAll() {
         }
 }
 
+function help(){
+  alert("Selecione da lista os conteúdos dos quais este conteúdo depende. ");
+}
+
 </script>
 <div class="container">
     <div class="row justify-content-center">
@@ -64,6 +68,9 @@ function selectAll() {
                   <a href="{{ route("/turma/listarConteudos", ["id" => $turma->id]) }}">Conteúdos </a> >
                   Inserir Conteúdo
                 </div>
+                <div style="display: flex; justify-content: flex-end">
+                <img id="help" onclick="help();" src="{{ asset('assets/images/help.png') }}" width="20" height="20">
+              </div>
 
                 <div class="card-body">
                   @if (\Session::has('success'))
