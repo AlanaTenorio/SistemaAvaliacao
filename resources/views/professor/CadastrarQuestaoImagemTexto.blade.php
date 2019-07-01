@@ -100,7 +100,7 @@ function readimg5(input) {
 
                 <div class="card-body">
 
-                  <form method="POST" action="/atividadeImagem/cadastrar" enctype="multipart/form-data">
+                  <form method="POST" action="{{ route('/atividadeImagem/cadastrar') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                       @csrf
                     <input type="hidden" name="turma_id" value="{{ $turma->id}}" />

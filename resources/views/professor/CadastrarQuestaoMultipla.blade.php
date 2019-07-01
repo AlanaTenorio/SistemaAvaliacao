@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="/atividadeMultipla/cadastrar">
+                    <form method="POST" action="{{ route('/atividadeMultipla/cadastrar') }}">
                       {{ csrf_field() }}
                         @csrf
                       <input type="hidden" name="turma_id" value="{{ $turma->id}}" />

@@ -184,7 +184,7 @@ function readaudio5(input) {
 
                 <div class="card-body">
 
-                  <form method="POST" action="/atividadeAudio/cadastrar" enctype="multipart/form-data">
+                  <form method="POST" action="{{ route('/atividadeAudio/cadastrar') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                       @csrf
                     <input type="hidden" name="turma_id" value="{{ $turma->id}}" />
