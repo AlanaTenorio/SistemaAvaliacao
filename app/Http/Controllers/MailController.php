@@ -27,7 +27,7 @@ class MailController extends Controller
     Mail::send('emails.mail_share', $data, function($message) use ($to_name, $to_email, $subject) {
         $message->to($to_email, $to_name)
                 ->subject($subject);
-        $message->from('alanatenorioelias@gmail.com','Gestão de avaliação');
+        $message->from('sistema_avaliar@gmail.com','Gestão de avaliação');
     });
     return back()->with('success',('Enviado para '.$to_email));
   }
