@@ -100,8 +100,7 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                        logo aqui em cima<br> <br>
-                        <span>O sistema "nome" tem por objetivo auxiliar professores e alunos no processo de verificação de aprendizagem. Oferecendo ferramentas de autoria para construção de listas de atividades e funcionalidades de gestão, permitindo o acompanhamento da avaliação, bem como o mapeamento do aprendizado individual por conteúdos.</span>
+                        <span>O sistema Avaliar tem por objetivo auxiliar professores e alunos no processo de verificação de aprendizagem. Oferecendo ferramentas de autoria para construção de listas de atividades e funcionalidades de gestão, permitindo o acompanhamento da avaliação, bem como o mapeamento do aprendizado individual por conteúdos.</span>
                       </br></br>
                     </div>
                     <div class="col-auto">

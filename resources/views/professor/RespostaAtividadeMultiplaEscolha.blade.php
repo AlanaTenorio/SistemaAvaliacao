@@ -17,10 +17,10 @@
                   @else
                   <a href="{{ route("home") }}">Início</a> >
                   <a href="{{ route("/turma/gerenciar", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
-                  <a href="{{ route("/turma/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                  <a href="{{ route("/aluno/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
                   <a href="{{ route("/aluno/listasRespondidas", ["id" => $turma->id]) }}">Minhas Listas - Finalizadas</a> >
                   <a href="{{ route("/aluno/exibirResultadosLista", ["id" => $lista->id]) }}">Resultados</a> >
-                  Resultado Questão Múltipla escolha 
+                  Resultado Questão Múltipla escolha
                   </div>
                   @endif
 

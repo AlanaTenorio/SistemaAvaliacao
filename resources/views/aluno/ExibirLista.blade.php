@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                   <a href="{{ route("home") }}">Início</a> >
-                  <a href="{{ route("/turma/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                  <a href="{{ route("/aluno/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
                   {{$lista->titulo}} >
                   Responder Lista</div>
 
