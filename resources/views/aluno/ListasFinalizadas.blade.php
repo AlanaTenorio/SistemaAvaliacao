@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                 <a href="{{ route("home") }}">Início</a> >
-                <a href="{{ route("/turma/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
+                <a href="{{ route("/aluno/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
                 {{ __('Minhas Listas - Finalizadas') }}</div>
 
                 <div class="card-body">
@@ -52,13 +52,20 @@
                                       {{ $lista->data_fim }}
                                     </td>
                                     <td>
-                                      @if($lista->is_ativo == false)
-                                      <a class="btn btn-primary" href="{{ route("/aluno/exibirResultadosLista", ['id' => $lista->id]) }}">
-                                      Resultados
+                                      @php
+                                      $timeZone = new DateTimeZone('UTC');
+
+                                      $data1 = DateTime::createFromFormat ('d/m/Y', $lista->data_fim, $timeZone);
+                                      $data2 = date('d/m/Y');
+                                      if ($data1 < $data2) {
+                                      @endphp
+                                        <a class="btn btn-primary" href="{{ route("/aluno/exibirResultadosLista", ['id' => $lista->id]) }}">
+                                        Resultados
+                                      @php
+                                      }
+                                      @endphp
+
                                       </a>
-                                      @endif
-
-
 
                                     </td>
 
