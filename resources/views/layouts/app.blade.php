@@ -60,9 +60,9 @@ function ativarLink(elemento){
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" href="{{ route('home') }}">
-        <a href="">
-        <!-- <img src="{{asset('assets/images/Logo.png')}}" height="105" width="205" align = "right"> -->
+      <a class="navbar-brand pt-0">
+        <a href="{{ route("home") }}">
+        <img src="{{asset('assets/images/Logo.png')}}" height="105" width="205" align = "right">
         </a>
       </a>
 

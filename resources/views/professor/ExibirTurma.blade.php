@@ -6,7 +6,7 @@
 
 function avisoDeletar(){
   if(confirm (' Deseja realmente excluir esta turma? ')) {
-    location.href="/turma/remover/{{$turma->id}}";
+    location.href="{{ route("/turma/remover", ["id" => $turma->id]) }}";
   }
   else {
     return false;
