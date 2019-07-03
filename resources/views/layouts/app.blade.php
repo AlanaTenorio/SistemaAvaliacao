@@ -246,7 +246,7 @@ function ativarLink(elemento){
             </a>
               <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
 
-                <a href="{{ route("/perfil", ["id" => Auth::user()->id]) }}" class="dropdown-item">
+                <a href="{{ route('/perfil', ["id" => Auth::user()->id]) }}" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>Meu Perfil</span>
                 </a>
