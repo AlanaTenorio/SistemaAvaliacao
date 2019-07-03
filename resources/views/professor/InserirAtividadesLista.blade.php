@@ -44,7 +44,7 @@
                                       {{ str_limit(preg_replace('/<[^>]*>|[&;]|nbsp/', '', preg_replace(array('/nbsp/','/<(.*?)>/'), ' ', $atividade->titulo)), $limit = 180, $end = '...') }}
                                     </td>
                                     <td data-title="Pontuacao">
-                                      <form method="POST" action="{{ route("/lista/inserirAtividade" }}">
+                                      <form method="POST" action="{{ route('/lista/inserirAtividade') }}">
                                         {{ csrf_field() }}
                                           @csrf
                                       <input type="hidden" name="lista_id" value="{{ $lista->id}}" />
