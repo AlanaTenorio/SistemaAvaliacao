@@ -20,7 +20,7 @@
       $nomeConteudo = \App\Conteudo::find($dependendencia->conteudo_id);
       $nomeDependencia = \App\Conteudo::find($dependendencia->dependencia_id);
     ?>
-      g.addEdge("{{$nomeConteudo->nome}}", "{{$nomeDependencia->nome}}", { directed: true });
+      g.addEdge("{{$nomeDependencia->nome}}", "{{$nomeConteudo->nome}}", { directed: true });
 
     <?php endforeach; ?>
 
