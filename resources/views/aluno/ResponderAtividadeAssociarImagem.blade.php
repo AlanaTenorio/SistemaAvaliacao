@@ -70,7 +70,7 @@
                   <img id="help" onclick="help();" src="{{ asset('assets/images/help.png') }}" width="20" height="20">
                 </div>
                 <div class="card-body">
-                  <form method="POST" action="/atividade/responderAtividadeImagem">
+                  <form method="POST" action="{{ route('/atividade/responderAtividadeImagem') }}">
                     {{ csrf_field() }}
                       @csrf
                       <input type="hidden" name="atividade_id" value="{{ $atividade->id}}" />

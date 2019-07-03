@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="card-body">
-                  <form method="POST" action="/atividade/responderAtividadeAudio">
+                  <form method="POST" action="{{ route('/atividade/responderAtividadeAudio') }}">
                     {{ csrf_field() }}
                       @csrf
                       <input type="hidden" name="atividade_id" value="{{ $atividade->id}}" />

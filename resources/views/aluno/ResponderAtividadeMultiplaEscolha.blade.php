@@ -22,7 +22,7 @@ function help(){
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="/atividade/responderAtividadeMultiplaEscolha">
+                    <form method="POST" action="{{ route('/atividade/responderAtividadeMultiplaEscolha') }}">
                       {{ csrf_field() }}
                         @csrf
                       <input type="hidden" name="atividade_id" value="{{ $atividade->id}}" />
