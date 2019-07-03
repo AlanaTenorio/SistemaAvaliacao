@@ -51,7 +51,7 @@
                                       </a>
                                     </td>
                                     <td>
-                                      <a class="btn btn-primary"  href="{{ route("/turma/compartilhar", ['id' => $turma->id]) }}">
+                                      <a class="btn btn-primary" href="{{ route("/turma/compartilhar", ['id' => $turma->id]) }}">
                                         <img src="{{asset('assets/images/share.png')}}" height="21" width="17" align = "right">
                                       </a>
                                     </td>
