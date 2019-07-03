@@ -98,9 +98,10 @@
             <div class="col-xl-10 col-lg-8">
               <div class="card card-stats mb-8 mb-xl-0" style="border-color:#3E97D1;">
                 <div class="card-body">
+                  <center><img src="{{asset('assets/images/Logo.png')}}" height="125" width="225"><br></center>
                   <div class="row">
                     <div class="col">
-                        <span>O sistema Avaliar tem por objetivo auxiliar professores e alunos no processo de verificação de aprendizagem. Oferecendo ferramentas de autoria para construção de listas de atividades e funcionalidades de gestão, permitindo o acompanhamento da avaliação, bem como o mapeamento do aprendizado individual por conteúdos.</span>
+                        <span>O sistema <b>Avaliar</b> tem por objetivo auxiliar professores e alunos no processo de verificação de aprendizagem, ferecendo ferramentas de autoria para construção de listas de atividades e funcionalidades de gestão e permitindo o acompanhamento da avaliação, bem como o mapeamento do aprendizado individual por conteúdos.</span>
                       </br></br>
                     </div>
                     <div class="col-auto">
