@@ -105,7 +105,7 @@ function readimg6(input) {
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Criar Questão') }}</div>
+                <div class="card-header" style="background-color:#1B2E4F; color:white">{{ __('Criar Questão') }}</div>
 
                 <div class="card-body">
 

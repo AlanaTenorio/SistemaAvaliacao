@@ -61,7 +61,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="background-color:#1B2E4F; color:white">
                   <a href="{{ route("home") }}">Início</a> >
                   <a href="{{ route("/aluno/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
                   <a href="{{ route("/aluno/exibirLista", ["id" => $lista->id]) }}">{{$lista->titulo}}</a> >
