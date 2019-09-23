@@ -1,250 +1,279 @@
 <!DOCTYPE html>
-
-<style>
-  div.fileinputs {
-  	position: relative;
-  }
-
-  div.fakefile {
-  	position: absolute;
-  	top: 0px;
-  	left: 0px;
-  	z-index: 1;
-  }
-
-  input.file {
-  	position: relative;
-  	text-align: right;
-  	-moz-opacity:0 ;
-  	filter:alpha(opacity: 0);
-  	opacity: 0;
-  	z-index: 2;
-  }
-
-
-</style>
-
-<script language= 'javascript'>
-
-function ativarLink(elemento){
-  elemento.style.color = "#4286f4";
-  var content_turma = document.getElementById("content_turma");
-}
-</script>
-
-<html>
-
+<!-- Versão 19.0617-1526 -->
+<html lang="{{ app()->getLocale() }}">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Gestão de Avaliação</title>
-  <!-- Favicon -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <!-- Icons -->
-  <link href="{{asset('assets/vendor/nucleo/css/nucleo.css')}}" rel="stylesheet">
-  <link href="{{asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
-  <!-- Argon CSS -->
-  <link type="text/css" href="{{asset('assets/css/argon.css?v=1.0.0')}}" rel="stylesheet">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!--<title>{{ config('app.name', 'Laravel') }}</title> -->
+    <title>@yield('titulo') Avaliar</title>
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2-bootstrap.min.css') }}" rel="stylesheet">
+
+    <script type="text/javascript">
+
+    </script>
+
+    <style type="text/css">
+        .panel-default > .panel-heading {
+            color: #fff;
+            background-color: #1B2E4F;
+            border-color: #d3e0e9;
+        }
+        /* Select2 Selects CSS - Start */
+        .select2-container--bootstrap .select2-selection--single .select2-selection__placeholder  {
+            color: #555;
+        }
+        .select2-container--bootstrap .select2-results__option {
+            color: #555;
+            background-color: #fff;
+        }
+        .select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
+            color: #fff;
+            background-color: #bbb;
+        }
+        .select2-container--bootstrap .select2-selection--single {
+            height: 36px;
+            padding: 6px 18px;
+            margin-left: 0px;
+        }
+        /* Select2 Selects CSS - End */
+        #termo {
+          width: 100%;
+          font-size: 16px;
+          padding: 12px 20px 12px 40px;
+          border: 1px solid #ddd;
+          margin-bottom: 12px;
+        }
+        .navbar-default .navbar-nav > .dropdown > a:focus, .navbar-default .navbar-nav > .dropdown > a:hover {
+            color: #fff;
+            background-color: #1B2E4F;
+        }
+        .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+            color: #000;
+            background-color: #fff;
+        }
+        .navbar-default .navbar-nav > a, .navbar-default .navbar-nav > li > a {
+            color: #fff;
+        }
+        .navbar-default .navbar-nav > li > a:hover, {
+            color: #fff;
+            background-color: #fff;
+        }
+        .dropdown-menu > li > a:hover {
+            background-color: #cccccc;
+        }
+        .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-text {
+            color: #000;
+            background-color: #fff;
+        }
+        #footer-brasil {
+           background: none repeat scroll 0% 0% #1B2E4F;
+           min-width: 100%;
+           position: absolute;
+           bottom: 0;
+           width: 100%;
+        }
+        #page-container {
+          position: relative;
+          min-height: 100vh;
+        }
+        #content-wrap {
+          padding-bottom: 2.5rem;    /* Footer height */
+        }
+        @media (max-width: 1024px) {
+          #barra-logos{display: none;}
+          .btn-toggle{display: block;}
+        }
+        @media only screen and (max-width: 1024px) {
+        	/* Force table to not be like tables anymore */
+        	#tabela table,
+        	#tabela thead,
+        	#tabela tbody,
+          #tabela tfoot,
+        	#tabela th,
+        	#tabela td,
+        	#tabela tr {
+        		display: block;
+        	}
+        	/* Hide table headers (but not display: none;, for accessibility) */
+        	#tabela thead tr {
+        		position: absolute;
+        		top: -9999px;
+        		left: -9999px;
+        	}
+        	#tabela tr { border: 1px solid #ccc; }
+        	#tabela td {
+        		/* Behave  like a "row" */
+        		border: none;
+        		border-bottom: 1px solid #eee;
+        		position: relative;
+        		padding-left: 50%;
+        		white-space: normal;
+        		text-align:left;
+        	}
+        	#tabela td:before {
+        		/* Now like a table header */
+        		position: absolute;
+        		/* Top/left values mimic padding */
+        		top: 6px;
+        		left: 6px;
+        		width: 45%;
+        		padding-right: 10px;
+        		white-space: nowrap;
+        		text-align:left;
+        		font-weight: bold;
+        	}
+        	/*
+        	Label the data
+        	*/
+        	#tabela td:before { content: attr(data-title); }
+        }
+        .dropbtn {
+          background-color: #3097D1;
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+          cursor: pointer;
+        }
+        .dropbtndisabled {
+          background-color: #8eb4cb;;
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+          cursor: pointer;
+        }
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #8eb4cb;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+        /* Links inside the dropdown */
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #f1f1f1}
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+          background-color: #3097D1;
+        }
+    </style>
+
 </head>
-
 <body>
-  <!-- Sidenav -->
-  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
-    <div class="container-fluid">
-      <!-- Toggler -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Brand -->
-      <a class="navbar-brand pt-0">
-        <a href="{{ route("home") }}">
-        <img src="{{asset('assets/images/Logo.png')}}" height="105" width="205" align = "right">
-        </a>
-      </a>
 
-      <!-- Collapse -->
-      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-        <!-- Collapse header -->
-        <div class="navbar-collapse-header d-md-none">
-          <div class="row">
-            <div class="col-6 collapse-brand">
-              <a href="">
-
-              </a>
-            </div>
-            <div class="col-6 collapse-close">
-              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
-                <span></span>
-                <span></span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <!-- Navigation -->
-        <ul class="navbar-nav">
-          <li class="nav-item">
-
-            <a class="nav-link" href="{{ url('/') }}">
-                <i class="ni ni-tv-2 text-yellow"></i> Início
-              </a>
+  <div id="page-container">
+   <div id="content-wrap">
+      <div id="barra-brasil" style="background:#7F7F7F; height: 20px; padding:0 0 0 10px;display:block;">
+        <ul id="menu-barra-temp" style="list-style:none;">
+            <li style="display:inline; float:left;padding-right:10px; margin-right:10px; border-right:1px solid #EDEDED">
+                <a href="http://brasil.gov.br" style="font-family:sans,sans-serif; text-decoration:none; color:white;">Portal do Governo Brasileiro</a>
             </li>
-
-            @if (Auth::guard()->check() && Auth::user()->isProfessor)
-            <li class="nav-item">
-
-              <a class="nav-link" href="{{ route('/turma/cadastrar') }}">
-                  <i class="ni ni-hat-3 text-yellow"></i> Inserir Turma <span class="caret"></span>
-              </a>
-
-              <a class="nav-link" href="{{ route('/turma/listarUser') }}">
-                  <i class="ni ni-settings text-yellow"></i> Gerenciar Turmas <span class="caret"></span>
-              </a>
+            <li>
+            <a style="font-family:sans,sans-serif; text-decoration:none; color:white;" href="http://epwg.governoeletronico.gov.br/barra/atualize.html">Atualize sua Barra de Governo</a>
             </li>
-            <!-- <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  <i class="ni ni-single-copy-04 text-red"></i> Listas <span class="caret"></span>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('/lista/listarTurmasConteudos') }}">
-                      Criar Lista
-                    </a>
-
-                  <a class="dropdown-item" href="{{ route('/lista/exibirListas') }}">
-                      Minhas Listas
-                    </a>
-                </div>
-            </li>
-
-
-            <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  <i class="ni ni-ruler-pencil text-blue"></i> Questões <span class="caret"></span>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                    <a class="dropdown-item" href="{{ route('/atividade/listarUser') }}">
-                        Minhas Questões
-                    </a>
-                    <a class="dropdown-item" href="">
-                        Buscar Questões
-                    </a>
-                </div>
-            </li> -->
-            <hr class="my-3">
-              <?php $id = Auth::user()->id;
-              $turmas = \App\Turma::where('professor_id', '=', $id)->orderBy('ano', 'DESC')->get();
-              ?>
-              @if(count($turmas) != 0 and count($turmas) != 0)
-              <a class="nav-link">
-              <b>    Minhas turmas </b>
-              @foreach ($turmas as $turma)
-              <li class="nav-item">
-                <a class="nav-link" href="{{route("/turma/gerenciar", ['id' => $turma->id])}}" id="turma_nome" onclick="ativarLink(this);">
-                    <i class="ni ni-hat-3 "></i> {{$turma->nome}} <span class="caret"></span>
-                </a>
-              </li>
-              @endforeach
-            @endif
-            @endif
-
-            @if (Auth::guard()->check() && Auth::user()->isAluno)
-                  <li class="nav-item">
-                    <li class="nav-item">
-
-                      <a class="nav-link" href="{{ route('/turma/buscar') }}" onclick="ativarLink(this);">
-                          <i class="ni ni-zoom-split-in text-yellow"></i> Buscar Turma <span class="caret"></span>
-                      </a>
-
-                      <a class="nav-link" href="{{ route('/turma/alunoListar') }}" onclick="ativarLink(this);">
-                          <i class="ni ni-hat-3 text-yellow"></i> Minhas Turmas <span class="caret"></span>
-                      </a>
-                    </li>
-                  </li>
-
-                  <hr class="my-3">
-                    <?php
-                    $usuarioId = Auth::user()->id;
-            				$turmas_aluno = \App\Turma_aluno::where('aluno_id', '=', $usuarioId)
-            																					->where('ativo', '=', true)
-            																					->get();
-
-            				$turmas = array();
-            				foreach ($turmas_aluno as $turma_aluno) {
-            					$turma = \App\Turma::find($turma_aluno->turma_id);
-
-            					array_push($turmas, $turma);
-            				}
-
-                    ?>
-                    @if(count($turmas) != 0 and count($turmas) != 0)
-                    <a class="nav-link">
-                    <b>    Minhas turmas </b>
-                    @foreach ($turmas as $turma)
-                    <li class="nav-item">
-
-                      <a class="nav-link" href="{{ route("/aluno/gerenciarTurma", ['id' => $turma->id]) }}">
-                          <i class="ni ni-hat-3 "></i> {{$turma->nome}}
-                      </a>
-                    </li>
-                    @endforeach
-                  @endif
-
-            @endif
-
-          <hr class="my-3">
-
-          @guest
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">
-              <i class="ni ni-key-25 text-info"></i> Login
-            </a>
-          </li>
-
-          @if (Route::has('register'))
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">
-              <i class="ni ni-circle-08 text-pink"></i> Cadastro
-            </a>
-          </li>
-          @endif
-          @endguest
-
         </ul>
-        <!-- Divider -->
-
-
       </div>
-    </div>
-  </nav>
-  <!-- Main content -->
-  <div class="main-content">
-    <!-- Top navbar -->
-    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
-      <div class="container-fluid">
-        <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" ></a>
 
-        <!-- User -->
-        @guest
+      <!-- Barra de Logos -->
+      <div id="barra-logos" class-"container" style="background:#FFFFFF; margin-top: 1px; height: 150px; padding: 5px 0 10px 0">
+        <ul id="logos" style="list-style:none;">
+            <li style="margin-right:140px; margin-left:110px; border-right:1px">
+                <a href="{{ route("home") }}"><img src="{{asset('assets/images/Logo.png')}}" style = "margin-left: 8px; margin-top:3px " height="140px" align = "left" ></a>
 
-        @else
+                <a target="_blank" href="http://lmts.uag.ufrpe.br/"><img src="{{asset('assets/images/lmts3.png')}}" style = "margin-left: 8px; margin-top:40px " height="80" align = "right" ></a>
 
-        <ul class="navbar-nav align-items-center d-none d-md-flex">
-          <li class="nav-item dropdown">
-            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <div class="media align-items-center">
-                <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->name }}</span>
-                </div>
-              </div>
-            </a>
+                <img src="{{asset('assets/images/separador.png')}}" style = "margin-left: 15px; margin-top: 40px" height="70" align = "right" >
+                <a target="_blank" href="http://ww3.uag.ufrpe.br/"><img src="{{asset('assets/images/uag.png')}}" style = "margin-left: 10px; margin-top: 40px" height="80" width="70" align = "right" ></a>
+
+                <img src="{{asset('assets/images/separador.png')}}" style = "margin-left: 15px; margin-top: 40px" height="70" align = "right" >
+                <a target="_blank" href="http://www.ufrpe.br/"><img src="{{asset('assets/images/ufrpe.png')}}" style = "margin-left: 15px; margin-right: -10px; margin-top: 40px " height="80" width="70" align = "right"></a>
+            </li>
+        </ul>
+      </div>
+
+      <!-- barra de menu -->
+
+
+      <nav class="navbar navbar-default" style="background-color: #1B2E4F; border-color: #d3e0e9" role="navigation" >
+
+        @if (Auth::guard()->check() && Auth::user()->isProfessor)
+        <div class="navbar" >
+          <ul class="nav navbar-nav">
+                    <li><a class="menu-principal" href="{{ route("home") }}" style= "padding-left:20px">Início</a>
+                      <a class="menu-principal" href="{{ route('/turma/cadastrar') }}" style= "padding-left:25px">Inserir Turma</a>
+                      <a class="menu-principal" href="{{ route('/turma/listarUser') }}" style= "padding-left:25px">Gerenciar Turmas</a>
+                    </li>
+            </ul>
+        </div>
+
+
+            <li class="dropdown" >
+              <a href="#" style="color:white;" class="menu-principal dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  {{ Auth::user()->name }} <span class="caret"></span>
+              </a>
               <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+
+                    <a href="{{ route('/perfil', ["id" => Auth::user()->id]) }}" class="dropdown-item">
+                      <i class="ni ni-single-02"></i>
+                      <span>Meu Perfil</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();" class="dropdown-item">
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                      <i class="ni ni-user-run"></i>
+                      <span>Logout</span>
+                    </a>
+
+                  </div>
+            </li>
+
+
+        @endif
+        @if (Auth::guard()->check() && Auth::user()->isAluno)
+        <div class="navbar" >
+          <ul class="nav navbar-nav">
+                    <li><a class="menu-principal" href="{{ route("home") }}" style= "padding-left:20px">Início</a>
+                      <a class="menu-principal" href="{{ route('/turma/buscar') }}" style= "padding-left:25px">Buscar Turma</a>
+                      <a class="menu-principal" href="{{ route('/turma/alunoListar') }}" style= "padding-left:25px">Minhas Turmas</a>
+                    </li>
+            </ul>
+        </div>
+        <li class="dropdown" >
+          <a href="#" style="color:white;" class="menu-principal dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              {{ Auth::user()->name }} <span class="caret"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
 
                 <a href="{{ route('/perfil', ["id" => Auth::user()->id]) }}" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
@@ -262,33 +291,132 @@ function ativarLink(elemento){
                 </a>
 
               </div>
-          </li>
-          @endguest
+        </li>
+        @endif
+        @guest
+        <ul class="nav navbar-nav ml-auto">
+            <!-- Authentication Links -->
+            @guest
+            <div class="navbar" >
+              <ul class="nav navbar-nav">
+                        <li><a class="menu-principal" href="{{ route('login') }}" style= "padding-left:20px">{{ __('Login') }}</a>
+                          <a class="menu-principal" href="{{ route('register') }}" style= "padding-left:25px">{{ __('Cadastro') }}</a>
+                        </li>
+                </ul>
+            </div>
+
+            @endguest
         </ul>
+
+        @endguest
+
+        </nav>
+
+
+        <div style="margin-top: -30px" class="container">
+          <hr>
+              <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                      <div class="collapse navbar-collapse" >
+                          <ul class="nav navbar-nav">
+                              @yield('navbar')
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          <hr>
+        </div>
+
+          @if (Auth::guard()->check())
+          <div style="float:left; max-width: 300px;">
+            <div class="container">
+
+              <div class="card">
+                <div class="card-header" style="background-color:#edd653; ">
+                  <b>    Minhas turmas <img src="{{asset('assets/images/hat.png')}}" height="21" width="20" ></b>
+                </div>
+                @if (Auth::guard()->check() && Auth::user()->isProfessor)
+                <?php $id = Auth::user()->id;
+                  $turmas = \App\Turma::where('professor_id', '=', $id)->orderBy('ano', 'DESC')->get();
+                  ?>
+                  @if(count($turmas) != 0 and count($turmas) != 0)
+                  <a class="nav-link">
+
+                  @foreach ($turmas as $turma)
+                    <a class="nav-link" href="{{route("/turma/gerenciar", ['id' => $turma->id])}}" id="turma_nome" onclick="ativarLink(this);">
+                        {{$turma->nome}} <span class="caret"></span>
+                    </a>
+                  @endforeach
+                @endif
+                @endif
+              </div>
+            </div>
+
+            @if (Auth::guard()->check() && Auth::user()->isAluno)
+            <div class="container">
+
+              <div class="card">
+                <?php
+                        $usuarioId = Auth::user()->id;
+                        $turmas_aluno = \App\Turma_aluno::where('aluno_id', '=', $usuarioId)
+                                                          ->where('ativo', '=', true)
+                                                          ->get();
+                        $turmas = array();
+                        foreach ($turmas_aluno as $turma_aluno) {
+                          $turma = \App\Turma::find($turma_aluno->turma_id);
+                          array_push($turmas, $turma);
+                        }
+                        ?>
+                        @if(count($turmas) != 0 and count($turmas) != 0)
+                        <a class="nav-link">
+                        @foreach ($turmas as $turma)
+
+                          <a class="nav-link" href="{{ route("/aluno/gerenciarTurma", ['id' => $turma->id]) }}">
+                              {{$turma->nome}}
+                          </a>
+                        @endforeach
+                      @endif
+              </div>
+            </div>
+
+
+            @endif
+
+          </div>
+          @endif
+
+
+          <div>@yield('content')</div>
+
+      <br>
+      <br>
+
+      <div style="margin-top: -30px" class="container">
+        <hr>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="collapse navbar-collapse" >
+                        <ul class="nav navbar-nav">
+                            @yield('navbar')
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <hr>
       </div>
-    </nav>
-
-
-    <!-- Header -->
-    <div class=" pb-8 pt-2 pt-md-1" style="background: linear-gradient(87deg, #65A5D1  0, #5DBCD2 100%);">
 
     </div>
-    <!-- Page content -->
-    <div class="container-fluid mt--7" style="padding-top: 7px">
-      <main class="py-4">
-          @yield('content')
-      </main>
-    </div>
 
+    <div id="footer-brasil"></div>
+    <!-- <footer id="footer-brasil"></footer> -->
 
   </div>
-  <!-- Argon Scripts -->
-  <!-- Core -->
-  <script src="{{asset('assets/vendor/jquery/dist/jquery.min.js')}}"></script>
-  <script src="{{asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-  <!-- Optional JS -->
-  <!-- Argon JS -->
-  <script src="{{asset('assets/js/argon.js?v=1.0.0')}}"></script>
+
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 
+
+<script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
 </html>

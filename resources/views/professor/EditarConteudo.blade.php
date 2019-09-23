@@ -60,7 +60,7 @@ function selectAll() {
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="background-color:#1B2E4F; color:white">
                   <a href="{{ route("home") }}">Início</a> >
                   <a href="{{ route("/turma/gerenciar", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
                   <a href="{{ route("/turma/listarConteudos", ["id" => $turma->id]) }}">Conteúdos </a> >
@@ -119,8 +119,10 @@ function selectAll() {
                                 </div>
 
                                 <div class="col-md-1" style="padding-top: 30px">
-                                  <a class="btn btn-primary ni ni-bold-right text-white" onClick="adicionar();"></a></br></br>
-                                  <a class="btn btn-primary ni ni-bold-left text-white" onClick="remover();"></a>
+                                  <a class="btn btn-primary" onClick="adicionar();">
+                                  <img src="{{asset('assets/images/arrow-right.png')}}" height="21" width="20" ></a></br></br>
+                                  <a class="btn btn-primary" onClick="remover();">
+                                  <img src="{{asset('assets/images/arrow-right.png')}}" style="transform: rotate(180deg)" height="21" width="20" ></a>
                                 </div>
 
 

@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="background-color:#1B2E4F; color:white">
                   <a href="{{ route("home") }}">Início</a> >
                   <a href="{{ route("/aluno/gerenciarTurma", ["id" => $turma->id]) }}">{{$turma->nome}}</a> >
                   {{ __('Minhas Listas - Não Finalizadas') }}</div>
@@ -22,7 +22,7 @@
                   <div class="panel-body">
                       @if(count($listas) == 0 and count($listas) == 0)
                       <div class="alert alert-danger">
-                              Não há nenhuma lista há ser feita para esta turma.
+                              Não há nenhuma lista a ser feita para esta turma.
                       </div>
                       @else
                         <div id="tabela" class="table-responsive">
