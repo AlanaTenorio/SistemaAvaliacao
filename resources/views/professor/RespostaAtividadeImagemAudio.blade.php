@@ -27,9 +27,11 @@
                         @csrf
 
                         <div class="form-group row">
-
+                          <div class="col-md-12">
+                            Aluno: {{$aluno->name}}
+                          </div>
                             <div class="col-md-12">
-                              {{ $atividade->titulo}}
+                              <br><h2>{{ $atividade->titulo}}<h2>
                             </div>
                         </div>
 

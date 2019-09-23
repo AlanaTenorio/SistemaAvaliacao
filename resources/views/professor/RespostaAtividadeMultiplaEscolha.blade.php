@@ -30,6 +30,11 @@
                         @csrf
 
                         <div class="form-group row">
+                          <div class="form-group row">
+                            <div class="col-md-12">
+                              Aluno: {{$aluno->name}}
+                            </div>
+                          </div>
 
                             <div class="col-md-12">
                               <span> {!! $atividadeMultiplaEscolha->toArray()['pergunta'] !!} </span>

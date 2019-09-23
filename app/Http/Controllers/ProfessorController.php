@@ -99,6 +99,7 @@ class ProfessorController extends Controller
 
 		public function respostaAtividade(Request $request) {
 	  $aluno_atividade = \App\Aluno_atividade::find($request->id);
+		$aluno = \App\User::find($aluno_atividade->aluno_id);
 		$lista =  \App\Lista::find($aluno_atividade->lista_id);
 		$atividade = \App\Atividade::find($aluno_atividade->atividade_id);
     $turma = \App\Turma::find($atividade->turma_id);
@@ -110,6 +111,7 @@ class ProfessorController extends Controller
           "turma" => $turma,
 					"respostaAluno" => $aluno_atividade->resposta,
 					"lista" => $lista,
+					"aluno" => $aluno,
         ]);
 
 		} else if($atividade->tipo == 2){
@@ -134,6 +136,7 @@ class ProfessorController extends Controller
 					"itens" => $itens,
 					"itensRespostaAluno" => $itensRespostaAluno,
 					"lista" => $lista,
+					"aluno" => $aluno,
         ]);
 
 		}
@@ -160,6 +163,7 @@ class ProfessorController extends Controller
 					"itens" => $itens,
 					"itensRespostaAluno" => $itensRespostaAluno,
 					"lista" => $lista,
+					"aluno" => $aluno,
         ]);
 
 		}
